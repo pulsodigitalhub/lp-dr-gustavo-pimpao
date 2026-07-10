@@ -21,13 +21,15 @@ const locations = [
     address: 'Av. das Araucárias, 785 - Águas Claras, Brasília - DF, 71936-250',
     note: 'Unidade estratégica para quem busca ortopedista em Águas Claras.',
     image: './img/clinica-iob.webp',
+    mapQuery: 'IOB Instituto Ortopédico de Brasília, Av. das Araucárias, 785, Águas Claras, Brasília - DF, 71936-250',
   },
   {
     name: 'Unique Ortopedia',
     region: 'Asa Sul',
-    address: 'SGAS 610, Centro Médico Lúcio Costa, Sala 07 - Asa Sul, Brasília - DF, 70200-700',
+    address: 'SGAS II 610, Centro Médico Lúcio Costa, Sala 07 - Asa Sul, Brasília - DF, 70200-700',
     note: 'Atendimento em centro médico de fácil acesso na Asa Sul.',
     image: './img/clinica-unique.webp',
+    mapQuery: 'Unique Ortopedia e Fisioterapia, SGAS II 610, Centro Médico Lúcio Costa, Sala 07, Asa Sul, Brasília - DF, 70200-700',
   },
   {
     name: 'JK Ortopedia',
@@ -35,6 +37,7 @@ const locations = [
     address: 'QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3 - Taguatinga Norte, Brasília - DF, 72162-301',
     note: 'Unidade próxima ao Shopping JK.',
     image: './img/clinica-jk.webp',
+    mapQuery: 'JK Ortopedia e Clínica da Dor, QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3, Taguatinga Norte, Brasília - DF, 72162-301',
   },
 ]
 
@@ -183,7 +186,7 @@ const faqs = [
   },
   {
     q: 'O Dr. Gustavo atende dor no joelho?',
-    a: 'Sim. A página é voltada a queixas ortopédicas, com ênfase em joelho, articulações, lesões, medicina esportiva e procedimentos para dor, sempre após avaliação individual.',
+    a: 'Sim. O atendimento contempla queixas no joelho, articulações, lesões, medicina esportiva e procedimentos para dor, sempre após avaliação individual.',
   },
   {
     q: 'Infiltração substitui cirurgia?',
@@ -211,7 +214,7 @@ function track(event, payload = {}) {
 
 function whatsappUrl({ name = '', phone = '', source = 'lp' } = {}) {
   const message = [
-    `Olá, vim pela Landing Page do ${doctor.shortName}.`,
+    `Olá, vim pelo site do ${doctor.shortName}.`,
     name ? `Meu nome é ${name}.` : '',
     phone ? `Meu telefone é ${phone}.` : '',
     'Quero agendar uma avaliação ortopédica.',
@@ -470,7 +473,7 @@ function PainSection() {
             Dor não precisa virar rotina antes de você investigar.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-brand-gray">
-            A página foi pensada para quem chega pelo Google procurando um ortopedista e precisa decidir com rapidez, mas sem promessa milagrosa: primeiro vem a avaliação, depois a conduta.
+            Se você sente dor e precisa decidir com rapidez, o cuidado começa por uma avaliação criteriosa: primeiro vem o diagnóstico, depois a conduta.
           </p>
           <Button className="mt-8">Quero avaliar meu caso</Button>
         </div>
@@ -500,7 +503,7 @@ function ApproachSection() {
             Um caminho claro entre sintoma, diagnóstico e próxima decisão.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/70">
-            A estrutura segue o padrão de conversão do Dr. Rafael: explicar rápido, reduzir objeção e levar o visitante para um contato rastreável.
+            A consulta busca organizar sintomas, exames e objetivos para reduzir dúvidas e orientar o próximo passo com segurança.
           </p>
         </div>
 
@@ -622,6 +625,13 @@ function DifferentialsSection() {
 }
 
 function ConveniosSection() {
+  const [showAllConvenios, setShowAllConvenios] = useState(false)
+  const mobileConvenioLimit = 10
+  const mobileConvenios = showAllConvenios
+    ? convenioHighlights
+    : convenioHighlights.slice(0, mobileConvenioLimit)
+  const hiddenConveniosCount = convenioHighlights.length - mobileConvenioLimit
+
   return (
     <section id="convenios" className="scroll-mt-28 bg-white py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -635,7 +645,30 @@ function ConveniosSection() {
                 procedimento; a equipe valida seu convênio no atendimento.
               </p>
             </div>
-            <div className="grid gap-3 sm:flex sm:flex-wrap">
+
+            <div className="sm:hidden">
+              <div className="grid gap-3">
+                {mobileConvenios.map((name) => (
+                  <span key={name} className="inline-flex min-h-11 items-center justify-center rounded-full bg-white/10 px-4 py-2 text-center text-base font-black leading-snug text-white">
+                    {name}
+                  </span>
+                ))}
+              </div>
+
+              {hiddenConveniosCount > 0 && (
+                <button
+                  type="button"
+                  aria-expanded={showAllConvenios}
+                  onClick={() => setShowAllConvenios((current) => !current)}
+                  className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-base font-black text-brand-graphite transition hover:bg-brand-orange"
+                >
+                  <span>{showAllConvenios ? 'Ver menos convênios' : 'Ver mais convênios'}</span>
+                  <span aria-hidden="true">{showAllConvenios ? '↑' : '↓'}</span>
+                </button>
+              )}
+            </div>
+
+            <div className="hidden gap-3 sm:flex sm:flex-wrap">
               {convenioHighlights.map((name) => (
                 <span key={name} className="inline-flex min-h-11 items-center justify-center rounded-full bg-white/10 px-4 py-2 text-center text-base font-black leading-snug text-white sm:text-sm">
                   {name}
@@ -665,7 +698,7 @@ function LocationSection() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {locations.map((location) => {
-            const mapQuery = encodeURIComponent(location.address)
+            const mapQuery = encodeURIComponent(location.mapQuery)
 
             return (
               <article key={location.name} className="overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-cream shadow-soft">
