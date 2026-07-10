@@ -130,14 +130,17 @@ const convenioHighlights = [
   'AFEB BRASAL',
   'AFFEGO',
   'ANAFE SAÚDE',
+  'ASSEFAZ',
   'ASTE / ASETE',
   'BACEN',
+  'BRADESCO',
   'CAEME',
   'CAESAN',
   'CAMED',
   'CARE PLUS',
   'CASEC',
   'CASEMBRAPA',
+  'CASSI',
   'CNTI',
   'CONAB',
   'EMBRATEL',
@@ -168,9 +171,6 @@ const convenioHighlights = [
   'TRE',
   'TRT',
   'UNAFISCO',
-  'BRADESCO',
-  'ASSEFAZ',
-  'CASSI',
 ]
 
 const testimonialSlots = [
@@ -694,7 +694,8 @@ function ConveniosSection() {
               <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Convênios</p>
               <h2 className="font-display mt-2 text-3xl font-black">Confirme seu plano antes de agendar.</h2>
               <p className="mt-4 text-sm leading-relaxed text-white/70">
-                A cobertura pode variar por unidade, contrato e procedimento. A equipe valida seu convênio no atendimento.
+                Lista em ordem alfabética para facilitar sua busca. A cobertura pode variar por unidade, contrato e
+                procedimento; a equipe valida seu convênio no atendimento.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
