@@ -19,7 +19,7 @@ const locations = [
     name: 'IOB Instituto Ortopédico de Brasília',
     region: 'Águas Claras',
     address: 'Av. das Araucárias, 785 - Águas Claras, Brasília - DF, 71936-250',
-    note: 'Unidade estratégica para quem busca ortopedista em Águas Claras.',
+    note: 'Atendimento em Águas Claras para quem busca cuidado ortopédico próximo.',
     image: './img/clinica-iob.webp',
     mapQuery: 'IOB Instituto Ortopédico de Brasília, Av. das Araucárias, 785, Águas Claras, Brasília - DF, 71936-250',
   },
@@ -107,8 +107,8 @@ const approach = [
 
 const differentials = [
   {
-    title: 'CRM e RQE visíveis',
-    text: `${doctor.crm} • ${doctor.rqe}, com divulgação clara da especialidade médica.`,
+    title: 'Registro médico e especialidade',
+    text: `${doctor.crm} • ${doctor.rqe}, para você confirmar a identificação profissional do especialista.`,
   },
   {
     title: 'Formação ortopédica completa',
@@ -119,7 +119,7 @@ const differentials = [
     text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
   },
   {
-    title: 'Procedimentos no escopo da consulta',
+    title: 'Procedimentos quando indicados',
     text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
   },
   {
@@ -127,7 +127,7 @@ const differentials = [
     text: 'Atendimento com confirmação de cobertura por unidade e plano antes do agendamento.',
   },
   {
-    title: 'Linguagem direta',
+    title: 'Orientação sem promessas',
     text: 'Explicação sobre possibilidades, limites e riscos, sem prometer resultado igual para todos.',
   },
 ]
@@ -533,7 +533,7 @@ function ProceduresSection() {
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-brand-gray">
-            A lista abaixo organiza os procedimentos presentes nos materiais do cliente. Resultados podem variar conforme cada caso. Avaliação individual é necessária.
+            Veja alguns procedimentos que podem ser considerados após avaliação individual. A indicação depende do diagnóstico, dos exames e dos objetivos do tratamento.
           </p>
         </div>
 
@@ -607,7 +607,7 @@ function DifferentialsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-            O que sustenta a decisão do paciente.
+            O que ajuda você a decidir com segurança.
           </h2>
         </div>
 
