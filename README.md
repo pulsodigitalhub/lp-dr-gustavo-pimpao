@@ -31,9 +31,9 @@ O build final sai em `dist/`.
 
 ## O que foi implementado
 
-- Hero com formulário curto: nome + telefone.
-- Redirecionamento para página de obrigado e WhatsApp com mensagem pré-preenchida.
-- Eventos `dataLayer` para submit, obrigado e clique em WhatsApp.
+- Hero com CTA direto para WhatsApp e botão para consultar convênios aceitos.
+- WhatsApp com mensagem pré-preenchida para agendamento.
+- Eventos `dataLayer` para cliques em WhatsApp.
 - Header sticky, WhatsApp flutuante, botão voltar ao topo e CTA mobile fixo.
 - Seções obrigatórias: prova rápida, dor/problema, mecanismo, especialista, procedimentos, diferenciais, convênios, depoimentos a validar, localização, FAQ, CTA final e footer.
 - Schema.org `Physician`, `MedicalBusiness`, `MedicalProcedure` e `FAQPage`.

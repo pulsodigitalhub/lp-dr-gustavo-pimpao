@@ -75,4 +75,50 @@
   .shadow-soft {
     box-shadow: 0 24px 70px rgba(52, 51, 49, 0.12);
   }
+
+  @media (max-width: 639px) {
+    .mobile-readable .text-xs {
+      font-size: 0.82rem;
+      line-height: 1.25rem;
+    }
+
+    .mobile-readable .text-sm {
+      font-size: 1rem;
+      line-height: 1.55rem;
+    }
+
+    .mobile-readable .text-base {
+      font-size: 1.0625rem;
+      line-height: 1.65rem;
+    }
+
+    .mobile-readable .text-lg {
+      font-size: 1.15rem;
+      line-height: 1.75rem;
+    }
+
+    .mobile-readable .text-xl {
+      font-size: 1.3rem;
+      line-height: 1.85rem;
+    }
+
+    .mobile-readable .text-2xl {
+      font-size: 1.7rem;
+      line-height: 2rem;
+    }
+
+    .mobile-readable .text-3xl {
+      font-size: 2.15rem;
+      line-height: 2.45rem;
+    }
+
+    .mobile-readable .text-4xl {
+      font-size: 2.75rem;
+      line-height: 3rem;
+    }
+
+    .mobile-readable section {
+      scroll-margin-top: 6.5rem;
+    }
+  }
 }

@@ -4,7 +4,7 @@
 
 - Tipo: **Ads / tráfego pago**
 - Peso da auditoria: conversão, velocidade mobile, compliance médico e rastreamento. SEO entra como higiene técnica.
-- CTA primário: **Agendar avaliação pelo WhatsApp**, sempre conduzindo para formulário curto ou link rastreável.
+- CTA primário: **Agendar avaliação pelo WhatsApp**, conduzindo direto para mensagem rastreável.
 
 ## Diagnóstico
 

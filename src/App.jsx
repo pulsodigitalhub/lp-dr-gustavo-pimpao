@@ -101,24 +101,24 @@ const approach = [
 
 const differentials = [
   {
-    title: 'CRM e RQE visíveis',
-    text: `${doctor.crm} • ${doctor.rqe}, com divulgação clara da especialidade médica.`,
+    title: '3 locais de atendimento',
+    text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
+  },
+  {
+    title: '+40 convênios aceitos',
+    text: 'Lista organizada em ordem alfabética, com confirmação de cobertura por unidade, contrato e procedimento.',
+  },
+  {
+    title: 'Procedimentos para dor',
+    text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
   },
   {
     title: 'Formação ortopédica completa',
     text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em joelho, esporte e dor.',
   },
   {
-    title: 'Três regiões de atendimento',
-    text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
-  },
-  {
-    title: 'Procedimentos no escopo da consulta',
-    text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
-  },
-  {
-    title: 'Convênios e particular',
-    text: 'Atendimento com confirmação de cobertura por unidade e plano antes do agendamento.',
+    title: 'CRM e RQE visíveis',
+    text: `${doctor.crm} • ${doctor.rqe}, com divulgação clara da especialidade médica.`,
   },
   {
     title: 'Linguagem direta',
@@ -232,8 +232,8 @@ function whatsappUrl({ name = '', phone = '', source = 'lp' } = {}) {
   return `https://wa.me/${doctor.phone}?text=${encodeURIComponent(message)}&utm_source=${source}&utm_medium=lp&utm_campaign=dr_gustavo_pimpao`
 }
 
-function scrollToLead() {
-  document.getElementById('agendar')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+function scrollToConvenios() {
+  document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function Icon({ name, className = 'h-6 w-6' }) {
@@ -267,8 +267,8 @@ function Icon({ name, className = 'h-6 w-6' }) {
   return <svg {...common}>{paths[name] || paths.check}</svg>
 }
 
-function Button({ children, variant = 'primary', className = '', onClick = scrollToLead, href }) {
-  const base = 'inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-black uppercase tracking-wide transition focus-visible:outline-brand-orange'
+function Button({ children, variant = 'primary', className = '', onClick, href, source = 'cta' }) {
+  const base = 'inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-black uppercase tracking-wide transition focus-visible:outline-brand-orange sm:min-h-12 sm:px-6 sm:py-3 sm:text-sm'
   const styles = variant === 'dark'
     ? 'bg-brand-graphite text-white hover:bg-black'
     : variant === 'outline'
@@ -278,6 +278,14 @@ function Button({ children, variant = 'primary', className = '', onClick = scrol
   if (href) {
     return (
       <a href={href} onClick={() => track('whatsapp_click', { location: 'button' })} className={`${base} ${styles} ${className}`}>
+        {children}
+      </a>
+    )
+  }
+
+  if (!onClick) {
+    return (
+      <a href={whatsappUrl({ source })} onClick={() => track('whatsapp_click', { location: source })} className={`${base} ${styles} ${className}`}>
         {children}
       </a>
     )
@@ -297,15 +305,16 @@ function Header() {
     ['#abordagem', 'Como funciona'],
     ['#procedimentos', 'Procedimentos'],
     ['#especialista', 'Especialista'],
+    ['#convenios', 'Convênios'],
     ['#localizacao', 'Locais'],
     ['#faq', 'FAQ'],
   ]
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-graphite/10 bg-white/94 shadow-sm backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
         <a href="#topo" className="flex items-center gap-3" aria-label="Ir para o topo">
-          <img src="./img/logo.svg" alt="Dr. Gustavo Pimpão" className="h-14 w-auto" width="180" height="80" />
+          <img src="./img/logo.svg" alt="Dr. Gustavo Pimpão" className="h-16 w-auto lg:h-14" width="180" height="80" />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
@@ -317,7 +326,7 @@ function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button>Agendar avaliação</Button>
+          <Button source="header">Falar no WhatsApp</Button>
         </div>
 
         <button
@@ -332,13 +341,13 @@ function Header() {
 
       {open && (
         <div className="border-t border-brand-graphite/10 bg-white px-4 py-5 lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-4" aria-label="Navegação mobile">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-5" aria-label="Navegação mobile">
             {links.map(([href, label]) => (
-              <a key={href} href={href} className="font-bold text-brand-gray" onClick={() => setOpen(false)}>
+              <a key={href} href={href} className="text-lg font-bold text-brand-gray" onClick={() => setOpen(false)}>
                 {label}
               </a>
             ))}
-            <Button className="w-full" onClick={() => { setOpen(false); scrollToLead() }}>Agendar avaliação</Button>
+            <Button className="w-full" source="mobile_menu">Falar no WhatsApp</Button>
           </nav>
         </div>
       )}
@@ -346,84 +355,33 @@ function Header() {
   )
 }
 
-function LeadForm({ compact = false }) {
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [error, setError] = useState('')
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    const cleanPhone = phone.replace(/\D/g, '')
-    if (!name.trim() || cleanPhone.length < 10) {
-      setError('Informe seu nome e um telefone com DDD para continuar.')
-      return
-    }
-
-    const url = whatsappUrl({ name: name.trim(), phone: cleanPhone, source: 'form_hero' })
-    sessionStorage.setItem('gustavoLeadWaUrl', url)
-    track('lead_form_submit', { form: compact ? 'modal' : 'hero' })
-    window.location.href = './obg-wpp/'
-  }
-
+function WhatsAppContactCard() {
   return (
-    <form id="agendar" onSubmit={handleSubmit} className={`scroll-mt-28 rounded-3xl bg-white p-5 shadow-soft ${compact ? '' : 'lg:p-7'}`}>
+    <aside id="agendar" className="scroll-mt-28 rounded-3xl bg-white p-6 shadow-soft lg:p-7">
       <div className="mb-5">
         <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Agendamento</p>
-        <h2 className="font-display mt-1 text-2xl font-black text-brand-graphite">
-          Receba contato da equipe
+        <h2 className="font-display mt-1 text-3xl font-black leading-tight text-brand-graphite">
+          Fale direto com a equipe pelo WhatsApp
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-brand-gray">
-          Preencha nome e telefone. A conversa abre no WhatsApp com a mensagem pronta.
+        <p className="mt-3 text-base leading-relaxed text-brand-gray">
+          A mensagem já abre pronta para solicitar agendamento da avaliação ortopédica.
         </p>
       </div>
 
-      <div className="grid gap-4">
-        <div>
-          <label htmlFor={compact ? 'nome-modal' : 'nome'} className="mb-2 block text-sm font-bold text-brand-graphite">
-            Nome
-          </label>
-          <input
-            id={compact ? 'nome-modal' : 'nome'}
-            name="nome"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            autoComplete="name"
-            className="min-h-12 w-full rounded-2xl border border-brand-graphite/15 bg-brand-cream px-4 text-base text-brand-graphite"
-            placeholder="Seu nome"
-          />
-        </div>
-
-        <div>
-          <label htmlFor={compact ? 'telefone-modal' : 'telefone'} className="mb-2 block text-sm font-bold text-brand-graphite">
-            WhatsApp com DDD
-          </label>
-          <input
-            id={compact ? 'telefone-modal' : 'telefone'}
-            name="telefone"
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-            autoComplete="tel"
-            inputMode="tel"
-            className="min-h-12 w-full rounded-2xl border border-brand-graphite/15 bg-brand-cream px-4 text-base text-brand-graphite"
-            placeholder="(61) 99999-9999"
-          />
-        </div>
-
-        {error && <p className="text-sm font-bold text-brand-red">{error}</p>}
-
-        <button
-          type="submit"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-black uppercase tracking-wide text-white shadow-lg shadow-brand-red/20 transition hover:bg-brand-red-dark"
-        >
+      <div className="grid gap-3">
+        <Button className="w-full" source="hero_card">
           <Icon name="whatsapp" />
           Agendar pelo WhatsApp
-        </button>
+        </Button>
+        <Button className="w-full" variant="outline" onClick={scrollToConvenios}>
+          Ver convênios aceitos
+        </Button>
       </div>
 
-      <p className="mt-4 text-xs leading-relaxed text-brand-gray">
-        Seus dados são usados apenas para a equipe entrar em contato. Não compartilhamos com terceiros.
+      <p className="mt-5 text-sm leading-relaxed text-brand-gray">
+        Antes do agendamento, a equipe pode confirmar unidade, agenda e cobertura do plano.
       </p>
-    </form>
+    </aside>
   )
 }
 
@@ -434,7 +392,7 @@ function Hero() {
       <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-blue/10 blur-3xl" aria-hidden="true" />
       <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
 
-      <div className="relative mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <div className="relative mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="pt-6 lg:pt-10">
           <p className="mb-5 inline-flex rounded-full border border-brand-red/20 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-brand-red">
             Ortopedia • Joelho • Dor • Brasília
@@ -450,6 +408,16 @@ function Hero() {
             <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">{doctor.crm}</span>
             <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">{doctor.rqe}</span>
             <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">Atendimento em 3 unidades</span>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button source="hero_primary">
+              <Icon name="whatsapp" />
+              Agendar pelo WhatsApp
+            </Button>
+            <Button variant="outline" onClick={scrollToConvenios}>
+              Ver convênios aceitos
+            </Button>
           </div>
 
           <div className="mt-9 grid gap-4 sm:grid-cols-3">
@@ -489,7 +457,7 @@ function Hero() {
           </div>
 
           <div className="lg:pb-8">
-            <LeadForm />
+            <WhatsAppContactCard />
           </div>
         </div>
       </div>
@@ -686,7 +654,7 @@ function DifferentialsSection() {
 
 function ConveniosSection() {
   return (
-    <section className="bg-white py-14">
+    <section id="convenios" className="scroll-mt-28 bg-white py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2rem] border border-brand-graphite/10 bg-brand-graphite p-6 text-white lg:p-9">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
@@ -698,9 +666,9 @@ function ConveniosSection() {
                 procedimento; a equipe valida seu convênio no atendimento.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid gap-3 sm:flex sm:flex-wrap">
               {convenioHighlights.map((name) => (
-                <span key={name} className="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-white">
+                <span key={name} className="inline-flex min-h-11 items-center justify-center rounded-full bg-white/10 px-4 py-2 text-base font-black text-white sm:text-sm">
                   {name}
                 </span>
               ))}
@@ -864,9 +832,12 @@ function FinalCTA() {
               Conteúdo informativo. Não substitui consulta médica. A conduta depende de avaliação individual, exame físico e análise de exames quando necessário.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button>Preencher formulário</Button>
-              <Button variant="outline" href={whatsappUrl({ source: 'final_cta' })}>
-                Falar no WhatsApp
+              <Button source="final_cta_primary">
+                <Icon name="whatsapp" />
+                Agendar pelo WhatsApp
+              </Button>
+              <Button variant="outline" onClick={scrollToConvenios}>
+                Ver convênios aceitos
               </Button>
             </div>
           </div>
@@ -931,7 +902,7 @@ function FloatingActions() {
         href={wa}
         aria-label="Falar com a equipe pelo WhatsApp"
         onClick={() => track('whatsapp_click', { location: 'floating' })}
-        className="fixed bottom-24 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition hover:scale-105 sm:bottom-6"
+        className="fixed bottom-28 right-4 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition hover:scale-105 sm:bottom-6 sm:h-14 sm:w-14"
       >
         <Icon name="whatsapp" />
       </a>
@@ -941,14 +912,17 @@ function FloatingActions() {
           type="button"
           aria-label="Voltar ao topo"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-40 right-4 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-graphite text-white shadow-2xl transition hover:scale-105 sm:bottom-24"
+          className="fixed bottom-48 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-graphite text-white shadow-2xl transition hover:scale-105 sm:bottom-24 sm:h-12 sm:w-12"
         >
           <Icon name="arrow" className="h-5 w-5" />
         </button>
       )}
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-graphite/10 bg-white p-3 shadow-2xl sm:hidden">
-        <Button className="w-full" onClick={scrollToLead}>Agendar avaliação</Button>
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-graphite/10 bg-white p-4 shadow-2xl sm:hidden">
+        <Button className="w-full" source="mobile_sticky">
+          <Icon name="whatsapp" />
+          Agendar pelo WhatsApp
+        </Button>
       </div>
     </>
   )
@@ -1023,23 +997,25 @@ export default function App() {
   return (
     <>
       <SchemaJsonLd />
-      <Header />
-      <main>
-        <Hero />
-        <ProofBar />
-        <PainSection />
-        <ApproachSection />
-        <ProceduresSection />
-        <SpecialistSection />
-        <DifferentialsSection />
-        <ConveniosSection />
-        <TestimonialsSection />
-        <LocationSection />
-        <FAQSection />
-        <FinalCTA />
-      </main>
-      <Footer />
-      <FloatingActions />
+      <div className="mobile-readable">
+        <Header />
+        <main>
+          <Hero />
+          <ProofBar />
+          <PainSection />
+          <ApproachSection />
+          <ProceduresSection />
+          <SpecialistSection />
+          <DifferentialsSection />
+          <ConveniosSection />
+          <TestimonialsSection />
+          <LocationSection />
+          <FAQSection />
+          <FinalCTA />
+        </main>
+        <Footer />
+        <FloatingActions />
+      </div>
     </>
   )
 }
