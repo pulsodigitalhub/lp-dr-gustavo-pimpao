@@ -44,12 +44,10 @@ Avaliação ortopédica em Brasília para entender sua dor e definir, com crité
 - Mecanismo: timeline 01–04 em fundo grafite, para quebrar objeção e explicar conduta.
 - Procedimentos: grid de cards com ícones clínicos simples.
 - Especialista: foto real do Drive em destaque.
-- Depoimentos: seção reservada com `[A VALIDAR]`, sem inventar falas.
-- Localização: cards por unidade + mapa incorporado da unidade de Águas Claras.
+- Localização: cards por unidade com foto real e mapa incorporado para Águas Claras, Asa Sul e Taguatinga.
 
 ## Pendências `[A VALIDAR]`
 
-- Depoimentos reais autorizados e normativamente seguros.
 - Confirmar se todos os planos listados atendem em todas as unidades ou se há variação por endereço.
 - Confirmação se o GTM `GTM-58TBHFDV`, encontrado no site atual, é o container correto para esta LP.
 - Confirmação da pasta/slug final de publicação (`/lp/` ou domínio raiz).

@@ -35,14 +35,13 @@ O build final sai em `dist/`.
 - WhatsApp com mensagem pré-preenchida para agendamento.
 - Eventos `dataLayer` para cliques em WhatsApp.
 - Header sticky, WhatsApp flutuante, botão voltar ao topo e CTA mobile fixo.
-- Seções obrigatórias: prova rápida, dor/problema, mecanismo, especialista, procedimentos, diferenciais, convênios, depoimentos a validar, localização, FAQ, CTA final e footer.
+- Seções obrigatórias: prova rápida, dor/problema, mecanismo, especialista, procedimentos, diferenciais, convênios, localização com fotos e mapas das três unidades, FAQ, CTA final e footer.
 - Schema.org `Physician`, `MedicalBusiness`, `MedicalProcedure` e `FAQPage`.
 - Imagens otimizadas em WebP.
 - Footer de versão Ads sem telefone/e-mail soltos, para evitar vazamento de conversão.
 
 ## Pendências antes de publicar
 
-- `[A VALIDAR]` Depoimentos reais autorizados.
 - `[A VALIDAR]` Confirmar se todos os planos listados atendem em todas as unidades ou se há variação por endereço.
 - `[A VALIDAR]` Confirmar se `GTM-58TBHFDV` é o container oficial da campanha.
 - `[A VALIDAR]` Confirmar slug de publicação (`/lp/`, domínio raiz ou variação por campanha).

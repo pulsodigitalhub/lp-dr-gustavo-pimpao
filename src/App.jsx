@@ -20,18 +20,21 @@ const locations = [
     region: 'Águas Claras',
     address: 'Av. das Araucárias, 785 - Águas Claras, Brasília - DF, 71936-250',
     note: 'Unidade estratégica para quem busca ortopedista em Águas Claras.',
+    image: './img/clinica-iob.webp',
   },
   {
     name: 'Unique Ortopedia',
     region: 'Asa Sul',
     address: 'SGAS 610, Centro Médico Lúcio Costa, Sala 07 - Asa Sul, Brasília - DF, 70200-700',
     note: 'Atendimento em centro médico de fácil acesso na Asa Sul.',
+    image: './img/clinica-unique.webp',
   },
   {
     name: 'JK Ortopedia',
     region: 'Taguatinga Norte',
     address: 'QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3 - Taguatinga Norte, Brasília - DF, 72162-301',
     note: 'Unidade próxima ao Shopping JK.',
+    image: './img/clinica-jk.webp',
   },
 ]
 
@@ -101,20 +104,28 @@ const approach = [
 
 const differentials = [
   {
-    title: '3 locais de atendimento',
-    text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
-  },
-  {
-    title: '+40 convênios aceitos',
-    text: 'Lista organizada em ordem alfabética, com confirmação de cobertura por unidade, contrato e procedimento.',
-  },
-  {
-    title: 'Procedimentos para dor',
-    text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
+    title: 'CRM e RQE visíveis',
+    text: `${doctor.crm} • ${doctor.rqe}, com divulgação clara da especialidade médica.`,
   },
   {
     title: 'Formação ortopédica completa',
     text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em joelho, esporte e dor.',
+  },
+  {
+    title: 'Três regiões de atendimento',
+    text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
+  },
+  {
+    title: 'Procedimentos no escopo da consulta',
+    text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
+  },
+  {
+    title: 'Convênios e particular',
+    text: 'Atendimento com confirmação de cobertura por unidade e plano antes do agendamento.',
+  },
+  {
+    title: 'Linguagem direta',
+    text: 'Explicação sobre possibilidades, limites e riscos, sem prometer resultado igual para todos.',
   },
 ]
 
@@ -163,21 +174,6 @@ const convenioHighlights = [
   'TRE',
   'TRT',
   'UNAFISCO',
-]
-
-const testimonialSlots = [
-  {
-    title: 'Depoimento de consulta',
-    text: 'Espaço reservado para avaliação real, com autorização e sem exposição de dados sensíveis.',
-  },
-  {
-    title: 'Depoimento de procedimento',
-    text: 'Espaço reservado para relato aprovado pelo paciente e revisado antes da publicação.',
-  },
-  {
-    title: 'Depoimento de atendimento',
-    text: 'Priorizar falas sobre clareza, acolhimento e orientação, usando nome abreviado.',
-  },
 ]
 
 const faqs = [
@@ -396,12 +392,6 @@ function Hero() {
             Avaliação com {doctor.shortName}, {doctor.specialty}, para queixas no joelho, articulações, coluna e procedimentos intervencionistas quando indicados.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
-            <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">{doctor.crm}</span>
-            <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">{doctor.rqe}</span>
-            <span className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-graphite shadow-sm">Atendimento em 3 unidades</span>
-          </div>
-
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button source="hero_primary">
               <Icon name="whatsapp" />
@@ -613,8 +603,7 @@ function DifferentialsSection() {
     <section className="bg-brand-cream py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Diferenciais</p>
-          <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+          <h2 className="font-display text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
             O que sustenta a decisão do paciente.
           </h2>
         </div>
@@ -648,7 +637,7 @@ function ConveniosSection() {
             </div>
             <div className="grid gap-3 sm:flex sm:flex-wrap">
               {convenioHighlights.map((name) => (
-                <span key={name} className="inline-flex min-h-11 items-center justify-center rounded-full bg-white/10 px-4 py-2 text-base font-black text-white sm:text-sm">
+                <span key={name} className="inline-flex min-h-11 items-center justify-center rounded-full bg-white/10 px-4 py-2 text-center text-base font-black leading-snug text-white sm:text-sm">
                   {name}
                 </span>
               ))}
@@ -660,53 +649,35 @@ function ConveniosSection() {
   )
 }
 
-function TestimonialsSection() {
-  return (
-    <section id="depoimentos" className="bg-brand-cream py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Depoimentos</p>
-          <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-            Seção preparada para prova social validada.
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-brand-gray">
-            Não foram encontrados depoimentos individuais validados nos materiais. Por segurança ética, a LP reserva os espaços sem inventar falas.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonialSlots.map((slot) => (
-            <article key={slot.title} className="rounded-3xl border border-dashed border-brand-red/30 bg-white p-6">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-red">A validar</p>
-              <h3 className="mt-3 text-lg font-black text-brand-graphite">{slot.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-gray">{slot.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <p className="mt-6 text-center text-xs leading-relaxed text-brand-gray">
-          Depoimentos refletem experiências individuais. Resultados variam e dependem de avaliação médica.
-        </p>
-      </div>
-    </section>
-  )
-}
-
 function LocationSection() {
-  const mapQuery = encodeURIComponent(locations[0].address)
-
   return (
     <section id="localizacao" className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Localização</p>
-            <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-              Atendimento em Águas Claras, Asa Sul e Taguatinga.
-            </h2>
-            <div className="mt-8 grid gap-4">
-              {locations.map((location) => (
-                <article key={location.name} className="rounded-3xl border border-brand-graphite/10 bg-brand-cream p-5">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Localização</p>
+          <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+            Atendimento em Águas Claras, Asa Sul e Taguatinga.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-brand-gray">
+            Escolha a unidade mais conveniente e confirme agenda, convênio e cobertura pelo WhatsApp.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {locations.map((location) => {
+            const mapQuery = encodeURIComponent(location.address)
+
+            return (
+              <article key={location.name} className="overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-cream shadow-soft">
+                <img
+                  src={location.image}
+                  width="900"
+                  height="600"
+                  alt={`Foto da unidade ${location.name}`}
+                  className="h-56 w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="p-5">
                   <div className="flex items-start gap-4">
                     <span className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-white text-brand-red">
                       <Icon name="map" />
@@ -718,35 +689,25 @@ function LocationSection() {
                       <p className="mt-2 text-sm font-bold text-brand-graphite">{location.note}</p>
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
-          </div>
+                </div>
+                <iframe
+                  title={`Mapa da unidade ${location.name}`}
+                  src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+                  width="100%"
+                  height="260"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </article>
+            )
+          })}
+        </div>
 
-          <div className="self-start overflow-hidden rounded-[2rem] bg-brand-graphite shadow-soft">
-            <img
-              src="./img/iob-fachada.webp"
-              width="680"
-              height="453"
-              alt="Fachada do Instituto Ortopédico de Brasília"
-              className="h-64 w-full object-cover"
-              loading="lazy"
-            />
-            <iframe
-              title="Mapa do atendimento em Águas Claras"
-              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              width="100%"
-              height="340"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-            <div className="flex items-center gap-3 p-5 text-white/75">
-              <Icon name="clock" />
-              <span className="text-sm font-bold">{doctor.hours}</span>
-            </div>
-          </div>
+        <div className="mt-6 flex items-center justify-center gap-3 rounded-3xl bg-brand-graphite p-5 text-white/75">
+          <Icon name="clock" />
+          <span className="text-sm font-bold">{doctor.hours}</span>
         </div>
       </div>
     </section>
@@ -988,7 +949,6 @@ export default function App() {
           <SpecialistSection />
           <DifferentialsSection />
           <ConveniosSection />
-          <TestimonialsSection />
           <LocationSection />
           <FAQSection />
           <FinalCTA />
