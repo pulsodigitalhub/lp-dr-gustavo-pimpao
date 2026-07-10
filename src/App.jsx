@@ -116,14 +116,6 @@ const differentials = [
     title: 'Formação ortopédica completa',
     text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em joelho, esporte e dor.',
   },
-  {
-    title: 'CRM e RQE visíveis',
-    text: `${doctor.crm} • ${doctor.rqe}, com divulgação clara da especialidade médica.`,
-  },
-  {
-    title: 'Linguagem direta',
-    text: 'Explicação sobre possibilidades, limites e riscos, sem prometer resultado igual para todos.',
-  },
 ]
 
 const convenioHighlights = [
