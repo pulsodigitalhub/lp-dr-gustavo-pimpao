@@ -2,6 +2,11 @@
 
 Landing page em React + Vite criada para o Dr. Gustavo Pimpão, seguindo o padrão técnico/de conversão do Dr. Rafael Rocha e a identidade visual do site atual `ortopedistaaguasclaras.com.br`.
 
+## Links
+
+- Repositório: https://github.com/calilmf/lp-dr-gustavo-pimpao
+- Prévia GitHub Pages: https://calilmf.github.io/lp-dr-gustavo-pimpao/
+
 ## Stack
 
 - React 18
