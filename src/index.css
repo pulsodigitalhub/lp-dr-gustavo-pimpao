@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Roboto', system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: 'Roboto Slab', Georgia, serif;
+  --color-brand-red: #a01a2a;
+  --color-brand-red-dark: #7b1220;
+  --color-brand-blue: #2751a3;
+  --color-brand-blue-soft: #e9f2ff;
+  --color-brand-graphite: #343331;
+  --color-brand-gray: #5b5a58;
+  --color-brand-cream: #f8f4ee;
+  --color-brand-orange: #f97425;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    color: #343331;
+    background: #f8f4ee;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    outline-offset: 4px;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgba(249, 116, 37, 0.75);
+    outline-offset: 4px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-serif);
+  }
+
+  .bg-medical-grid {
+    background-image:
+      linear-gradient(rgba(39, 81, 163, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(39, 81, 163, 0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    box-shadow: 0 24px 80px rgba(52, 51, 49, 0.16);
+    backdrop-filter: blur(18px);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 24px 70px rgba(52, 51, 49, 0.12);
+  }
+}
