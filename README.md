@@ -43,7 +43,7 @@ O build final sai em `dist/`.
 ## Pendências antes de publicar
 
 - `[A VALIDAR]` Depoimentos reais autorizados.
-- `[A VALIDAR]` Lista final de convênios por unidade.
+- `[A VALIDAR]` Confirmar se todos os planos listados atendem em todas as unidades ou se há variação por endereço.
 - `[A VALIDAR]` Confirmar se `GTM-58TBHFDV` é o container oficial da campanha.
 - `[A VALIDAR]` Confirmar slug de publicação (`/lp/`, domínio raiz ou variação por campanha).
 

@@ -50,6 +50,6 @@ Avaliação ortopédica em Brasília para entender sua dor e definir, com crité
 ## Pendências `[A VALIDAR]`
 
 - Depoimentos reais autorizados e normativamente seguros.
-- Lista final de convênios por unidade.
+- Confirmar se todos os planos listados atendem em todas as unidades ou se há variação por endereço.
 - Confirmação se o GTM `GTM-58TBHFDV`, encontrado no site atual, é o container correto para esta LP.
 - Confirmação da pasta/slug final de publicação (`/lp/` ou domínio raiz).
