@@ -412,18 +412,6 @@ function Hero() {
             </Button>
           </div>
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-3">
-            {[
-              ['Formação', 'Residência em Ortopedia e Traumatologia'],
-              ['Foco', 'Joelho, esporte, articulações e dor'],
-              ['Conduta', 'Avaliação individual antes de procedimentos'],
-            ].map(([title, text]) => (
-              <div key={title} className="glass-card rounded-3xl p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-brand-red">{title}</p>
-                <p className="mt-2 text-sm font-bold leading-snug text-brand-graphite">{text}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
@@ -462,10 +450,10 @@ function ProofBar() {
     <section className="border-y border-brand-graphite/10 bg-white">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {[
-          ['CRM/RQE', `${doctor.crm} • ${doctor.rqe}`],
-          ['Formação', 'Medicina, residência e pós-graduação'],
-          ['Unidades', 'Águas Claras, Asa Sul e Taguatinga'],
-          ['Convênios', 'Confirmação por unidade e plano'],
+          ['Locais', 'Águas Claras, Asa Sul e Taguatinga'],
+          ['Convênios', '+40 planos aceitos'],
+          ['Dor', 'Infiltrações, bloqueios e radiofrequência'],
+          ['Formação', 'Residência, SBOT e formação complementar'],
         ].map(([title, text]) => (
           <div key={title} className="flex items-start gap-3">
             <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-white">
