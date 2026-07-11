@@ -259,6 +259,179 @@ const faqs = [
   },
 ]
 
+const injectionLandingPages = {
+  '/infiltracao/': {
+    slug: 'infiltracao',
+    title: 'Infiltração para dor em Brasília',
+    metaTitle: 'Infiltração para dor em Brasília — Dr. Gustavo Pimpão',
+    metaDescription: 'Avaliação ortopédica com Dr. Gustavo Pimpão para entender se infiltração pode ser indicada para dores, articulações, tendões, bursites e perda de mobilidade.',
+    eyebrow: 'Infiltração ortopédica',
+    description: 'Avaliação ortopédica com Dr. Gustavo Pimpão para entender se a infiltração pode ser indicada no seu caso, conforme diagnóstico, exames e objetivo do tratamento.',
+    bullets: [
+      'Atendimento em Águas Claras, Asa Sul e Taguatinga',
+      'Avaliação para dores articulares, tendões, bursites e limitação de movimento',
+      'Confirmação de agenda e convênio pelo WhatsApp',
+    ],
+    symptomsTitle: 'Quando a dor começa a limitar movimento, trabalho ou rotina',
+    symptomsIntro: 'A infiltração pode ser considerada quando existe uma indicação clínica clara e a dor interfere na função do dia a dia.',
+    symptoms: [
+      { text: 'Dor persistente em articulações', icon: 'heartPulse' },
+      { text: 'Inflamação em tendões ou bursas', icon: 'activity' },
+      { text: 'Dor que dificulta fisioterapia ou reabilitação', icon: 'footprints' },
+      { text: 'Limitação para caminhar, treinar ou trabalhar', icon: 'dumbbell' },
+      { text: 'Dúvida sobre o próximo passo do tratamento', icon: 'clipboardList' },
+    ],
+    indicationTitle: 'Um procedimento feito com indicação, objetivo e acompanhamento',
+    indicationText: 'A infiltração consiste na aplicação de uma medicação ou substância em uma articulação, tendão, bursa ou região relacionada à dor. A escolha do tipo de infiltração depende do diagnóstico e da estrutura envolvida.',
+    contextsTitle: 'A infiltração pode ser avaliada em diferentes regiões do corpo',
+    contexts: [
+      { title: 'Ombro', text: 'Dor, bursite, tendinopatias, impacto ou rigidez em avaliação.', icon: 'activity' },
+      { title: 'Joelho', text: 'Dor, inchaço, rigidez, desgaste articular ou limitação funcional.', icon: 'footprints' },
+      { title: 'Quadril, tornozelo e pé', text: 'Queixas articulares ou periarticulares que precisam de diagnóstico.', icon: 'bone' },
+      { title: 'Cotovelo, punho e mão', text: 'Dor em articulações, tendões e estruturas próximas.', icon: 'target' },
+      { title: 'Coluna e regiões relacionadas à dor', text: 'Casos selecionados em que procedimentos podem ser discutidos.', icon: 'stethoscope' },
+    ],
+    typesTitle: 'Nem toda infiltração é igual',
+    types: [
+      { title: 'Corticosteroide', text: 'Pode ser considerado quando há componente inflamatório e indicação clínica.', icon: 'syringe' },
+      { title: 'Ácido hialurônico', text: 'Pode ser avaliado em situações específicas, principalmente em contexto articular.', icon: 'sparkles' },
+      { title: 'Ortobiológicos', text: 'PRP e outras opções podem ser discutidos quando há indicação individual.', icon: 'badgeCheck' },
+    ],
+    stepsTitle: 'Da dor ao plano de cuidado',
+    steps: [
+      'Avaliação da queixa, histórico e limitações',
+      'Exame físico e revisão de exames disponíveis',
+      'Definição se há indicação de infiltração',
+      'Procedimento quando indicado',
+      'Orientações de acompanhamento e próximos passos',
+    ],
+    faqTitle: 'Perguntas frequentes sobre infiltração',
+    faqs: [
+      { q: 'Infiltração serve para qualquer dor?', a: 'Não. A indicação depende do diagnóstico, da estrutura envolvida, dos exames e do objetivo do tratamento.' },
+      { q: 'A infiltração substitui cirurgia?', a: 'Em alguns casos pode fazer parte do tratamento conservador, mas não substitui cirurgia quando há indicação cirúrgica clara.' },
+      { q: 'Dói para fazer infiltração?', a: 'O desconforto varia conforme a região e o tipo de procedimento. A equipe orienta o paciente sobre o que esperar antes e depois.' },
+      { q: 'Quantas infiltrações posso fazer?', a: 'Depende do diagnóstico, do tipo de medicação e da resposta ao tratamento. Essa decisão é individual.' },
+      { q: 'Preciso levar exames?', a: 'Se tiver exames anteriores, leve para a consulta. Eles ajudam na avaliação e na decisão da conduta.' },
+    ],
+  },
+  '/infiltracao-joelho/': {
+    slug: 'infiltracao-joelho',
+    title: 'Infiltração no joelho em Brasília',
+    metaTitle: 'Infiltração no joelho em Brasília — Dr. Gustavo Pimpão',
+    metaDescription: 'Avaliação ortopédica para dor no joelho, inchaço, rigidez, suspeita de desgaste e perda de mobilidade em Brasília.',
+    eyebrow: 'Dor no joelho',
+    description: 'Avaliação ortopédica com Dr. Gustavo Pimpão para dor no joelho, perda de mobilidade e suspeita de desgaste, com indicação individualizada conforme diagnóstico e exames.',
+    bullets: [
+      'Atendimento em Águas Claras, Asa Sul e Taguatinga',
+      'Avaliação para dor, inchaço, rigidez e limitação no joelho',
+      'Confirmação de convênio e agenda pelo WhatsApp',
+    ],
+    symptomsTitle: 'Quando a dor no joelho começa a mudar sua rotina',
+    symptomsIntro: 'Dor, inchaço e rigidez no joelho podem ter causas diferentes. A avaliação ajuda a entender se a infiltração faz sentido no plano de cuidado.',
+    symptoms: [
+      { text: 'Dor ao subir ou descer escadas', icon: 'footprints' },
+      { text: 'Dor para caminhar ou ficar muito tempo em pé', icon: 'activity' },
+      { text: 'Inchaço ou sensação de joelho “cheio”', icon: 'alert' },
+      { text: 'Rigidez ao levantar', icon: 'clock' },
+      { text: 'Dificuldade para treinar ou trabalhar', icon: 'dumbbell' },
+    ],
+    indicationTitle: 'A indicação depende da causa da dor',
+    indicationText: 'A infiltração no joelho pode ser considerada em casos selecionados, como processos inflamatórios, desgaste articular, dor persistente ou limitação funcional. Antes de indicar, o médico avalia exame físico, exames de imagem, histórico e tratamentos já realizados.',
+    contextsTitle: 'Pode ser uma alternativa quando a dor impede o avanço do tratamento',
+    contexts: [
+      { title: 'Artrose ou desgaste em avaliação', text: 'O grau de desgaste, sintomas e exames orientam a conduta.', icon: 'bone' },
+      { title: 'Inflamação articular', text: 'Casos com componente inflamatório podem exigir controle de sintomas.', icon: 'heartPulse' },
+      { title: 'Dor relacionada a sobrecarga', text: 'Treino, trabalho e rotina podem influenciar a dor no joelho.', icon: 'dumbbell' },
+      { title: 'Dificuldade na reabilitação', text: 'A dor pode limitar evolução em fisioterapia e retomada de função.', icon: 'activity' },
+      { title: 'Decisão antes de cirurgia', text: 'A consulta ajuda a entender opções e próximos passos.', icon: 'clipboardList' },
+    ],
+    typesTitle: 'Nem toda infiltração no joelho é igual',
+    types: [
+      { title: 'Corticosteroide', text: 'Pode ser considerado quando há componente inflamatório importante e indicação clínica.', icon: 'syringe' },
+      { title: 'Ácido hialurônico', text: 'Pode ser avaliado em casos selecionados de desgaste articular, considerando perfil, exames e objetivos.', icon: 'sparkles' },
+      { title: 'PRP e ortobiológicos', text: 'Podem ser discutidos em situações específicas, com alinhamento claro sobre indicação e expectativas.', icon: 'badgeCheck' },
+    ],
+    stepsTitle: 'Antes da infiltração, vem o diagnóstico',
+    steps: [
+      'Entender a dor, a rotina e as limitações',
+      'Examinar estabilidade, mobilidade e pontos de dor',
+      'Revisar raio-x, ressonância ou ultrassom quando houver',
+      'Definir se infiltração faz sentido',
+      'Orientar próximos passos e acompanhamento',
+    ],
+    faqTitle: 'Perguntas frequentes sobre infiltração no joelho',
+    faqs: [
+      { q: 'Infiltração no joelho é indicada para artrose?', a: 'Pode ser considerada em alguns casos, mas depende do grau de desgaste, sintomas, exames e tratamentos anteriores.' },
+      { q: 'A infiltração no joelho regenera cartilagem?', a: 'Não deve ser entendida como regeneração garantida. O objetivo varia conforme o tipo de infiltração e o diagnóstico.' },
+      { q: 'A infiltração substitui cirurgia no joelho?', a: 'Nem sempre. Em alguns casos pode ajudar no controle de sintomas; em outros, a cirurgia pode continuar sendo a melhor indicação.' },
+      { q: 'Preciso fazer exame antes?', a: 'A avaliação clínica é essencial. Exames como raio-x, ressonância ou ultrassom podem ajudar na decisão.' },
+      { q: 'Posso caminhar depois da infiltração?', a: 'As orientações variam conforme o procedimento e o caso. O médico informa os cuidados após a avaliação.' },
+    ],
+  },
+  '/infiltracao-ombro/': {
+    slug: 'infiltracao-ombro',
+    title: 'Infiltração no ombro em Brasília',
+    metaTitle: 'Infiltração no ombro em Brasília — Dr. Gustavo Pimpão',
+    metaDescription: 'Avaliação ortopédica para dor no ombro, bursite, tendinites, rigidez, perda de mobilidade e dificuldade para levantar o braço.',
+    eyebrow: 'Dor no ombro',
+    description: 'Avaliação ortopédica com Dr. Gustavo Pimpão para dor no ombro, limitação para levantar o braço e perda de mobilidade, com indicação individualizada conforme o diagnóstico.',
+    bullets: [
+      'Avaliação para bursite, tendinites, impacto e rigidez do ombro',
+      'Atendimento em Águas Claras, Asa Sul e Taguatinga',
+      'Agendamento direto pelo WhatsApp',
+    ],
+    symptomsTitle: 'Quando o ombro começa a limitar movimentos simples',
+    symptomsIntro: 'Dor para levantar o braço, dormir de lado ou vestir roupa pode envolver diferentes estruturas do ombro. A conduta depende da causa.',
+    symptoms: [
+      { text: 'Dor para levantar o braço', icon: 'activity' },
+      { text: 'Dor para dormir de lado', icon: 'heartPulse' },
+      { text: 'Dificuldade para vestir roupa ou pentear o cabelo', icon: 'footprints' },
+      { text: 'Dor após treino ou esforço repetitivo', icon: 'dumbbell' },
+      { text: 'Rigidez e perda de mobilidade', icon: 'alert' },
+    ],
+    indicationTitle: 'A infiltração depende da causa da dor',
+    indicationText: 'A infiltração no ombro pode ser avaliada em casos de dor com componente inflamatório, bursite, tendinopatias, impacto ou rigidez, sempre após exame físico e análise do histórico do paciente.',
+    contextsTitle: 'Cada diagnóstico muda a conduta',
+    contexts: [
+      { title: 'Bursite', text: 'Pode causar dor ao levantar o braço e ao deitar sobre o ombro.', icon: 'heartPulse' },
+      { title: 'Tendinopatias', text: 'Nem toda dor no tendão deve ser tratada da mesma forma.', icon: 'activity' },
+      { title: 'Síndrome do impacto', text: 'A avaliação identifica movimentos e estruturas relacionados à dor.', icon: 'target' },
+      { title: 'Ombro congelado', text: 'Pode causar dor e rigidez progressiva, exigindo plano de cuidado.', icon: 'clock' },
+      { title: 'Reabilitação limitada pela dor', text: 'A dor pode atrapalhar ganho de movimento e força.', icon: 'dumbbell' },
+    ],
+    typesTitle: 'Controle da dor para recuperar função',
+    types: [
+      { title: 'Infiltração subacromial', text: 'Pode ser discutida em quadros de bursite, impacto ou dor relacionada ao manguito rotador.', icon: 'syringe' },
+      { title: 'Infiltração intra-articular', text: 'Pode ser considerada quando a origem da dor envolve a articulação.', icon: 'target' },
+      { title: 'Plano associado à reabilitação', text: 'O procedimento, quando indicado, entra dentro de uma estratégia de retomada de mobilidade.', icon: 'clipboardCheck' },
+    ],
+    stepsTitle: 'Ombro dolorido pode ter diferentes causas',
+    steps: [
+      'Identificar onde dói e quais movimentos pioram',
+      'Avaliar mobilidade, força e testes específicos',
+      'Revisar exames quando disponíveis',
+      'Definir se a infiltração é indicada',
+      'Orientar cuidados e acompanhamento',
+    ],
+    faqTitle: 'Perguntas frequentes sobre infiltração no ombro',
+    faqs: [
+      { q: 'Infiltração no ombro serve para bursite?', a: 'Pode ser considerada em alguns casos de bursite, principalmente quando há dor e inflamação persistentes. A indicação depende da avaliação.' },
+      { q: 'Infiltração ajuda no ombro congelado?', a: 'Pode ser discutida em alguns casos para controle de dor, dentro de um plano que também considera mobilidade e reabilitação.' },
+      { q: 'Dor no ombro é sempre tendinite?', a: 'Não. Pode envolver bursite, tendões, cápsula articular, impacto, articulação ou outras causas. Por isso a avaliação é importante.' },
+      { q: 'Preciso de ultrassom ou ressonância?', a: 'Depende do caso. Exames podem ajudar, mas a avaliação clínica orienta a necessidade.' },
+      { q: 'Posso voltar a treinar depois?', a: 'A retomada depende do diagnóstico, do procedimento e da resposta individual. O médico orienta o retorno gradual.' },
+    ],
+  },
+}
+
+function getCurrentLandingPage() {
+  if (typeof window === 'undefined') return null
+  let pathname = window.location.pathname
+  pathname = pathname.replace('/lp-dr-gustavo-pimpao', '')
+  if (!pathname.endsWith('/')) pathname = `${pathname}/`
+  return injectionLandingPages[pathname] || null
+}
+
 function track(event, payload = {}) {
   if (typeof window === 'undefined') return
   window.dataLayer = window.dataLayer || []
@@ -801,6 +974,281 @@ function FAQSection() {
   )
 }
 
+function LandingHero({ page }) {
+  return (
+    <section id="topo" className="relative overflow-hidden bg-brand-cream">
+      <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
+      <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-blue/10 blur-3xl" aria-hidden="true" />
+      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
+
+      <div className="relative mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div className="pt-6 lg:pt-10">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">{page.eyebrow}</p>
+          <h1 className="font-display mt-3 max-w-4xl text-4xl font-black leading-[0.98] text-brand-graphite sm:text-5xl lg:text-7xl">
+            {page.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray">
+            {page.description}
+          </p>
+
+          <div className="mt-7 grid gap-3">
+            {page.bullets.map((item) => (
+              <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/75 p-3 shadow-sm">
+                <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                  <Icon name="check" className="h-4 w-4" />
+                </span>
+                <p className="text-sm font-bold leading-relaxed text-brand-graphite">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-graphite shadow-soft lg:hidden">
+            <img
+              src="./img/dr-gustavo-portrait.webp"
+              width="900"
+              height="1200"
+              alt="Retrato do Dr. Gustavo Pimpão"
+              className="h-[430px] w-full object-cover object-[50%_38%] sm:h-[520px]"
+              loading="eager"
+            />
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button source={`${page.slug}_hero`}>
+              <Icon name="whatsapp" />
+              Agendar pelo WhatsApp
+            </Button>
+            <Button variant="outline" onClick={scrollToConvenios}>
+              Ver convênios aceitos
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative hidden lg:block">
+          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-graphite shadow-soft">
+            <img
+              src="./img/dr-gustavo-portrait.webp"
+              width="900"
+              height="1200"
+              alt="Retrato do Dr. Gustavo Pimpão"
+              className="h-[560px] w-full object-cover object-[50%_42%]"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingSymptomsSection({ page }) {
+  return (
+    <section id="dores" className="bg-white py-16 lg:py-24">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Quando procurar</p>
+          <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+            {page.symptomsTitle}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-brand-gray">{page.symptomsIntro}</p>
+          <Button className="mt-8" source={`${page.slug}_symptoms`}>Quero avaliar meu caso</Button>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {page.symptoms.map((item) => (
+            <div key={item.text} className="rounded-3xl border border-brand-graphite/10 bg-brand-cream p-5">
+              <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-brand-red shadow-sm">
+                <Icon name={item.icon} />
+              </span>
+              <p className="text-base font-black leading-snug text-brand-graphite">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingIndicationSection({ page }) {
+  return (
+    <section id="procedimentos" className="bg-brand-cream py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Indicação</p>
+            <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+              {page.indicationTitle}
+            </h2>
+          </div>
+          <p className="text-lg leading-relaxed text-brand-gray">{page.indicationText}</p>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {page.types.map((item) => (
+            <article key={item.title} className="rounded-3xl bg-white p-6 shadow-soft">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue-soft text-brand-blue">
+                <Icon name={item.icon} />
+              </span>
+              <h3 className="mt-5 text-xl font-black text-brand-graphite">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-brand-gray">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingContextsSection({ page }) {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+            {page.contextsTitle}
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {page.contexts.map((item) => (
+            <article key={item.title} className="rounded-3xl border border-brand-graphite/10 bg-brand-cream p-5">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-brand-red shadow-sm">
+                <Icon name={item.icon} />
+              </span>
+              <h3 className="mt-5 text-lg font-black text-brand-graphite">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-brand-gray">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingStepsSection({ page }) {
+  return (
+    <section id="abordagem" className="bg-brand-graphite py-16 text-white lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Como funciona</p>
+          <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">{page.stepsTitle}</h2>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {page.steps.map((item, index) => (
+            <article key={item} className="rounded-3xl border border-white/10 bg-white/[0.06] p-6">
+              <span className="font-display text-5xl font-black text-brand-orange">{String(index + 1).padStart(2, '0')}</span>
+              <p className="mt-5 text-sm font-bold leading-relaxed text-white/80">{item}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingFAQSection({ page }) {
+  const [open, setOpen] = useState(0)
+
+  return (
+    <section id="faq" className="bg-brand-graphite py-16 text-white lg:py-24">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">FAQ</p>
+          <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">{page.faqTitle}</h2>
+        </div>
+
+        <div className="mt-10 space-y-3">
+          {page.faqs.map((faq, index) => (
+            <article key={faq.q} className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06]">
+              <button
+                type="button"
+                className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left font-black"
+                onClick={() => setOpen(open === index ? null : index)}
+              >
+                <span>{faq.q}</span>
+                <span className="text-brand-orange">
+                  <Icon name={open === index ? 'chevronUp' : 'chevronDown'} className="h-5 w-5" />
+                </span>
+              </button>
+              {open === index && (
+                <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/70">
+                  {faq.a}
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingFinalCTA({ page }) {
+  return (
+    <section className="bg-brand-cream py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] bg-white p-6 text-center shadow-soft lg:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Próximo passo</p>
+          <h2 className="font-display mx-auto mt-3 max-w-3xl text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+            Agende uma avaliação e entenda se a infiltração faz sentido para o seu caso.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-brand-gray">
+            Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.
+          </p>
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button source={`${page.slug}_final`}>
+              <Icon name="whatsapp" />
+              Agendar pelo WhatsApp
+            </Button>
+            <Button variant="outline" onClick={scrollToConvenios}>
+              Ver convênios aceitos
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProcedureLandingPage({ page }) {
+  useEffect(() => {
+    document.title = page.metaTitle
+    const description = document.querySelector('meta[name="description"]')
+    if (description) description.setAttribute('content', page.metaDescription)
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    if (ogTitle) ogTitle.setAttribute('content', page.metaTitle)
+    const ogDescription = document.querySelector('meta[property="og:description"]')
+    if (ogDescription) ogDescription.setAttribute('content', page.metaDescription)
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+    if (twitterTitle) twitterTitle.setAttribute('content', page.metaTitle)
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]')
+    if (twitterDescription) twitterDescription.setAttribute('content', page.metaDescription)
+  }, [page])
+
+  return (
+    <div className="mobile-readable">
+      <Header />
+      <main>
+        <LandingHero page={page} />
+        <ProofBar />
+        <LandingSymptomsSection page={page} />
+        <LandingIndicationSection page={page} />
+        <LandingContextsSection page={page} />
+        <LandingStepsSection page={page} />
+        <SpecialistSection />
+        <DifferentialsSection />
+        <ConveniosSection />
+        <LocationSection />
+        <LandingFAQSection page={page} />
+        <LandingFinalCTA page={page} />
+      </main>
+      <Footer />
+      <FloatingActions />
+    </div>
+  )
+}
+
 function Footer() {
   return (
     <footer className="bg-white py-8">
@@ -876,8 +1324,13 @@ function FloatingActions() {
   )
 }
 
-function SchemaJsonLd() {
+function SchemaJsonLd({ page = null }) {
   const schema = useMemo(() => {
+    const pageFaqs = page?.faqs || faqs
+    const procedureName = page
+      ? page.title
+      : 'Avaliação ortopédica, infiltrações, bloqueios e procedimentos para dor'
+
     const physician = {
       '@context': 'https://schema.org',
       '@type': ['Physician', 'MedicalBusiness'],
@@ -904,7 +1357,7 @@ function SchemaJsonLd() {
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map((faq) => ({
+      mainEntity: pageFaqs.map((faq) => ({
         '@type': 'Question',
         name: faq.q,
         acceptedAnswer: {
@@ -917,7 +1370,7 @@ function SchemaJsonLd() {
     const medicalProcedure = {
       '@context': 'https://schema.org',
       '@type': 'MedicalProcedure',
-      name: 'Avaliação ortopédica, infiltrações, bloqueios e procedimentos para dor',
+      name: procedureName,
       procedureType: 'Ortopedia e procedimentos intervencionistas para dor',
       performedBy: {
         '@type': 'Physician',
@@ -926,7 +1379,7 @@ function SchemaJsonLd() {
     }
 
     return [physician, faqSchema, medicalProcedure]
-  }, [])
+  }, [page])
 
   return (
     <>
@@ -942,6 +1395,17 @@ function SchemaJsonLd() {
 }
 
 export default function App() {
+  const landingPage = getCurrentLandingPage()
+
+  if (landingPage) {
+    return (
+      <>
+        <SchemaJsonLd page={landingPage} />
+        <ProcedureLandingPage page={landingPage} />
+      </>
+    )
+  }
+
   return (
     <>
       <SchemaJsonLd />

@@ -22,6 +22,28 @@ function copyStaticAssets() {
           recursive: true,
         });
       }
+
+      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro"];
+      const indexFile = path.join(distDir, "index.html");
+
+      if (fs.existsSync(indexFile)) {
+        for (const route of routeEntries) {
+          const routeDir = path.join(distDir, route);
+          fs.mkdirSync(routeDir, { recursive: true });
+          fs.copyFileSync(indexFile, path.join(routeDir, "index.html"));
+
+          for (const entry of ["assets", ...staticEntries]) {
+            const source = path.join(distDir, entry);
+            const target = path.join(routeDir, entry);
+
+            if (!fs.existsSync(source)) continue;
+
+            fs.cpSync(source, target, {
+              recursive: true,
+            });
+          }
+        }
+      }
     },
   };
 }
