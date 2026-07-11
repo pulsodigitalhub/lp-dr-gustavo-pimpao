@@ -419,6 +419,17 @@ function Hero() {
             Dr. Gustavo Pimpão, Ortopedista e Traumatologista, para queixas de dores e perda de mobilidade.
           </p>
 
+          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-graphite shadow-soft lg:hidden">
+            <img
+              src="./img/dr-gustavo-portrait.webp"
+              width="900"
+              height="1200"
+              alt="Retrato do Dr. Gustavo Pimpão"
+              className="h-[430px] w-full object-cover object-[50%_38%] sm:h-[520px]"
+              loading="eager"
+            />
+          </div>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button source="hero_primary">
               <Icon name="whatsapp" />
