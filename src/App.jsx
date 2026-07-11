@@ -385,14 +385,11 @@ function Hero() {
 
       <div className="relative mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="pt-6 lg:pt-10">
-          <p className="mb-5 inline-flex rounded-full border border-brand-red/20 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-brand-red">
-            Ortopedia • Joelho • Dor • Brasília
-          </p>
           <h1 className="font-display max-w-4xl text-4xl font-black leading-[0.98] text-brand-graphite sm:text-5xl lg:text-7xl">
-            Ortopedista em Águas Claras para quem precisa entender e tratar a dor com critério.
+            Ortopedista em Brasília
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray">
-            Avaliação com {doctor.shortName}, {doctor.specialty}, para queixas no joelho, articulações, coluna e procedimentos intervencionistas quando indicados.
+            Dr. Gustavo Pimpão, Ortopedista e Traumatologista, para queixas de dores e perda de mobilidade.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
