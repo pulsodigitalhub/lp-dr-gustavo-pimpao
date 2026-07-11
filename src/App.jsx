@@ -491,7 +491,7 @@ function Icon({ name, className = 'h-6 w-6' }) {
 function Button({ children, variant = 'primary', className = '', onClick, href, source = 'cta' }) {
   const base = 'inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-black uppercase tracking-wide transition focus-visible:outline-brand-orange sm:min-h-12 sm:px-6 sm:py-3 sm:text-sm'
   const styles = variant === 'dark'
-    ? 'bg-brand-red-dark text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red'
+    ? 'bg-brand-wine text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red'
     : variant === 'outline'
       ? 'border-2 border-brand-red bg-brand-red/5 text-brand-red shadow-md shadow-brand-red/10 hover:bg-brand-red hover:text-white'
       : 'bg-brand-red text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red-dark'
@@ -592,7 +592,7 @@ function Hero() {
             Dr. Gustavo Pimpão, Ortopedista e Traumatologista, para queixas de dores e perda de mobilidade.
           </p>
 
-          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-red-dark shadow-soft lg:hidden">
+          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-wine shadow-soft lg:hidden">
             <img
               src="./img/dr-gustavo-portrait.webp"
               width="900"
@@ -616,7 +616,7 @@ function Hero() {
         </div>
 
         <div className="relative hidden lg:block">
-          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-red-dark shadow-soft">
+          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
             <img
               src="./img/dr-gustavo-portrait.webp"
               width="900"
@@ -693,24 +693,24 @@ function PainSection() {
 
 function ApproachSection() {
   return (
-    <section id="abordagem" className="bg-brand-red-dark py-16 text-white lg:py-24">
+    <section id="abordagem" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Abordagem</p>
           <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">
             Um caminho claro entre sintoma, diagnóstico e próxima decisão.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/80">
+          <p className="mt-5 text-lg leading-relaxed text-white/85">
             A consulta busca organizar sintomas, exames e objetivos para reduzir dúvidas e orientar o próximo passo com segurança.
           </p>
         </div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-4">
           {approach.map((item) => (
-            <article key={item.step} className="rounded-3xl border border-white/15 bg-white/[0.09] p-6 shadow-soft">
+            <article key={item.step} className="rounded-3xl border border-white/20 bg-white/[0.12] p-6 shadow-soft">
               <span className="font-display text-5xl font-black text-brand-orange">{item.step}</span>
               <h3 className="mt-5 text-xl font-black">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/80">{item.text}</p>
+              <p className="mt-3 text-sm leading-relaxed text-white/85">{item.text}</p>
             </article>
           ))}
         </div>
@@ -755,7 +755,7 @@ function SpecialistSection() {
   return (
     <section id="especialista" className="bg-white py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div className="overflow-hidden rounded-[2rem] bg-brand-red-dark shadow-soft">
+        <div className="overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
           <img
             src="./img/dr-gustavo-portrait.webp"
             width="900"
@@ -832,7 +832,7 @@ function ConveniosSection() {
   return (
     <section id="convenios" className="scroll-mt-28 bg-white py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-brand-red/20 bg-brand-red-dark p-6 text-white shadow-soft lg:p-9">
+        <div className="rounded-[2rem] border border-brand-red/20 bg-brand-wine p-6 text-white shadow-soft lg:p-9">
           <div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr] lg:items-start">
             <div>
               <h2 className="font-display text-3xl font-black">Convênios aceitos</h2>
@@ -930,7 +930,7 @@ function LocationSection() {
           })}
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-3 rounded-3xl bg-brand-red-dark p-5 text-white/80 shadow-soft">
+        <div className="mt-6 flex items-center justify-center gap-3 rounded-3xl bg-brand-wine p-5 text-white/85 shadow-soft">
           <Icon name="clock" />
           <span className="text-sm font-bold">{doctor.hours}</span>
         </div>
@@ -943,7 +943,7 @@ function FAQSection() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section id="faq" className="bg-brand-red-dark py-16 text-white lg:py-24">
+    <section id="faq" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">FAQ</p>
@@ -954,7 +954,7 @@ function FAQSection() {
 
         <div className="mt-10 space-y-3">
           {faqs.map((faq, index) => (
-            <article key={faq.q} className="overflow-hidden rounded-3xl border border-white/15 bg-white/[0.09]">
+            <article key={faq.q} className="overflow-hidden rounded-3xl border border-white/20 bg-white/[0.12]">
               <button
                 type="button"
                 className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left font-black"
@@ -966,7 +966,7 @@ function FAQSection() {
                 </span>
               </button>
               {open === index && (
-                <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/80">
+                <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/85">
                   {faq.a}
                 </p>
               )}
@@ -1020,7 +1020,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
             ))}
           </div>
 
-          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-red-dark shadow-soft lg:hidden">
+          <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-wine shadow-soft lg:hidden">
             <img
               src="./img/dr-gustavo-portrait.webp"
               width="900"
@@ -1043,7 +1043,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
         </div>
 
         <div className="relative hidden lg:block">
-          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-red-dark shadow-soft">
+          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
             <img
               src="./img/dr-gustavo-portrait.webp"
               width="900"
@@ -1145,7 +1145,7 @@ function LandingContextsSection({ page }) {
 
 function LandingStepsSection({ page }) {
   return (
-    <section id="abordagem" className="bg-brand-red-dark py-16 text-white lg:py-24">
+    <section id="abordagem" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Como funciona</p>
@@ -1154,9 +1154,9 @@ function LandingStepsSection({ page }) {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {page.steps.map((item, index) => (
-            <article key={item} className="rounded-3xl border border-white/15 bg-white/[0.09] p-6 shadow-soft">
+            <article key={item} className="rounded-3xl border border-white/20 bg-white/[0.12] p-6 shadow-soft">
               <span className="font-display text-5xl font-black text-brand-orange">{String(index + 1).padStart(2, '0')}</span>
-              <p className="mt-5 text-sm font-bold leading-relaxed text-white/80">{item}</p>
+              <p className="mt-5 text-sm font-bold leading-relaxed text-white/85">{item}</p>
             </article>
           ))}
         </div>
@@ -1169,7 +1169,7 @@ function LandingFAQSection({ page }) {
   const [open, setOpen] = useState(0)
 
   return (
-    <section id="faq" className="bg-brand-red-dark py-16 text-white lg:py-24">
+    <section id="faq" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">FAQ</p>
@@ -1178,7 +1178,7 @@ function LandingFAQSection({ page }) {
 
         <div className="mt-10 space-y-3">
           {page.faqs.map((faq, index) => (
-            <article key={faq.q} className="overflow-hidden rounded-3xl border border-white/15 bg-white/[0.09]">
+            <article key={faq.q} className="overflow-hidden rounded-3xl border border-white/20 bg-white/[0.12]">
               <button
                 type="button"
                 className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left font-black"
@@ -1190,7 +1190,7 @@ function LandingFAQSection({ page }) {
                 </span>
               </button>
               {open === index && (
-                <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/80">
+                <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/85">
                   {faq.a}
                 </p>
               )}
@@ -1326,7 +1326,7 @@ function FloatingActions() {
           type="button"
           aria-label="Voltar ao topo"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-48 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-red-dark text-white shadow-2xl transition hover:scale-105 sm:bottom-24 sm:h-12 sm:w-12"
+          className="fixed bottom-48 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-wine text-white shadow-2xl transition hover:scale-105 sm:bottom-24 sm:h-12 sm:w-12"
         >
           <Icon name="arrow" className="h-5 w-5" />
         </button>

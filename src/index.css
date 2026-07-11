@@ -76,6 +76,13 @@
     box-shadow: 0 24px 70px rgba(52, 51, 49, 0.12);
   }
 
+  .bg-brand-wine {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(249, 116, 37, 0.16), transparent 30%),
+      radial-gradient(circle at 88% 82%, rgba(160, 26, 42, 0.45), transparent 34%),
+      linear-gradient(135deg, #8e1728 0%, #7b1220 48%, #a01a2a 100%);
+  }
+
   @media (max-width: 639px) {
     .mobile-readable .text-xs {
       font-size: 0.82rem;
