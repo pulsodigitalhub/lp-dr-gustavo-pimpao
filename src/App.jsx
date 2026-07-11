@@ -263,7 +263,7 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
   const styles = variant === 'dark'
     ? 'bg-brand-graphite text-white hover:bg-black'
     : variant === 'outline'
-      ? 'border-2 border-brand-orange bg-brand-orange text-brand-graphite shadow-lg shadow-brand-orange/25 hover:border-brand-red hover:bg-brand-red hover:text-white'
+      ? 'border-2 border-brand-red bg-brand-red/5 text-brand-red shadow-md shadow-brand-red/10 hover:bg-brand-red hover:text-white'
       : 'bg-brand-red text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red-dark'
 
   if (href) {
