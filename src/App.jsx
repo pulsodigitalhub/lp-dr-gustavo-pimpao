@@ -263,7 +263,7 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
   const styles = variant === 'dark'
     ? 'bg-brand-graphite text-white hover:bg-black'
     : variant === 'outline'
-      ? 'border border-brand-red/30 bg-white text-brand-red hover:bg-brand-red hover:text-white'
+      ? 'border-2 border-brand-orange bg-brand-orange text-brand-graphite shadow-lg shadow-brand-orange/25 hover:border-brand-red hover:bg-brand-red hover:text-white'
       : 'bg-brand-red text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red-dark'
 
   if (href) {
@@ -803,7 +803,7 @@ function FinalCTA() {
               Agende uma avaliação e entenda as opções para o seu caso.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-brand-gray">
-              Conteúdo informativo. Não substitui consulta médica. A conduta depende de avaliação individual, exame físico e análise de exames quando necessário.
+              Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano antes do agendamento.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button source="final_cta_primary">
@@ -825,7 +825,7 @@ function Footer() {
   return (
     <footer className="bg-white py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-brand-graphite/10 pb-8 md:grid-cols-3">
+        <div className="grid gap-8 border-b border-brand-graphite/10 pb-8 md:grid-cols-2">
           <div>
             <img src="./img/logo.svg" alt="Dr. Gustavo Pimpão" className="h-16 w-auto" width="180" height="80" loading="lazy" />
             <p className="mt-4 text-sm leading-relaxed text-brand-gray">
@@ -836,15 +836,9 @@ function Footer() {
             <h3 className="font-black text-brand-graphite">Endereços</h3>
             <ul className="mt-4 space-y-2 text-sm leading-relaxed text-brand-gray">
               {locations.map((location) => (
-                <li key={location.name}>{location.region}: {location.address}</li>
+                <li key={location.name}>{location.address}</li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h3 className="font-black text-brand-graphite">Aviso</h3>
-            <p className="mt-4 text-sm leading-relaxed text-brand-gray">
-              Resultados podem variar conforme cada caso. Avaliação individual é necessária. Conteúdo informativo; não substitui consulta presencial.
-            </p>
           </div>
         </div>
         <div className="flex flex-col gap-2 pt-5 text-xs text-brand-gray sm:flex-row sm:items-center sm:justify-between">
