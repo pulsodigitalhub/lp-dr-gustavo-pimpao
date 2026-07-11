@@ -632,16 +632,20 @@ function Hero() {
   )
 }
 
-function ProofBar({ painText = 'Infiltrações, bloqueios e radiofrequência' }) {
+function getProofItems(painText = 'Infiltrações, bloqueios e radiofrequência') {
+  return [
+    { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
+    { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
+    { title: 'Dor', text: painText, icon: 'heartPulse' },
+    { title: 'Formação', text: 'Residência, SBOT e formação complementar', icon: 'graduation' },
+  ]
+}
+
+function ProofBar({ painText = 'Infiltrações, bloqueios e radiofrequência', className = '' }) {
   return (
-    <section className="border-y border-brand-graphite/10 bg-white">
+    <section className={`border-y border-brand-graphite/10 bg-white ${className}`}>
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-        {[
-          { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
-          { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
-          { title: 'Dor', text: painText, icon: 'heartPulse' },
-          { title: 'Formação', text: 'Residência, SBOT e formação complementar', icon: 'graduation' },
-        ].map(({ title, text, icon }) => (
+        {getProofItems(painText).map(({ title, text, icon }) => (
           <div key={title} className="flex items-start gap-3">
             <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-white">
               <Icon name={icon} className="h-4 w-4" />
@@ -974,7 +978,7 @@ function FAQSection() {
   )
 }
 
-function LandingHero({ page }) {
+function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiofrequência' }) {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
       <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
@@ -998,6 +1002,20 @@ function LandingHero({ page }) {
                   <Icon name="check" className="h-4 w-4" />
                 </span>
                 <p className="text-sm font-bold leading-relaxed text-brand-graphite">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-7 grid gap-4 rounded-[1.75rem] bg-white p-5 shadow-soft lg:hidden">
+            {getProofItems(proofPainText).map(({ title, text, icon }) => (
+              <div key={title} className="flex items-start gap-3">
+                <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                  <Icon name={icon} className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-red">{title}</p>
+                  <p className="text-sm font-bold leading-snug text-brand-graphite">{text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1229,10 +1247,10 @@ function ProcedureLandingPage({ page }) {
   return (
     <div className="mobile-readable">
       <Header />
-        <main>
-          <LandingHero page={page} />
-          <ProofBar painText="Infiltrações guiadas por ultrassom" />
-          <LandingSymptomsSection page={page} />
+      <main>
+        <LandingHero page={page} proofPainText="Infiltrações guiadas por ultrassom" />
+        <ProofBar painText="Infiltrações guiadas por ultrassom" className="hidden lg:block" />
+        <LandingSymptomsSection page={page} />
         <LandingIndicationSection page={page} />
         <LandingContextsSection page={page} />
         <LandingStepsSection page={page} />
