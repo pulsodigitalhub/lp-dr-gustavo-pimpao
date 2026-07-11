@@ -632,14 +632,14 @@ function Hero() {
   )
 }
 
-function ProofBar() {
+function ProofBar({ painText = 'Infiltrações, bloqueios e radiofrequência' }) {
   return (
     <section className="border-y border-brand-graphite/10 bg-white">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {[
           { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
           { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
-          { title: 'Dor', text: 'Infiltrações, bloqueios e radiofrequência', icon: 'heartPulse' },
+          { title: 'Dor', text: painText, icon: 'heartPulse' },
           { title: 'Formação', text: 'Residência, SBOT e formação complementar', icon: 'graduation' },
         ].map(({ title, text, icon }) => (
           <div key={title} className="flex items-start gap-3">
@@ -1229,10 +1229,10 @@ function ProcedureLandingPage({ page }) {
   return (
     <div className="mobile-readable">
       <Header />
-      <main>
-        <LandingHero page={page} />
-        <ProofBar />
-        <LandingSymptomsSection page={page} />
+        <main>
+          <LandingHero page={page} />
+          <ProofBar painText="Infiltrações guiadas por ultrassom" />
+          <LandingSymptomsSection page={page} />
         <LandingIndicationSection page={page} />
         <LandingContextsSection page={page} />
         <LandingStepsSection page={page} />
