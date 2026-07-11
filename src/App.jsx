@@ -580,7 +580,7 @@ function Hero() {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
       <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
-      <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-blue/10 blur-3xl" aria-hidden="true" />
+      <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
       <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
 
       <div className="relative mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
@@ -738,7 +738,7 @@ function ProceduresSection() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {procedures.map((procedure) => (
             <article key={procedure.title} className="rounded-3xl bg-white p-6 shadow-soft">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue-soft text-brand-blue">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-red/10 text-brand-red">
                 <Icon name={procedure.icon} />
               </span>
               <h3 className="mt-5 text-xl font-black text-brand-graphite">{procedure.title}</h3>
@@ -982,7 +982,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
       <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
-      <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-blue/10 blur-3xl" aria-hidden="true" />
+      <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
       <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
 
       <div className="relative mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
@@ -1104,7 +1104,7 @@ function LandingIndicationSection({ page }) {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {page.types.map((item) => (
             <article key={item.title} className="rounded-3xl bg-white p-6 shadow-soft">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue-soft text-brand-blue">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-red/10 text-brand-red">
                 <Icon name={item.icon} />
               </span>
               <h3 className="mt-5 text-xl font-black text-brand-graphite">{item.title}</h3>
