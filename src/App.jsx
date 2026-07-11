@@ -1,4 +1,33 @@
 import { useEffect, useMemo, useState } from 'react'
+import {
+  Activity,
+  ArrowUp,
+  BadgeCheck,
+  Bone,
+  Building2,
+  ChevronDown,
+  ChevronUp,
+  CircleCheck,
+  ClipboardCheck,
+  ClipboardList,
+  Clock3,
+  CreditCard,
+  Dumbbell,
+  Footprints,
+  GraduationCap,
+  HeartPulse,
+  Hospital,
+  MapPinned,
+  Menu,
+  MessageCircle,
+  Radio,
+  Sparkles,
+  Stethoscope,
+  Syringe,
+  Target,
+  TriangleAlert,
+  X,
+} from 'lucide-react'
 import './App.css'
 
 const doctor = {
@@ -21,6 +50,7 @@ const locations = [
     address: 'Av. das Araucárias, 785 - Águas Claras, Brasília - DF, 71936-250',
     note: 'Atendimento em Águas Claras para quem busca cuidado ortopédico próximo.',
     image: './img/clinica-iob.webp',
+    icon: 'hospital',
     mapQuery: 'IOB Instituto Ortopédico de Brasília, Av. das Araucárias, 785, Águas Claras, Brasília - DF, 71936-250',
   },
   {
@@ -29,6 +59,7 @@ const locations = [
     address: 'SGAS II 610, Centro Médico Lúcio Costa, Sala 07 - Asa Sul, Brasília - DF, 70200-700',
     note: 'Atendimento em centro médico de fácil acesso na Asa Sul.',
     image: './img/clinica-unique.webp',
+    icon: 'building',
     mapQuery: 'Unique Ortopedia e Fisioterapia, SGAS II 610, Centro Médico Lúcio Costa, Sala 07, Asa Sul, Brasília - DF, 70200-700',
   },
   {
@@ -37,6 +68,7 @@ const locations = [
     address: 'QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3 - Taguatinga Norte, Brasília - DF, 72162-301',
     note: 'Unidade próxima ao Shopping JK.',
     image: './img/clinica-jk.webp',
+    icon: 'mapPinned',
     mapQuery: 'JK Ortopedia e Clínica da Dor, QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3, Taguatinga Norte, Brasília - DF, 72162-301',
   },
 ]
@@ -44,42 +76,57 @@ const locations = [
 const procedures = [
   {
     title: 'Infiltrações articulares',
-    text: 'Joelho, ombro, quadril, tornozelo, cotovelo, punho e pequenas articulações, conforme indicação médica.',
+    text: 'Ombro, quadril, tornozelo, cotovelo, punho e outras articulações, conforme indicação médica.',
     icon: 'syringe',
   },
   {
     title: 'Bloqueios para dor',
     text: 'Bloqueios periféricos, geniculares, supraescapular, facetário, sacroilíaco e seletivo de raiz nervosa.',
-    icon: 'pulse',
+    icon: 'target',
   },
   {
     title: 'Procedimentos para coluna',
     text: 'Avaliação para infiltrações epidurais, bloqueios transforaminais, interlaminares e facetários.',
-    icon: 'spine',
+    icon: 'bone',
   },
   {
     title: 'Radiofrequência',
     text: 'Ramos mediais, região cervical, lombar, sacroilíaca e nervos geniculares, quando há indicação.',
-    icon: 'wave',
+    icon: 'radio',
   },
   {
     title: 'Ortobiológicos',
     text: 'PRP, plasma rico em plaquetas, aspirado de medula óssea, concentrado celular e proloterapia.',
-    icon: 'cells',
+    icon: 'sparkles',
   },
   {
-    title: 'Medicina esportiva e joelho',
+    title: 'Medicina esportiva e lesões ortopédicas',
     text: 'Avaliação de lesões, sobrecargas, tendinopatias e queixas ligadas ao retorno às atividades.',
-    icon: 'knee',
+    icon: 'dumbbell',
   },
 ]
 
 const problemSigns = [
-  'Dor no joelho ao subir ou descer escadas',
-  'Limitação para caminhar, treinar ou trabalhar',
-  'Dor persistente em articulações, tendões ou coluna',
-  'Inchaço, estalos ou sensação de instabilidade',
-  'Dúvida entre tratamento conservador, procedimento ou cirurgia',
+  {
+    text: 'Dor articular ao subir ou descer escadas',
+    icon: 'footprints',
+  },
+  {
+    text: 'Limitação para caminhar, treinar ou trabalhar',
+    icon: 'activity',
+  },
+  {
+    text: 'Dor persistente em articulações, tendões ou coluna',
+    icon: 'heartPulse',
+  },
+  {
+    text: 'Inchaço, estalos ou sensação de instabilidade',
+    icon: 'alert',
+  },
+  {
+    text: 'Dúvida entre tratamento conservador, procedimento ou cirurgia',
+    icon: 'clipboardList',
+  },
 ]
 
 const approach = [
@@ -109,26 +156,32 @@ const differentials = [
   {
     title: 'Registro médico e especialidade',
     text: `${doctor.crm} • ${doctor.rqe}, para você confirmar a identificação profissional do especialista.`,
+    icon: 'badgeCheck',
   },
   {
     title: 'Formação ortopédica completa',
-    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em joelho, esporte e dor.',
+    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em esporte, articulações e dor.',
+    icon: 'graduation',
   },
   {
     title: 'Três regiões de atendimento',
     text: 'Águas Claras, Asa Sul e Taguatinga, facilitando o acesso de diferentes regiões do DF.',
+    icon: 'mapPinned',
   },
   {
     title: 'Procedimentos quando indicados',
     text: 'Avaliação para infiltrações, bloqueios, radiofrequência e ortobiológicos, quando indicados.',
+    icon: 'stethoscope',
   },
   {
     title: 'Convênios e particular',
     text: 'Atendimento com confirmação de cobertura por unidade e plano antes do agendamento.',
+    icon: 'creditCard',
   },
   {
-    title: 'Orientação sem promessas',
-    text: 'Explicação sobre possibilidades, limites e riscos, sem prometer resultado igual para todos.',
+    title: 'Conduta clara para o próximo passo',
+    text: 'Explicação sobre possibilidades e caminhos de cuidado, com conduta definida conforme a avaliação.',
+    icon: 'clipboardCheck',
   },
 ]
 
@@ -185,8 +238,8 @@ const faqs = [
     a: 'Procure avaliação quando a dor limita movimento, trabalho, treino ou sono; quando há inchaço, trauma, perda de força, instabilidade ou quando a dor persiste apesar de cuidados iniciais.',
   },
   {
-    q: 'O Dr. Gustavo atende dor no joelho?',
-    a: 'Sim. O atendimento contempla queixas no joelho, articulações, lesões, medicina esportiva e procedimentos para dor, sempre após avaliação individual.',
+    q: 'Quais queixas ortopédicas o Dr. Gustavo atende?',
+    a: 'O atendimento contempla dores articulares, limitações de movimento, lesões, queixas relacionadas à prática esportiva e procedimentos para dor, sempre após avaliação individual.',
   },
   {
     q: 'Infiltração substitui cirurgia?',
@@ -227,35 +280,39 @@ function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+const iconComponents = {
+  activity: Activity,
+  alert: TriangleAlert,
+  arrow: ArrowUp,
+  badgeCheck: BadgeCheck,
+  bone: Bone,
+  building: Building2,
+  check: CircleCheck,
+  chevronDown: ChevronDown,
+  chevronUp: ChevronUp,
+  clipboardCheck: ClipboardCheck,
+  clipboardList: ClipboardList,
+  clock: Clock3,
+  creditCard: CreditCard,
+  dumbbell: Dumbbell,
+  footprints: Footprints,
+  graduation: GraduationCap,
+  heartPulse: HeartPulse,
+  hospital: Hospital,
+  mapPinned: MapPinned,
+  menu: Menu,
+  radio: Radio,
+  sparkles: Sparkles,
+  stethoscope: Stethoscope,
+  syringe: Syringe,
+  target: Target,
+  whatsapp: MessageCircle,
+  close: X,
+}
+
 function Icon({ name, className = 'h-6 w-6' }) {
-  const common = {
-    className,
-    fill: 'none',
-    viewBox: '0 0 24 24',
-    stroke: 'currentColor',
-    strokeWidth: 1.8,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    'aria-hidden': 'true',
-  }
-
-  const paths = {
-    syringe: <><path d="m15 3 6 6" /><path d="m8 10 6 6" /><path d="m6 21 4.5-4.5" /><path d="m12 6 6 6" /><path d="M4.5 13.5 10.5 7.5" /></>,
-    pulse: <path d="M3 12h4l2-5 5 10 2-5h5" />,
-    spine: <><path d="M12 3v18" /><path d="M9 6h6M8.5 9h7M9 12h6M8.5 15h7M9 18h6" /></>,
-    wave: <><path d="M4 14c3-6 6 6 9 0s6 6 9 0" /><path d="M4 9c3-4 6 4 9 0s6 4 9 0" /></>,
-    cells: <><circle cx="8" cy="9" r="3" /><circle cx="16" cy="14" r="3" /><path d="M11 10.5 13.4 12" /></>,
-    knee: <><path d="M9 3c3 2 5 5 5 9 0 3 1 5 3 7" /><path d="M7 8c4 0 8 2 10 5" /><path d="M7 21c.5-4 2-7 5-9" /></>,
-    check: <path d="m5 13 4 4L19 7" />,
-    map: <><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" /><circle cx="12" cy="10" r="2.5" /></>,
-    clock: <><circle cx="12" cy="12" r="8.5" /><path d="M12 7v5l3 2" /></>,
-    menu: <><path d="M4 7h16M4 12h16M4 17h16" /></>,
-    close: <><path d="M6 6l12 12M18 6 6 18" /></>,
-    arrow: <path d="M12 19V5m0 0-6 6m6-6 6 6" />,
-    whatsapp: <><path d="M20 11.8a8 8 0 0 1-11.7 7.1L4 20l1.2-4.2A8 8 0 1 1 20 11.8Z" /><path d="M9 8.5c.2 3.2 2.2 5.2 5.5 6 .8.2 1.4-.5 1.5-1.2l-1.9-.9-.9.8c-1.1-.5-2-1.3-2.6-2.5l.8-.8-.8-1.9c-.8.1-1.5.6-1.6 1.5Z" /></>,
-  }
-
-  return <svg {...common}>{paths[name] || paths.check}</svg>
+  const LucideIcon = iconComponents[name] || CircleCheck
+  return <LucideIcon className={className} strokeWidth={1.9} aria-hidden="true" />
 }
 
 function Button({ children, variant = 'primary', className = '', onClick, href, source = 'cta' }) {
@@ -346,36 +403,6 @@ function Header() {
   )
 }
 
-function WhatsAppContactCard() {
-  return (
-    <aside id="agendar" className="scroll-mt-28 rounded-3xl bg-white p-6 shadow-soft lg:p-7">
-      <div className="mb-5">
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Agendamento</p>
-        <h2 className="font-display mt-1 text-3xl font-black leading-tight text-brand-graphite">
-          Fale direto com a equipe pelo WhatsApp
-        </h2>
-        <p className="mt-3 text-base leading-relaxed text-brand-gray">
-          A mensagem já abre pronta para solicitar agendamento da avaliação ortopédica.
-        </p>
-      </div>
-
-      <div className="grid gap-3">
-        <Button className="w-full" source="hero_card">
-          <Icon name="whatsapp" />
-          Agendar pelo WhatsApp
-        </Button>
-        <Button className="w-full" variant="outline" onClick={scrollToConvenios}>
-          Ver convênios aceitos
-        </Button>
-      </div>
-
-      <p className="mt-5 text-sm leading-relaxed text-brand-gray">
-        Antes do agendamento, a equipe pode confirmar unidade, agenda e cobertura do plano.
-      </p>
-    </aside>
-  )
-}
-
 function Hero() {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
@@ -404,30 +431,16 @@ function Hero() {
 
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <div className="relative hidden lg:block">
+        <div className="relative hidden lg:block">
+          <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-graphite shadow-soft">
             <img
-              src="./img/joelho-tech.webp"
-              width="725"
-              height="750"
-              alt="Ilustração anatômica de joelho com estética tecnológica"
-              className="absolute -left-20 bottom-4 z-0 max-w-[360px] opacity-80"
+              src="./img/dr-gustavo-portrait.webp"
+              width="900"
+              height="1200"
+              alt="Retrato do Dr. Gustavo Pimpão"
+              className="h-[560px] w-full object-cover object-[50%_42%]"
               loading="eager"
             />
-            <div className="relative z-10 overflow-hidden rounded-[2rem] bg-brand-graphite shadow-soft">
-              <img
-                src="./img/dr-gustavo-portrait.webp"
-                width="900"
-                height="1200"
-                alt="Retrato do Dr. Gustavo Pimpão"
-                className="h-[560px] w-full object-cover object-[50%_42%]"
-                loading="eager"
-              />
-            </div>
-          </div>
-
-          <div className="lg:pb-8">
-            <WhatsAppContactCard />
           </div>
         </div>
       </div>
@@ -440,14 +453,14 @@ function ProofBar() {
     <section className="border-y border-brand-graphite/10 bg-white">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {[
-          ['Locais', 'Águas Claras, Asa Sul e Taguatinga'],
-          ['Convênios', '+40 planos aceitos'],
-          ['Dor', 'Infiltrações, bloqueios e radiofrequência'],
-          ['Formação', 'Residência, SBOT e formação complementar'],
-        ].map(([title, text]) => (
+          { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
+          { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
+          { title: 'Dor', text: 'Infiltrações, bloqueios e radiofrequência', icon: 'heartPulse' },
+          { title: 'Formação', text: 'Residência, SBOT e formação complementar', icon: 'graduation' },
+        ].map(({ title, text, icon }) => (
           <div key={title} className="flex items-start gap-3">
             <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-white">
-              <Icon name="check" className="h-4 w-4" />
+              <Icon name={icon} className="h-4 w-4" />
             </span>
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-red">{title}</p>
@@ -477,11 +490,11 @@ function PainSection() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {problemSigns.map((item) => (
-            <div key={item} className="rounded-3xl border border-brand-graphite/10 bg-brand-cream p-5">
+            <div key={item.text} className="rounded-3xl border border-brand-graphite/10 bg-brand-cream p-5">
               <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-brand-red shadow-sm">
-                <Icon name="check" />
+                <Icon name={item.icon} />
               </span>
-              <p className="text-base font-black leading-snug text-brand-graphite">{item}</p>
+              <p className="text-base font-black leading-snug text-brand-graphite">{item.text}</p>
             </div>
           ))}
         </div>
@@ -526,7 +539,7 @@ function ProceduresSection() {
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Procedimentos e serviços</p>
             <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-              Ortopedia geral, joelho e procedimentos para dor.
+              Ortopedia geral e procedimentos para dor.
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-brand-gray">
@@ -544,10 +557,6 @@ function ProceduresSection() {
               <p className="mt-3 text-sm leading-relaxed text-brand-gray">{procedure.text}</p>
             </article>
           ))}
-        </div>
-
-        <div className="mt-10 rounded-3xl border border-brand-red/15 bg-white p-5 text-sm leading-relaxed text-brand-gray">
-          <strong className="text-brand-graphite">Observação médica:</strong> procedimentos como infiltrações, bloqueios, radiofrequência, PRP e ortobiológicos dependem de avaliação presencial, exames, indicação clínica e orientação sobre limites e riscos.
         </div>
       </div>
     </section>
@@ -582,7 +591,7 @@ function SpecialistSection() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {[
               'Pós-graduação em Medicina do Exercício e do Esporte.',
-              'Formação complementar em cirurgia do joelho.',
+              'Formação complementar em ortopedia, esporte e dor.',
               'Atuação em procedimentos intervencionistas para dor.',
               'Experiência em ambiente hospitalar e consultório.',
             ].map((item) => (
@@ -611,6 +620,9 @@ function DifferentialsSection() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {differentials.map((item) => (
             <article key={item.title} className="rounded-3xl bg-white p-6 shadow-soft">
+              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-red/10 text-brand-red">
+                <Icon name={item.icon} />
+              </span>
               <h3 className="text-lg font-black text-brand-graphite">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-brand-gray">{item.text}</p>
             </article>
@@ -633,14 +645,9 @@ function ConveniosSection() {
     <section id="convenios" className="scroll-mt-28 bg-white py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2rem] border border-brand-graphite/10 bg-brand-graphite p-6 text-white lg:p-9">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr] lg:items-start">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Convênios</p>
-              <h2 className="font-display mt-2 text-3xl font-black">Confirme seu plano antes de agendar.</h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/70">
-                Lista em ordem alfabética para facilitar sua busca. A cobertura pode variar por unidade, contrato e
-                procedimento; a equipe valida seu convênio no atendimento.
-              </p>
+              <h2 className="font-display text-3xl font-black">Convênios aceitos</h2>
             </div>
 
             <div className="sm:hidden">
@@ -710,7 +717,7 @@ function LocationSection() {
                 <div className="p-5">
                   <div className="flex items-start gap-4">
                     <span className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-white text-brand-red">
-                      <Icon name="map" />
+                      <Icon name={location.icon} />
                     </span>
                     <div>
                       <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-red">{location.region}</p>
@@ -766,7 +773,9 @@ function FAQSection() {
                 onClick={() => setOpen(open === index ? null : index)}
               >
                 <span>{faq.q}</span>
-                <span className="text-brand-orange">{open === index ? '−' : '+'}</span>
+                <span className="text-brand-orange">
+                  <Icon name={open === index ? 'chevronUp' : 'chevronDown'} className="h-5 w-5" />
+                </span>
               </button>
               {open === index && (
                 <p className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed text-white/70">
@@ -775,43 +784,6 @@ function FAQSection() {
               )}
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function FinalCTA() {
-  return (
-    <section className="bg-brand-cream py-14">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 overflow-hidden rounded-[2rem] bg-white p-6 shadow-soft lg:grid-cols-[0.85fr_1.15fr] lg:p-10">
-          <img
-            src="./img/consulta-joelho.webp"
-            width="632"
-            height="600"
-            alt="Avaliação ortopédica de joelho"
-            className="h-72 w-full rounded-[1.5rem] object-cover lg:h-full"
-            loading="lazy"
-          />
-          <div className="self-center">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Próximo passo</p>
-            <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-              Agende uma avaliação e entenda as opções para o seu caso.
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-brand-gray">
-              Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano antes do agendamento.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button source="final_cta_primary">
-                <Icon name="whatsapp" />
-                Agendar pelo WhatsApp
-              </Button>
-              <Button variant="outline" onClick={scrollToConvenios}>
-                Ver convênios aceitos
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -975,7 +947,6 @@ export default function App() {
           <ConveniosSection />
           <LocationSection />
           <FAQSection />
-          <FinalCTA />
         </main>
         <Footer />
         <FloatingActions />
