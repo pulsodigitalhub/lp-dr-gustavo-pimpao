@@ -995,7 +995,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
             {page.description}
           </p>
 
-          <div className="mt-7 grid gap-3">
+          <div className="mt-7 hidden gap-3 lg:grid">
             {page.bullets.map((item) => (
               <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/75 p-3 shadow-sm">
                 <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
