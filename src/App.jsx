@@ -757,11 +757,11 @@ function SpecialistSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
           <img
-            src="./img/dr-gustavo-portrait.webp"
-            width="900"
-            height="1200"
+            src="./img/dr-gustavo-sobre.webp"
+            width="1000"
+            height="1500"
             alt="Dr. Gustavo Pimpão em consultório"
-            className="h-[620px] w-full object-cover object-[50%_42%]"
+            className="h-[620px] w-full object-cover object-[50%_34%]"
             loading="lazy"
           />
         </div>
