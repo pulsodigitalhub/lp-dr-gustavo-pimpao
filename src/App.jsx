@@ -49,7 +49,12 @@ const locations = [
     region: 'Águas Claras',
     address: 'Av. das Araucárias, 785 - Águas Claras, Brasília - DF, 71936-250',
     note: 'Atendimento em Águas Claras para quem busca cuidado ortopédico próximo.',
-    image: './img/clinica-iob.webp',
+    images: [
+      './img/clinica-iob-6312.webp',
+      './img/clinica-iob-6326.webp',
+      './img/clinica-iob-6335.webp',
+      './img/clinica-iob-6315.webp',
+    ],
     icon: 'hospital',
     mapQuery: 'IOB Instituto Ortopédico de Brasília, Av. das Araucárias, 785, Águas Claras, Brasília - DF, 71936-250',
   },
@@ -58,7 +63,12 @@ const locations = [
     region: 'Asa Sul',
     address: 'SGAS II 610, Centro Médico Lúcio Costa, Sala 07 - Asa Sul, Brasília - DF, 70200-700',
     note: 'Atendimento em centro médico de fácil acesso na Asa Sul.',
-    image: './img/clinica-unique.webp',
+    images: [
+      './img/clinica-unique-1209.webp',
+      './img/clinica-unique-1198.webp',
+      './img/clinica-unique-1211.webp',
+      './img/clinica-unique-1207-recepcao.webp',
+    ],
     icon: 'building',
     mapQuery: 'Unique Ortopedia e Fisioterapia, SGAS II 610, Centro Médico Lúcio Costa, Sala 07, Asa Sul, Brasília - DF, 70200-700',
   },
@@ -67,7 +77,13 @@ const locations = [
     region: 'Taguatinga Norte',
     address: 'QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3 - Taguatinga Norte, Brasília - DF, 72162-301',
     note: 'Unidade próxima ao Shopping JK.',
-    image: './img/clinica-jk.webp',
+    images: [
+      './img/clinica-jk-6362.webp',
+      './img/clinica-jk-6358.webp',
+      './img/clinica-jk-6376.webp',
+      './img/clinica-jk-6363.webp',
+      './img/clinica-jk-6361.webp',
+    ],
     icon: 'mapPinned',
     mapQuery: 'JK Ortopedia e Clínica da Dor, QNL 30, Conjunto A, Lotes 2, 4 e 6, Loja 3, Taguatinga Norte, Brasília - DF, 72162-301',
   },
@@ -874,6 +890,67 @@ function ConveniosSection() {
   )
 }
 
+function LocationCarousel({ location }) {
+  const images = location.images || [location.image]
+  const [activeImage, setActiveImage] = useState(0)
+  const totalImages = images.length
+  const currentImage = images[activeImage]
+
+  const goToPrevious = () => {
+    setActiveImage((current) => (current === 0 ? totalImages - 1 : current - 1))
+  }
+
+  const goToNext = () => {
+    setActiveImage((current) => (current === totalImages - 1 ? 0 : current + 1))
+  }
+
+  return (
+    <div className="relative bg-brand-graphite/5">
+      <img
+        src={currentImage}
+        width="900"
+        height="1200"
+        alt={`Foto ${activeImage + 1} da unidade ${location.name}`}
+        className="h-72 w-full object-cover"
+        loading="lazy"
+      />
+
+      {totalImages > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label={`Ver foto anterior da unidade ${location.name}`}
+            onClick={goToPrevious}
+            className="absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-red shadow-lg transition hover:bg-brand-red hover:text-white"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            aria-label={`Ver prÃ³xima foto da unidade ${location.name}`}
+            onClick={goToNext}
+            className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-red shadow-lg transition hover:bg-brand-red hover:text-white"
+          >
+            ›
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-white/85 px-3 py-2 shadow-lg">
+            {images.map((image, index) => (
+              <button
+                key={image}
+                type="button"
+                aria-label={`Ver foto ${index + 1} da unidade ${location.name}`}
+                onClick={() => setActiveImage(index)}
+                className={`h-2.5 rounded-full transition ${activeImage === index ? 'w-6 bg-brand-red' : 'w-2.5 bg-brand-red/25 hover:bg-brand-red/55'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
 function LocationSection() {
   return (
     <section id="localizacao" className="bg-white py-16 lg:py-24">
@@ -894,14 +971,7 @@ function LocationSection() {
 
             return (
               <article key={location.name} className="overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-cream shadow-soft">
-                <img
-                  src={location.image}
-                  width="900"
-                  height="600"
-                  alt={`Foto da unidade ${location.name}`}
-                  className="h-56 w-full object-cover"
-                  loading="lazy"
-                />
+                <LocationCarousel location={location} />
                 <div className="p-5">
                   <div className="flex items-start gap-4">
                     <span className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-white text-brand-red">
