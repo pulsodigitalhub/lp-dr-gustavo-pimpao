@@ -288,6 +288,11 @@ const injectionLandingPages = {
       'Avaliação para dores articulares, tendões, bursites e limitação de movimento',
       'Confirmação de agenda e convênio pelo WhatsApp',
     ],
+    video: {
+      title: 'Veja como funciona a infiltração guiada por ultrassom',
+      description: 'Um vídeo curto para visualizar o cuidado técnico, a preparação e o uso do ultrassom durante o procedimento.',
+      driveId: '1k0eCBxdPQ94J518prUtEzFI06ptD9VbQ',
+    },
     symptomsTitle: 'Quando a dor começa a limitar movimento, trabalho ou rotina',
     symptomsIntro: 'A infiltração pode ser considerada quando existe uma indicação clínica clara e a dor interfere na função do dia a dia.',
     symptoms: [
@@ -342,6 +347,11 @@ const injectionLandingPages = {
       'Avaliação para dor, inchaço, rigidez e limitação no joelho',
       'Confirmação de convênio e agenda pelo WhatsApp',
     ],
+    video: {
+      title: 'Veja um exemplo de infiltração no joelho guiada por ultrassom',
+      description: 'O vídeo mostra a condução do procedimento em ambiente clínico, com foco em precisão, segurança e avaliação individual.',
+      driveId: '1oJPm6qbVVkKqTo4iLG_iAgUynLkCZ3sD',
+    },
     symptomsTitle: 'Quando a dor no joelho começa a mudar sua rotina',
     symptomsIntro: 'Dor, inchaço e rigidez no joelho podem ter causas diferentes. A avaliação ajuda a entender se a infiltração faz sentido no plano de cuidado.',
     symptoms: [
@@ -396,6 +406,11 @@ const injectionLandingPages = {
       'Atendimento em Águas Claras, Asa Sul e Taguatinga',
       'Agendamento direto pelo WhatsApp',
     ],
+    video: {
+      title: 'Veja um exemplo de infiltração no ombro guiada por ultrassom',
+      description: 'Um registro do procedimento para entender como o ultrassom auxilia na visualização das estruturas do ombro.',
+      driveId: '1nN_OZkjsf6XrbnhNOIqVz52fxuQvnKqM',
+    },
     symptomsTitle: 'Quando o ombro começa a limitar movimentos simples',
     symptomsIntro: 'Dor para levantar o braço, dormir de lado ou vestir roupa pode envolver diferentes estruturas do ombro. A conduta depende da causa.',
     symptoms: [
@@ -1129,6 +1144,41 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
   )
 }
 
+function LandingVideoSection({ page }) {
+  if (!page.video?.driveId) return null
+
+  return (
+    <section className="bg-white py-12 lg:py-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Vídeo do procedimento</p>
+          <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
+            {page.video.title}
+          </h2>
+          {page.video.description && (
+            <p className="mt-5 text-lg leading-relaxed text-brand-gray">{page.video.description}</p>
+          )}
+        </div>
+
+        <div className="mt-8 overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-cream shadow-soft">
+          <div className="aspect-video">
+            <iframe
+              title={page.video.title}
+              src={`https://drive.google.com/file/d/${page.video.driveId}/preview`}
+              width="100%"
+              height="100%"
+              className="h-full w-full"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function LandingSymptomsSection({ page }) {
   return (
     <section id="dores" className="bg-white py-16 lg:py-24">
@@ -1320,6 +1370,7 @@ function ProcedureLandingPage({ page }) {
       <main>
         <LandingHero page={page} proofPainText="Infiltrações guiadas por ultrassom" />
         <ProofBar painText="Infiltrações guiadas por ultrassom" className="hidden lg:block" />
+        <LandingVideoSection page={page} />
         <LandingSymptomsSection page={page} />
         <LandingIndicationSection page={page} />
         <LandingContextsSection page={page} />
