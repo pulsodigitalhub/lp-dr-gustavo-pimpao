@@ -311,7 +311,7 @@ const injectionLandingPages = {
     video: {
       title: 'Veja como funciona a infiltração guiada por ultrassom',
       description: 'Um vídeo curto para visualizar o cuidado técnico, a preparação e o uso do ultrassom durante o procedimento.',
-      driveId: '1k0eCBxdPQ94J518prUtEzFI06ptD9VbQ',
+      src: './videos/infiltracao-geral.mp4',
     },
     symptomsTitle: 'Quando a dor começa a limitar movimento, trabalho ou rotina',
     symptomsIntro: 'A infiltração pode ser considerada quando existe uma indicação clínica clara e a dor interfere na função do dia a dia.',
@@ -370,7 +370,7 @@ const injectionLandingPages = {
     video: {
       title: 'Veja um exemplo de infiltração no joelho guiada por ultrassom',
       description: 'O vídeo mostra a condução do procedimento em ambiente clínico, com foco em precisão, segurança e avaliação individual.',
-      driveId: '1oJPm6qbVVkKqTo4iLG_iAgUynLkCZ3sD',
+      src: './videos/infiltracao-joelho.mp4',
     },
     symptomsTitle: 'Quando a dor no joelho começa a mudar sua rotina',
     symptomsIntro: 'Dor, inchaço e rigidez no joelho podem ter causas diferentes. A avaliação ajuda a entender se a infiltração faz sentido no plano de cuidado.',
@@ -429,7 +429,7 @@ const injectionLandingPages = {
     video: {
       title: 'Veja um exemplo de infiltração no ombro guiada por ultrassom',
       description: 'Um registro do procedimento para entender como o ultrassom auxilia na visualização das estruturas do ombro.',
-      driveId: '1nN_OZkjsf6XrbnhNOIqVz52fxuQvnKqM',
+      src: './videos/infiltracao-ombro.mp4',
     },
     symptomsTitle: 'Quando o ombro começa a limitar movimentos simples',
     symptomsIntro: 'Dor para levantar o braço, dormir de lado ou vestir roupa pode envolver diferentes estruturas do ombro. A conduta depende da causa.',
@@ -1218,7 +1218,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
 }
 
 function LandingVideoSection({ page }) {
-  if (!page.video?.driveId) return null
+  if (!page.video?.src) return null
 
   return (
     <section className="bg-white py-12 lg:py-16">
@@ -1233,19 +1233,16 @@ function LandingVideoSection({ page }) {
           )}
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-cream shadow-soft">
-          <div className="aspect-video">
-            <iframe
-              title={page.video.title}
-              src={`https://drive.google.com/file/d/${page.video.driveId}/preview`}
-              width="100%"
-              height="100%"
-              className="h-full w-full"
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+        <div className="mx-auto mt-8 max-w-[430px] overflow-hidden rounded-[2rem] border border-brand-graphite/10 bg-brand-graphite shadow-soft">
+          <video
+            className="aspect-[9/16] h-full w-full bg-brand-graphite object-cover"
+            controls
+            preload="metadata"
+            playsInline
+          >
+            <source src={page.video.src} type="video/mp4" />
+            Seu navegador não conseguiu carregar o vídeo.
+          </video>
         </div>
       </div>
     </section>
