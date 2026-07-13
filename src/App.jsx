@@ -726,24 +726,41 @@ function ApproachSection() {
   return (
     <section id="abordagem" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Abordagem</p>
-          <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">
-            Um caminho claro entre sintoma, diagnóstico e próxima decisão.
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/85">
-            A consulta busca organizar sintomas, exames e objetivos para reduzir dúvidas e orientar o próximo passo com segurança.
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div className="lg:sticky lg:top-28">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Abordagem</p>
+            <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">
+              Um caminho claro entre sintoma, diagnóstico e próxima decisão.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              A consulta busca organizar sintomas, exames e objetivos para reduzir dúvidas e orientar o próximo passo com segurança.
+            </p>
+            <div className="mt-8 rounded-[2rem] border border-white/15 bg-white/[0.10] p-5 shadow-soft">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-orange">Linha de cuidado</p>
+              <p className="mt-3 text-base font-bold leading-relaxed text-white/85">
+                A conduta não começa pelo procedimento. Ela começa por entender a dor, o contexto e o que faz sentido para o seu caso.
+              </p>
+            </div>
+          </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-4">
-          {approach.map((item) => (
-            <article key={item.step} className="rounded-3xl border border-white/20 bg-white/[0.12] p-6 shadow-soft">
-              <span className="font-display text-5xl font-black text-brand-orange">{item.step}</span>
-              <h3 className="mt-5 text-xl font-black">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/85">{item.text}</p>
-            </article>
-          ))}
+          <div className="relative rounded-[2rem] border border-white/15 bg-white/[0.08] p-4 shadow-soft sm:p-6 lg:p-8">
+            <div className="absolute bottom-10 left-8 top-10 hidden w-px bg-gradient-to-b from-brand-orange via-white/25 to-brand-orange/40 sm:block" aria-hidden="true" />
+
+            <div className="space-y-4">
+              {approach.map((item, index) => (
+                <article key={item.step} className="relative rounded-[1.75rem] border border-white/14 bg-white/[0.10] p-5 backdrop-blur sm:ml-8 sm:grid sm:grid-cols-[auto_1fr] sm:gap-5 lg:p-6">
+                  <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-sm font-black text-brand-wine shadow-lg shadow-brand-orange/20 sm:mb-0 sm:-ml-[3.45rem]">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-orange">Etapa {item.step}</p>
+                    <h3 className="mt-2 text-xl font-black">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/85">{item.text}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1267,18 +1284,32 @@ function LandingStepsSection({ page }) {
   return (
     <section id="abordagem" className="bg-brand-wine py-16 text-white lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Como funciona</p>
-          <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">{page.stepsTitle}</h2>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div className="lg:sticky lg:top-28">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Como funciona</p>
+            <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">{page.stepsTitle}</h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              A decisão é construída por etapas: primeiro entender a causa da dor, depois definir se o procedimento realmente faz sentido.
+            </p>
+          </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {page.steps.map((item, index) => (
-            <article key={item} className="rounded-3xl border border-white/20 bg-white/[0.12] p-6 shadow-soft">
-              <span className="font-display text-5xl font-black text-brand-orange">{String(index + 1).padStart(2, '0')}</span>
-              <p className="mt-5 text-sm font-bold leading-relaxed text-white/85">{item}</p>
-            </article>
-          ))}
+          <div className="relative rounded-[2rem] border border-white/15 bg-white/[0.08] p-4 shadow-soft sm:p-6 lg:p-8">
+            <div className="absolute bottom-10 left-8 top-10 hidden w-px bg-gradient-to-b from-brand-orange via-white/25 to-brand-orange/40 sm:block" aria-hidden="true" />
+
+            <div className="space-y-4">
+              {page.steps.map((item, index) => (
+                <article key={item} className="relative rounded-[1.75rem] border border-white/14 bg-white/[0.10] p-5 backdrop-blur sm:ml-8 sm:grid sm:grid-cols-[auto_1fr] sm:gap-5 lg:p-6">
+                  <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-sm font-black text-brand-wine shadow-lg shadow-brand-orange/20 sm:mb-0 sm:-ml-[3.45rem]">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-orange">Etapa {String(index + 1).padStart(2, '0')}</p>
+                    <p className="mt-2 text-base font-bold leading-relaxed text-white/85">{item}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
