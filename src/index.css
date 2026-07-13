@@ -115,25 +115,28 @@
     z-index: 1;
   }
 
-  .section-photo-bg--iob {
-    --section-bg-image: url("../img/iob-fachada.webp");
-    --section-bg-position: center 34%;
-  }
-
-  .section-photo-bg--doctor {
-    --section-bg-image: url("../img/dr-gustavo-sobre.webp");
-    --section-bg-position: center 26%;
-    --section-bg-opacity: 0.13;
-  }
-
-  .section-photo-bg--unique {
-    --section-bg-image: url("../img/clinica-unique-1207-recepcao.webp");
+  .section-photo-bg--ortopedia {
+    --section-bg-image: url("../img/consulta-joelho.webp");
     --section-bg-position: center 48%;
+    --section-bg-opacity: 0.20;
   }
 
-  .section-photo-bg--jk {
+  .section-photo-bg--consultorio {
     --section-bg-image: url("../img/clinica-jk-6362.webp");
-    --section-bg-position: center 44%;
+    --section-bg-position: center 46%;
+    --section-bg-opacity: 0.16;
+  }
+
+  .section-photo-bg--medical-tech {
+    --section-bg-image: url("../img/joelho-tech.webp");
+    --section-bg-position: center 50%;
+    --section-bg-opacity: 0.22;
+  }
+
+  .section-photo-bg--recepcao {
+    --section-bg-image: url("../img/clinica-unique-1207-recepcao.webp");
+    --section-bg-position: center 46%;
+    --section-bg-opacity: 0.16;
   }
 
   @media (max-width: 639px) {

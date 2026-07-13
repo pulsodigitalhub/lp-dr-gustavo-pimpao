@@ -694,7 +694,7 @@ function ProofBar({ painText = 'Infiltrações, bloqueios e radiofrequência', c
 
 function PainSection() {
   return (
-    <section id="dores" className="section-photo-bg section-photo-bg--iob bg-white py-16 lg:py-24">
+    <section id="dores" className="section-photo-bg section-photo-bg--ortopedia bg-white py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Quando procurar</p>
@@ -784,7 +784,7 @@ function ProceduresSection() {
 
 function SpecialistSection() {
   return (
-    <section id="especialista" className="section-photo-bg section-photo-bg--doctor bg-white py-16 lg:py-24">
+    <section id="especialista" className="section-photo-bg section-photo-bg--consultorio bg-white py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
           <img
@@ -968,7 +968,7 @@ function LocationCarousel({ location }) {
 
 function LocationSection() {
   return (
-    <section id="localizacao" className="section-photo-bg section-photo-bg--jk bg-white py-16 lg:py-24">
+    <section id="localizacao" className="section-photo-bg section-photo-bg--recepcao bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Localização</p>
@@ -1181,7 +1181,7 @@ function LandingVideoSection({ page }) {
 
 function LandingSymptomsSection({ page }) {
   return (
-    <section id="dores" className="section-photo-bg section-photo-bg--iob bg-white py-16 lg:py-24">
+    <section id="dores" className="section-photo-bg section-photo-bg--ortopedia bg-white py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Quando procurar</p>
@@ -1239,7 +1239,7 @@ function LandingIndicationSection({ page }) {
 
 function LandingContextsSection({ page }) {
   return (
-    <section className="section-photo-bg section-photo-bg--unique bg-white py-16 lg:py-24">
+    <section className="section-photo-bg section-photo-bg--medical-tech bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
