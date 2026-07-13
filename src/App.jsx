@@ -195,7 +195,7 @@ const differentials = [
   },
   {
     title: 'Formação completa',
-    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em esporte e intervenção da dor.',
+    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, membro da SBOT e formação complementar em esporte e intervenção da dor.',
     icon: 'graduation',
   },
   {
@@ -778,7 +778,7 @@ function Hero() {
 
 function getProofItems(
   painText = 'Infiltrações, bloqueios e radiofrequência',
-  formationText = 'Residência, SBOT e formação complementar',
+  formationText = 'Residência, membro da SBOT e formação complementar',
 ) {
   return [
     { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
@@ -790,7 +790,7 @@ function getProofItems(
 
 function ProofBar({
   painText = 'Infiltrações, bloqueios e radiofrequência',
-  formationText = 'Residência, SBOT e formação complementar',
+  formationText = 'Residência, membro da SBOT e formação complementar',
   className = '',
 }) {
   return (
@@ -1206,7 +1206,7 @@ function FAQSection() {
 function LandingHero({
   page,
   proofPainText = 'Infiltrações, bloqueios e radiofrequência',
-  proofFormationText = 'Residência, SBOT e formação complementar',
+  proofFormationText = 'Residência, membro da SBOT e formação complementar',
 }) {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
