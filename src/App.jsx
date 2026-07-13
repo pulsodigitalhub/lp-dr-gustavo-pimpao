@@ -45,7 +45,6 @@ import {
   ThermometerHot,
   Warning,
   WhatsappLogo,
-  WheelchairMotion,
   X,
 } from '@phosphor-icons/react'
 import './App.css'
@@ -380,7 +379,7 @@ const injectionLandingPages = {
       { text: 'Dor ao subir ou descer escadas', icon: 'stairs' },
       { text: 'Dor para caminhar ou ficar muito tempo em pé', icon: 'walking' },
       { text: 'Inchaço ou sensação de joelho “cheio”', icon: 'drop' },
-      { text: 'Rigidez ao levantar', icon: 'wheelchair' },
+      { text: 'Rigidez ao levantar', icon: 'clock' },
       { text: 'Dificuldade para treinar ou trabalhar', icon: 'running' },
     ],
     indicationTitle: 'A indicação depende da causa da dor',
@@ -441,7 +440,7 @@ const injectionLandingPages = {
       { text: 'Dor para dormir de lado', icon: 'heartPulse' },
       { text: 'Dificuldade para vestir roupa ou pentear o cabelo', icon: 'hand' },
       { text: 'Dor após treino ou esforço repetitivo', icon: 'running' },
-      { text: 'Rigidez e perda de mobilidade', icon: 'wheelchair' },
+      { text: 'Rigidez e perda de mobilidade', icon: 'walking' },
     ],
     indicationTitle: 'A infiltração depende da causa da dor',
     indicationText: 'A infiltração no ombro pode ser avaliada em casos de dor com componente inflamatório, bursite, tendinopatias, impacto ou rigidez, sempre após exame físico e análise do histórico do paciente.',
@@ -623,7 +622,6 @@ const iconComponents = {
   syringe: Syringe,
   target: CrosshairSimple,
   thermometer: ThermometerHot,
-  wheelchair: WheelchairMotion,
   whatsapp: WhatsappLogo,
   close: X,
 }
