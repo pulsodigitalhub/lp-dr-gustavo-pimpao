@@ -1540,19 +1540,40 @@ function ProcedureLandingPage({ page }) {
         <LandingFAQSection page={page} />
         <LandingFinalCTA page={page} />
       </main>
-      <Footer />
+      <Footer page={page} />
       <FloatingActions />
     </div>
   )
 }
 
-function Footer() {
+function getFooterLogoSpecialty(page) {
+  return ['infiltracao-joelho', 'medico-especialista-joelho'].includes(page?.slug)
+    ? 'Joelho e intervenção da dor'
+    : 'Ortopedia e intervenção da dor'
+}
+
+function FooterLogo({ specialty }) {
+  return (
+    <div className="flex items-center gap-3">
+      <img src="./img/icon.svg" alt="" className="h-14 w-14 flex-none" width="64" height="64" loading="lazy" aria-hidden="true" />
+      <div className="leading-none">
+        <p className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-red">Dr. Gustavo Lima</p>
+        <p className="mt-1 text-xl font-black leading-[0.98] text-brand-graphite">Almeida Pimpão</p>
+        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-gray">{specialty}</p>
+      </div>
+    </div>
+  )
+}
+
+function Footer({ page }) {
+  const footerLogoSpecialty = getFooterLogoSpecialty(page)
+
   return (
     <footer className="bg-white py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-brand-graphite/10 pb-8 md:grid-cols-2">
           <div>
-            <img src="./img/logo.svg" alt="Dr. Gustavo Pimpão" className="h-16 w-auto" width="180" height="80" loading="lazy" />
+            <FooterLogo specialty={footerLogoSpecialty} />
             <p className="mt-4 text-sm leading-relaxed text-brand-gray">
               {doctor.specialty} em Brasília. {doctor.crm} • {doctor.rqe}.
             </p>
