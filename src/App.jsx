@@ -784,7 +784,7 @@ function getProofItems(
   return [
     { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
     { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
-    { title: 'Dor', text: painText, icon: 'heartPulse' },
+    { title: 'Focos', text: painText, icon: 'heartPulse' },
     { title: 'Formação', text: formationText, icon: 'graduation' },
   ]
 }
