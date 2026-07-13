@@ -57,11 +57,15 @@
     letter-spacing: -0.035em;
   }
 
-  .bg-medical-grid {
-    background-image:
-      linear-gradient(rgba(39, 81, 163, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(39, 81, 163, 0.06) 1px, transparent 1px);
-    background-size: 42px 42px;
+  .hero-medical-bg {
+    background:
+      linear-gradient(105deg, rgba(248, 244, 238, 0.98) 0%, rgba(248, 244, 238, 0.94) 42%, rgba(248, 244, 238, 0.78) 100%),
+      radial-gradient(circle at 12% 18%, rgba(160, 26, 42, 0.12), transparent 28%),
+      radial-gradient(circle at 78% 18%, rgba(249, 116, 37, 0.12), transparent 24%),
+      url("../img/joelho-tech.webp");
+    background-position: center, left top, right top, right 10% center;
+    background-repeat: no-repeat;
+    background-size: cover, auto, auto, min(58vw, 760px) auto;
   }
 
   .glass-card {

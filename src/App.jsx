@@ -610,7 +610,7 @@ function Header() {
 function Hero() {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
-      <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
+      <div className="absolute inset-0 hero-medical-bg" aria-hidden="true" />
       <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
       <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
 
@@ -1066,7 +1066,7 @@ function FAQSection() {
 function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiofrequência' }) {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
-      <div className="absolute inset-0 bg-medical-grid" aria-hidden="true" />
+      <div className="absolute inset-0 hero-medical-bg" aria-hidden="true" />
       <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
       <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" aria-hidden="true" />
 
