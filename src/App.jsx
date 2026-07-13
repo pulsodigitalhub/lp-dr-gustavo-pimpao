@@ -1558,9 +1558,8 @@ function FooterLogo({ specialty, loading = 'lazy' }) {
     <div className="flex items-center gap-3">
       <img src="./img/icon.svg" alt="" className="h-14 w-14 flex-none" width="64" height="64" loading={loading} aria-hidden="true" />
       <div className="leading-none">
-        <p className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-red">Dr. Gustavo Lima</p>
-        <p className="mt-1 text-xl font-black leading-[0.98] text-brand-graphite">Almeida Pimpão</p>
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-gray">{specialty}</p>
+        <p className="text-xl font-black uppercase leading-[0.98] tracking-[0.03em] text-brand-graphite">DR. GUSTAVO PIMPÃO</p>
+        <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-gray">{specialty}</p>
       </div>
     </div>
   )
