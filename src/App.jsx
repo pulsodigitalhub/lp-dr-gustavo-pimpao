@@ -310,7 +310,7 @@ const injectionLandingPages = {
     ],
     video: {
       title: 'Veja como funciona a infiltração guiada por ultrassom',
-      description: 'Um vídeo curto para visualizar o cuidado técnico, a preparação e o uso do ultrassom durante o procedimento.',
+      description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
       src: './videos/infiltracao-geral.mp4',
     },
     symptomsTitle: 'Quando a dor começa a limitar movimento, trabalho ou rotina',
@@ -369,7 +369,7 @@ const injectionLandingPages = {
     ],
     video: {
       title: 'Veja um exemplo de infiltração no joelho guiada por ultrassom',
-      description: 'O vídeo mostra a condução do procedimento em ambiente clínico, com foco em precisão, segurança e avaliação individual.',
+      description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
       src: './videos/infiltracao-joelho.mp4',
     },
     symptomsTitle: 'Quando a dor no joelho começa a mudar sua rotina',
@@ -428,7 +428,7 @@ const injectionLandingPages = {
     ],
     video: {
       title: 'Veja um exemplo de infiltração no ombro guiada por ultrassom',
-      description: 'Um registro do procedimento para entender como o ultrassom auxilia na visualização das estruturas do ombro.',
+      description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
       src: './videos/infiltracao-ombro.mp4',
     },
     symptomsTitle: 'Quando o ombro começa a limitar movimentos simples',
