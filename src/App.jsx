@@ -421,7 +421,7 @@ const injectionLandingPages = {
     metaTitle: 'Infiltração no ombro em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica para dor no ombro, bursite, tendinites, rigidez, perda de mobilidade e dificuldade para levantar o braço.',
     eyebrow: 'Dor no ombro',
-    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Dor no ombro em Brasília e +40 convênios aceitos.',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais e +40 convênios aceitos.',
     bullets: [
       'Avaliação para bursite, tendinites, impacto e rigidez do ombro',
       'Atendimento em Águas Claras, Asa Sul e Taguatinga',
