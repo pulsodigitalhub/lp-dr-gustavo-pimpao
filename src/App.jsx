@@ -854,7 +854,7 @@ function ProceduresSection() {
 
 function SpecialistSection() {
   return (
-    <section id="especialista" className="section-photo-bg section-photo-bg--consultorio bg-white py-16 lg:py-24">
+    <section id="especialista" className="specialist-bg py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="overflow-hidden rounded-[2rem] bg-brand-wine shadow-soft">
           <img
