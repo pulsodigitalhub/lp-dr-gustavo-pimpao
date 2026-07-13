@@ -758,7 +758,7 @@ function ProceduresSection() {
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Procedimentos e serviços</p>
             <h2 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-              Ortopedia geral e procedimentos para dor.
+              Ortopedia e procedimentos para dor.
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-brand-gray">
