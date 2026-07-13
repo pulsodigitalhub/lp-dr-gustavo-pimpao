@@ -462,8 +462,8 @@ const injectionLandingPages = {
   },
   '/medico-especialista-joelho/': {
     slug: 'medico-especialista-joelho',
-    title: 'Médico Especialista em Joelho em Brasília',
-    metaTitle: 'Médico Especialista em Joelho em Brasília — Dr. Gustavo Pimpão',
+    title: 'Especialista em Joelho em Brasília',
+    metaTitle: 'Especialista em Joelho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no joelho, lesões, artrose, instabilidade, inchaço e perda de mobilidade em Brasília.',
     eyebrow: 'Especialista em joelho',
     description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
