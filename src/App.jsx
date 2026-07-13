@@ -195,8 +195,8 @@ const differentials = [
     icon: 'idBadge',
   },
   {
-    title: 'Formação ortopédica completa',
-    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em esporte, articulações e dor.',
+    title: 'Formação completa',
+    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, SBOT e formação complementar em esporte e intervenção da dor.',
     icon: 'graduation',
   },
   {
