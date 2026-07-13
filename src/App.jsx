@@ -297,8 +297,8 @@ const faqs = [
 const injectionLandingPages = {
   '/infiltracao/': {
     slug: 'infiltracao',
-    title: 'Infiltração para dor em Brasília',
-    metaTitle: 'Infiltração para dor em Brasília — Dr. Gustavo Pimpão',
+    title: 'Infiltração para Dor em Brasília',
+    metaTitle: 'Infiltração para Dor em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com Dr. Gustavo Pimpão para entender se infiltração pode ser indicada para dores, articulações, tendões, bursites e perda de mobilidade.',
     eyebrow: 'Infiltração ortopédica',
     description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
@@ -352,8 +352,8 @@ const injectionLandingPages = {
   },
   '/infiltracao-joelho/': {
     slug: 'infiltracao-joelho',
-    title: 'Infiltração no joelho em Brasília',
-    metaTitle: 'Infiltração no joelho em Brasília — Dr. Gustavo Pimpão',
+    title: 'Infiltração no Joelho em Brasília',
+    metaTitle: 'Infiltração no Joelho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica para dor no joelho, inchaço, rigidez, suspeita de desgaste e perda de mobilidade em Brasília.',
     eyebrow: 'Dor no joelho',
     description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
@@ -407,8 +407,8 @@ const injectionLandingPages = {
   },
   '/infiltracao-ombro/': {
     slug: 'infiltracao-ombro',
-    title: 'Infiltração no ombro em Brasília',
-    metaTitle: 'Infiltração no ombro em Brasília — Dr. Gustavo Pimpão',
+    title: 'Infiltração no Ombro em Brasília',
+    metaTitle: 'Infiltração no Ombro em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica para dor no ombro, bursite, tendinites, rigidez, perda de mobilidade e dificuldade para levantar o braço.',
     eyebrow: 'Dor no ombro',
     description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
