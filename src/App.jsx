@@ -282,8 +282,8 @@ const faqs = [
     a: 'Não necessariamente. A infiltração pode fazer parte do plano em alguns casos, mas a indicação depende de diagnóstico, exames, histórico, objetivos e resposta a tratamentos anteriores.',
   },
   {
-    q: 'Radiofrequência é indicada para qualquer dor?',
-    a: 'Não. A radiofrequência é avaliada caso a caso. O médico precisa confirmar origem provável da dor, critérios de segurança e alternativas antes de indicar o procedimento.',
+    q: 'O que fazer quando a dor não melhora com remédios ou fisioterapia?',
+    a: 'Quando a dor persiste ou volta com frequência, é importante investigar a causa com avaliação clínica e exames. A partir disso, o médico pode orientar reabilitação, ajustes de atividade, infiltrações, bloqueios, radiofrequência ou outras opções quando houver indicação.',
   },
   {
     q: 'Atende convênios?',
