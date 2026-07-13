@@ -663,8 +663,9 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
   )
 }
 
-function Header() {
+function Header({ page }) {
   const [open, setOpen] = useState(false)
+  const headerLogoSpecialty = getFooterLogoSpecialty(page)
   const links = [
     ['#dores', 'Dores'],
     ['#abordagem', 'Como funciona'],
@@ -679,7 +680,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-brand-graphite/10 bg-white/94 shadow-sm backdrop-blur">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
         <a href="#topo" className="flex items-center gap-3" aria-label="Ir para o topo">
-          <img src="./img/logo.svg" alt="Dr. Gustavo Pimpão" className="h-16 w-auto lg:h-14" width="180" height="80" />
+          <FooterLogo specialty={headerLogoSpecialty} loading="eager" />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
@@ -1524,7 +1525,7 @@ function ProcedureLandingPage({ page }) {
 
   return (
     <div className="mobile-readable">
-      <Header />
+      <Header page={page} />
       <main>
         <LandingHero page={page} proofPainText={proofPainText} proofFormationText={proofFormationText} />
         <ProofBar painText={proofPainText} formationText={proofFormationText} className="hidden lg:block" />
@@ -1552,10 +1553,10 @@ function getFooterLogoSpecialty(page) {
     : 'Ortopedia e intervenção da dor'
 }
 
-function FooterLogo({ specialty }) {
+function FooterLogo({ specialty, loading = 'lazy' }) {
   return (
     <div className="flex items-center gap-3">
-      <img src="./img/icon.svg" alt="" className="h-14 w-14 flex-none" width="64" height="64" loading="lazy" aria-hidden="true" />
+      <img src="./img/icon.svg" alt="" className="h-14 w-14 flex-none" width="64" height="64" loading={loading} aria-hidden="true" />
       <div className="leading-none">
         <p className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-red">Dr. Gustavo Lima</p>
         <p className="mt-1 text-xl font-black leading-[0.98] text-brand-graphite">Almeida Pimpão</p>
