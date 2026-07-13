@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   ArrowUp,
+  Bandaids,
   Barbell,
   Bone,
   Broadcast,
@@ -13,6 +14,7 @@ import {
   CreditCard,
   CrosshairSimple,
   Drop,
+  Dna,
   Exam,
   FireSimple,
   FirstAidKit,
@@ -28,7 +30,6 @@ import {
   MapPinArea,
   MapTrifold,
   Needle,
-  Path,
   PersonArmsSpread,
   PersonSimpleRun,
   PersonSimpleWalk,
@@ -122,7 +123,7 @@ const procedures = [
   {
     title: 'Procedimentos para coluna',
     text: 'Avaliação para infiltrações epidurais, bloqueios transforaminais, interlaminares e facetários.',
-    icon: 'path',
+    icon: 'spine',
   },
   {
     title: 'Radiofrequência',
@@ -132,12 +133,12 @@ const procedures = [
   {
     title: 'Ortobiológicos',
     text: 'PRP, plasma rico em plaquetas, aspirado de medula óssea, concentrado celular e proloterapia.',
-    icon: 'needle',
+    icon: 'dna',
   },
   {
     title: 'Medicina esportiva e lesões ortopédicas',
     text: 'Avaliação de lesões, sobrecargas, tendinopatias e queixas ligadas ao retorno às atividades.',
-    icon: 'running',
+    icon: 'bandage',
   },
 ]
 
@@ -329,13 +330,13 @@ const injectionLandingPages = {
       { title: 'Joelho', text: 'Dor, inchaço, rigidez, desgaste articular ou limitação funcional.', icon: 'stairs' },
       { title: 'Quadril, tornozelo e pé', text: 'Queixas articulares ou periarticulares que precisam de diagnóstico.', icon: 'bone' },
       { title: 'Cotovelo, punho e mão', text: 'Dor em articulações, tendões e estruturas próximas.', icon: 'hand' },
-      { title: 'Coluna e regiões relacionadas à dor', text: 'Casos selecionados em que procedimentos podem ser discutidos.', icon: 'path' },
+      { title: 'Coluna e regiões relacionadas à dor', text: 'Casos selecionados em que procedimentos podem ser discutidos.', icon: 'spine' },
     ],
     typesTitle: 'Nem toda infiltração é igual',
     types: [
       { title: 'Corticosteroide', text: 'Pode ser considerado quando há componente inflamatório e indicação clínica.', icon: 'syringe' },
       { title: 'Ácido hialurônico', text: 'Pode ser avaliado em situações específicas, principalmente em contexto articular.', icon: 'drop' },
-      { title: 'Ortobiológicos', text: 'PRP e outras opções podem ser discutidos quando há indicação individual.', icon: 'needle' },
+      { title: 'Ortobiológicos', text: 'PRP e outras opções podem ser discutidos quando há indicação individual.', icon: 'dna' },
     ],
     stepsTitle: 'Da dor ao plano de cuidado',
     steps: [
@@ -394,7 +395,7 @@ const injectionLandingPages = {
     types: [
       { title: 'Corticosteroide', text: 'Pode ser considerado quando há componente inflamatório importante e indicação clínica.', icon: 'syringe' },
       { title: 'Ácido hialurônico', text: 'Pode ser avaliado em casos selecionados de desgaste articular, considerando perfil, exames e objetivos.', icon: 'drop' },
-      { title: 'PRP e ortobiológicos', text: 'Podem ser discutidos em situações específicas, com alinhamento claro sobre indicação e expectativas.', icon: 'needle' },
+      { title: 'PRP e ortobiológicos', text: 'Podem ser discutidos em situações específicas, com alinhamento claro sobre indicação e expectativas.', icon: 'dna' },
     ],
     stepsTitle: 'Antes da infiltração, vem o diagnóstico',
     steps: [
@@ -503,11 +504,22 @@ function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+function HealthSpineIcon({ className = 'h-6 w-6' }) {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <path fillRule="evenodd" clipRule="evenodd" d="M16.2058 6.24184C15.5833 6.12178 15 6.59494 15 7.22895V7.88659C15 8.43888 14.5523 8.88659 14 8.88659H13C12.4477 8.88659 12 9.33431 12 9.88659V11.7353C12 12.2876 12.4477 12.7353 13 12.7353H14C14.5523 12.7353 15 13.183 15 13.7353V14.8453C15 15.3022 15.3106 15.702 15.7544 15.8107C22.2204 17.3952 26.0763 17.396 32.2561 15.8165C32.6948 15.7043 33 15.3069 33 14.8541V13.7353C33 13.183 33.4477 12.7353 34 12.7353H35C35.5523 12.7353 36 12.2876 36 11.7353V9.88659C36 9.33431 35.5523 8.88659 35 8.88659H34C33.4477 8.88659 33 8.43888 33 7.88659V7.23211C33 6.59707 32.415 6.12369 31.7916 6.24503C25.8882 7.39417 22.1085 7.38021 16.2058 6.24184ZM19 10.0001C19 9.4478 18.5523 9.00008 18 9.00008C17.4477 9.00008 17 9.4478 17 10.0001V13.0001C17 13.5524 17.4477 14.0001 18 14.0001C18.5523 14.0001 19 13.5524 19 13.0001V10.0001Z" fill="currentColor" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M16.2058 18.2418C15.5833 18.1218 15 18.5949 15 19.229V19.8866C15 20.4389 14.5523 20.8866 14 20.8866H13C12.4477 20.8866 12 21.3343 12 21.8866V23.7353C12 24.2876 12.4477 24.7353 13 24.7353H14C14.5523 24.7353 15 25.183 15 25.7353V26.8453C15 27.3022 15.3106 27.702 15.7544 27.8107C22.2204 29.3952 26.0763 29.396 32.2561 27.8165C32.6948 27.7044 33 27.3069 33 26.8541V25.7353C33 25.183 33.4477 24.7353 34 24.7353H35C35.5523 24.7353 36 24.2876 36 23.7353V21.8866C36 21.3343 35.5523 20.8866 35 20.8866H34C33.4477 20.8866 33 20.4389 33 19.8866V19.2321C33 18.5971 32.415 18.1237 31.7916 18.245C25.8882 19.3942 22.1085 19.3802 16.2058 18.2418ZM19 22.0001C19 21.4478 18.5523 21.0001 18 21.0001C17.4477 21.0001 17 21.4478 17 22.0001V25.0001C17 25.5524 17.4477 26.0001 18 26.0001C18.5523 26.0001 19 25.5524 19 25.0001V22.0001Z" fill="currentColor" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M16.2058 30.2418C15.5833 30.1218 15 30.5949 15 31.229V31.8866C15 32.4389 14.5523 32.8866 14 32.8866H13C12.4477 32.8866 12 33.3343 12 33.8866V35.7353C12 36.2876 12.4477 36.7353 13 36.7353H14C14.5523 36.7353 15 37.183 15 37.7353V38.8453C15 39.3022 15.3106 39.702 15.7544 39.8107C22.2204 41.3952 26.0763 41.396 32.2561 39.8165C32.6948 39.7043 33 39.3069 33 38.8541V37.7353C33 37.183 33.4477 36.7353 34 36.7353H35C35.5523 36.7353 36 36.2876 36 35.7353V33.8866C36 33.3343 35.5523 32.8866 35 32.8866H34C33.4477 32.8866 33 32.4389 33 31.8866V31.2321C33 30.5971 32.415 30.1237 31.7916 30.245C25.8882 31.3942 22.1085 31.3802 16.2058 30.2418ZM19 34.0001C19 33.4478 18.5523 33.0001 18 33.0001C17.4477 33.0001 17 33.4478 17 34.0001V37.0001C17 37.5524 17.4477 38.0001 18 38.0001C18.5523 38.0001 19 37.5524 19 37.0001V34.0001Z" fill="currentColor" />
+    </svg>
+  )
+}
+
 const iconComponents = {
   activity: Pulse,
   alert: Warning,
   arrow: ArrowUp,
   badgeCheck: SealCheck,
+  bandage: Bandaids,
   bone: Bone,
   building: Buildings,
   check: CheckCircle,
@@ -519,6 +531,7 @@ const iconComponents = {
   creditCard: CreditCard,
   dumbbell: Barbell,
   drop: Drop,
+  dna: Dna,
   exam: Exam,
   fire: FireSimple,
   firstAid: FirstAidKit,
@@ -533,7 +546,6 @@ const iconComponents = {
   map: MapTrifold,
   menu: List,
   needle: Needle,
-  path: Path,
   personArms: PersonArmsSpread,
   pulse: Pulse,
   rehab: SneakerMove,
@@ -542,6 +554,7 @@ const iconComponents = {
   radio: Broadcast,
   shieldCheck: ShieldCheck,
   sparkles: ShootingStar,
+  spine: HealthSpineIcon,
   stairs: Stairs,
   stethoscope: Stethoscope,
   strategy: Strategy,
