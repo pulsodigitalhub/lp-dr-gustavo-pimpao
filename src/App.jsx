@@ -301,7 +301,7 @@ const injectionLandingPages = {
     metaTitle: 'Infiltração para dor em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com Dr. Gustavo Pimpão para entender se infiltração pode ser indicada para dores, articulações, tendões, bursites e perda de mobilidade.',
     eyebrow: 'Infiltração ortopédica',
-    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em Brasília e +40 convênios aceitos.',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
     proofFormationText: 'Especialização em intervenção da dor',
     video: {
       title: 'Veja como funciona a infiltração guiada por ultrassom',
@@ -356,7 +356,7 @@ const injectionLandingPages = {
     metaTitle: 'Infiltração no joelho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica para dor no joelho, inchaço, rigidez, suspeita de desgaste e perda de mobilidade em Brasília.',
     eyebrow: 'Dor no joelho',
-    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. +40 convênios aceitos.',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
     proofFormationText: 'Especialização em joelho e intervenção da dor',
     video: {
       title: 'Veja um exemplo de infiltração no joelho guiada por ultrassom',
@@ -411,7 +411,7 @@ const injectionLandingPages = {
     metaTitle: 'Infiltração no ombro em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica para dor no ombro, bursite, tendinites, rigidez, perda de mobilidade e dificuldade para levantar o braço.',
     eyebrow: 'Dor no ombro',
-    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais e +40 convênios aceitos.',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
     proofFormationText: 'Especialização em intervenção da dor',
     video: {
       title: 'Veja um exemplo de infiltração no ombro guiada por ultrassom',
@@ -466,7 +466,7 @@ const injectionLandingPages = {
     metaTitle: 'Médico Especialista em Joelho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no joelho, lesões, artrose, instabilidade, inchaço e perda de mobilidade em Brasília.',
     eyebrow: 'Especialista em joelho',
-    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. +40 convênios aceitos.',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, especialista em joelho, com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
     proofPainText: 'Joelho, esporte e dor',
     proofFormationText: 'Especialização em joelho e intervenção da dor',
     symptomsTitle: 'Quando procurar um especialista em joelho',
@@ -714,7 +714,7 @@ function Hero() {
             Ortopedista em Brasília
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray">
-            Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em Brasília e +40 convênios aceitos.
+            Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.
           </p>
 
           <div className="mt-7 overflow-hidden rounded-[1.75rem] bg-brand-wine shadow-soft lg:hidden">
