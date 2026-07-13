@@ -852,7 +852,15 @@ function ProceduresSection() {
   )
 }
 
-function SpecialistSection() {
+function SpecialistSection({ page }) {
+  const specialistHighlights = [
+    'Pós-graduação em Medicina do Exercício e do Esporte.',
+    page?.slug === 'infiltracao-joelho' ? 'R4 em Cirurgia do Joelho.' : null,
+    'Especialização em Medicina Intervencionista da Dor.',
+    'Atuação em procedimentos intervencionistas para dor.',
+    'Experiência em ambiente hospitalar e consultório.',
+  ].filter(Boolean)
+
   return (
     <section id="especialista" className="specialist-bg py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
@@ -878,12 +886,7 @@ function SpecialistSection() {
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {[
-              'Pós-graduação em Medicina do Exercício e do Esporte.',
-              'Formação complementar em ortopedia, esporte e dor.',
-              'Atuação em procedimentos intervencionistas para dor.',
-              'Experiência em ambiente hospitalar e consultório.',
-            ].map((item) => (
+            {specialistHighlights.map((item) => (
               <div key={item} className="flex gap-3 rounded-2xl bg-brand-cream p-4">
                 <span className="mt-0.5 text-brand-red"><Icon name="check" className="h-5 w-5" /></span>
                 <p className="text-sm font-bold leading-relaxed text-brand-graphite">{item}</p>
@@ -1459,7 +1462,7 @@ function ProcedureLandingPage({ page }) {
         <LandingIndicationSection page={page} />
         <LandingContextsSection page={page} />
         <LandingStepsSection page={page} />
-        <SpecialistSection />
+        <SpecialistSection page={page} />
         <DifferentialsSection />
         <ConveniosSection />
         <LocationSection />
