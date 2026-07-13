@@ -195,7 +195,7 @@ const differentials = [
   },
   {
     title: 'Formação completa',
-    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, membro da SBOT e formação complementar em esporte e intervenção da dor.',
+    text: 'Graduação em Medicina, residência em Ortopedia e Traumatologia, membro da SBOT e especialização complementar em esporte e intervenção da dor.',
     icon: 'graduation',
   },
   {
