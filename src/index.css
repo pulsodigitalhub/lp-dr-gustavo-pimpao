@@ -81,7 +81,65 @@
       linear-gradient(135deg, #8e1728 0%, #7b1220 48%, #a01a2a 100%);
   }
 
+  .section-photo-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-photo-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--section-bg-image);
+    background-position: var(--section-bg-position, center);
+    background-size: cover;
+    opacity: var(--section-bg-opacity, 0.075);
+    filter: saturate(0.85) contrast(1.05);
+    transform: scale(1.04);
+    pointer-events: none;
+  }
+
+  .section-photo-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 14% 18%, rgba(160, 26, 42, 0.10), transparent 28%),
+      linear-gradient(rgba(248, 244, 238, 0.74), rgba(255, 255, 255, 0.82));
+    pointer-events: none;
+  }
+
+  .section-photo-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-photo-bg--iob {
+    --section-bg-image: url("../img/iob-fachada.webp");
+    --section-bg-position: center 34%;
+  }
+
+  .section-photo-bg--doctor {
+    --section-bg-image: url("../img/dr-gustavo-sobre.webp");
+    --section-bg-position: center 26%;
+    --section-bg-opacity: 0.06;
+  }
+
+  .section-photo-bg--unique {
+    --section-bg-image: url("../img/clinica-unique-1207-recepcao.webp");
+    --section-bg-position: center 48%;
+  }
+
+  .section-photo-bg--jk {
+    --section-bg-image: url("../img/clinica-jk-6362.webp");
+    --section-bg-position: center 44%;
+  }
+
   @media (max-width: 639px) {
+    .section-photo-bg::before {
+      opacity: 0.055;
+    }
+
     .mobile-readable .text-xs {
       font-size: 0.82rem;
       line-height: 1.25rem;
