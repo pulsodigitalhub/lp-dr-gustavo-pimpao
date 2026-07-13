@@ -23,7 +23,7 @@ function copyStaticAssets() {
         });
       }
 
-      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro"];
+      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro", "medico-especialista-joelho"];
       const indexFile = path.join(distDir, "index.html");
 
       if (fs.existsSync(indexFile)) {

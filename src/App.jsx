@@ -308,6 +308,7 @@ const injectionLandingPages = {
       'Avaliação para dores articulares, tendões, bursites e limitação de movimento',
       'Confirmação de agenda e convênio pelo WhatsApp',
     ],
+    proofFormationText: 'Especialização em intervenção da dor',
     video: {
       title: 'Veja como funciona a infiltração guiada por ultrassom',
       description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
@@ -367,6 +368,7 @@ const injectionLandingPages = {
       'Avaliação para dor, inchaço, rigidez e limitação no joelho',
       'Confirmação de convênio e agenda pelo WhatsApp',
     ],
+    proofFormationText: 'Especialização em joelho e intervenção da dor',
     video: {
       title: 'Veja um exemplo de infiltração no joelho guiada por ultrassom',
       description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
@@ -426,6 +428,7 @@ const injectionLandingPages = {
       'Atendimento em Águas Claras, Asa Sul e Taguatinga',
       'Agendamento direto pelo WhatsApp',
     ],
+    proofFormationText: 'Especialização em intervenção da dor',
     video: {
       title: 'Veja um exemplo de infiltração no ombro guiada por ultrassom',
       description: 'Assista ao procedimento sendo realizado em ambiente clínico e veja como a técnica é aplicada com segurança e precisão, sempre após avaliação individual do paciente.',
@@ -472,6 +475,65 @@ const injectionLandingPages = {
       { q: 'Preciso de ultrassom ou ressonância?', a: 'Depende do caso. Exames podem ajudar, mas a avaliação clínica orienta a necessidade.' },
       { q: 'Posso voltar a treinar depois?', a: 'A retomada depende do diagnóstico, do procedimento e da resposta individual. O médico orienta o retorno gradual.' },
     ],
+  },
+  '/medico-especialista-joelho/': {
+    slug: 'medico-especialista-joelho',
+    title: 'Médico especialista em Joelho em Brasília',
+    metaTitle: 'Médico especialista em Joelho em Brasília — Dr. Gustavo Pimpão',
+    metaDescription: 'Avaliação ortopédica com foco em dor no joelho, lesões, artrose, instabilidade, inchaço e perda de mobilidade em Brasília.',
+    eyebrow: 'Especialista em joelho',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista, avalia dor no joelho, perda de mobilidade, lesões e queixas que limitam caminhada, treino, trabalho ou atividades do dia a dia.',
+    bullets: [
+      'Avaliação para dor, inchaço, rigidez e instabilidade no joelho',
+      'Atendimento em Águas Claras, Asa Sul e Taguatinga',
+      'Confirmação de convênio e agenda pelo WhatsApp',
+    ],
+    proofPainText: 'Joelho, esporte e dor',
+    proofFormationText: 'Especialização em joelho e intervenção da dor',
+    symptomsTitle: 'Quando procurar um especialista em joelho',
+    symptomsIntro: 'Dor no joelho pode surgir por sobrecarga, lesões, desgaste articular ou alterações de movimento. A avaliação ajuda a identificar a causa e definir o caminho de cuidado.',
+    symptoms: [
+      { text: 'Dor ao subir ou descer escadas', icon: 'stairs' },
+      { text: 'Inchaço, travamento ou estalos com dor', icon: 'drop' },
+      { text: 'Sensação de falseio ou instabilidade', icon: 'target' },
+      { text: 'Dificuldade para caminhar, correr ou treinar', icon: 'running' },
+      { text: 'Dor persistente após queda, torção ou esforço', icon: 'bandage' },
+    ],
+    indicationTitle: 'Avaliação focada na causa da dor no joelho',
+    indicationText: 'A consulta organiza histórico, exame físico, exames disponíveis e objetivos do paciente. A partir disso, o plano pode envolver orientações, reabilitação, medicações, infiltrações, procedimentos para dor ou cirurgia quando houver indicação.',
+    typesTitle: 'O que pode ser avaliado na consulta',
+    types: [
+      { title: 'Dor e sobrecarga', text: 'Queixas que aparecem ao caminhar, subir escadas, treinar ou permanecer muito tempo em pé.', icon: 'running' },
+      { title: 'Lesões ortopédicas', text: 'Torções, trauma, suspeita de lesão meniscal, ligamentar ou dor após atividade física.', icon: 'bandage' },
+      { title: 'Artrose e desgaste', text: 'Dor, rigidez, limitação e alterações articulares que precisam de avaliação individual.', icon: 'bone' },
+    ],
+    contextsTitle: 'Queixas comuns no atendimento de joelho',
+    contexts: [
+      { title: 'Artrose e desgaste', text: 'Avaliação do grau de desgaste, sintomas, exames e impacto na rotina.', icon: 'bone' },
+      { title: 'Lesões esportivas', text: 'Dor após treino, corrida, futebol, academia ou esforço repetitivo.', icon: 'dumbbell' },
+      { title: 'Dor anterior no joelho', text: 'Dor na frente do joelho ao subir escadas, agachar ou levantar.', icon: 'stairs' },
+      { title: 'Inchaço ou travamento', text: 'Sinais que podem indicar irritação articular, lesão ou outra causa mecânica.', icon: 'drop' },
+      { title: 'Torções e instabilidade', text: 'Sensação de falseio, insegurança ou perda de confiança no apoio.', icon: 'target' },
+    ],
+    stepsTitle: 'Uma avaliação para definir o caminho com clareza',
+    stepsIntro: 'O objetivo é entender a origem da dor e construir uma conduta proporcional ao diagnóstico, à rotina e aos objetivos do paciente.',
+    steps: [
+      'Entender início da dor, evolução, rotina e limitações',
+      'Examinar mobilidade, força, estabilidade e pontos de dor',
+      'Correlacionar sintomas com raio-x, ressonância ou ultrassom quando houver',
+      'Definir tratamento conservador, procedimento ou cirurgia quando indicado',
+      'Acompanhar evolução e orientar retorno seguro às atividades',
+    ],
+    faqTitle: 'Perguntas frequentes sobre especialista em joelho',
+    faqs: [
+      { q: 'Quando devo procurar um especialista em joelho?', a: 'Procure avaliação quando a dor limita caminhada, escadas, treino, trabalho ou sono; quando há inchaço, travamento, falseio, trauma ou dor persistente apesar de cuidados iniciais.' },
+      { q: 'Dor no joelho precisa sempre de ressonância?', a: 'Não. A necessidade de exame depende da avaliação clínica. Em alguns casos, raio-x, ultrassom ou ressonância podem ajudar a confirmar o diagnóstico e orientar a conduta.' },
+      { q: 'Estalos no joelho são preocupantes?', a: 'Estalos isolados podem acontecer sem gravidade. Quando vêm com dor, inchaço, travamento, falseio ou perda de função, merecem avaliação.' },
+      { q: 'Todo desgaste no joelho precisa de cirurgia?', a: 'Não. Muitos casos podem ser conduzidos com ajustes de atividade, reabilitação, controle de dor e procedimentos quando indicados. A cirurgia é avaliada conforme gravidade, sintomas e objetivos.' },
+      { q: 'O especialista também avalia infiltrações e procedimentos para dor?', a: 'Sim. Quando há indicação, podem ser discutidas opções como infiltrações, bloqueios, radiofrequência e outras estratégias dentro de um plano individual.' },
+    ],
+    finalCtaTitle: 'Agende uma avaliação para entender a causa da dor no joelho.',
+    finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
 }
 
@@ -716,20 +778,27 @@ function Hero() {
   )
 }
 
-function getProofItems(painText = 'Infiltrações, bloqueios e radiofrequência') {
+function getProofItems(
+  painText = 'Infiltrações, bloqueios e radiofrequência',
+  formationText = 'Residência, SBOT e formação complementar',
+) {
   return [
     { title: 'Locais', text: 'Águas Claras, Asa Sul e Taguatinga', icon: 'mapPinned' },
     { title: 'Convênios', text: '+40 planos aceitos', icon: 'creditCard' },
     { title: 'Dor', text: painText, icon: 'heartPulse' },
-    { title: 'Formação', text: 'Residência, SBOT e formação complementar', icon: 'graduation' },
+    { title: 'Formação', text: formationText, icon: 'graduation' },
   ]
 }
 
-function ProofBar({ painText = 'Infiltrações, bloqueios e radiofrequência', className = '' }) {
+function ProofBar({
+  painText = 'Infiltrações, bloqueios e radiofrequência',
+  formationText = 'Residência, SBOT e formação complementar',
+  className = '',
+}) {
   return (
     <section className={`border-y border-brand-graphite/10 bg-white ${className}`}>
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-        {getProofItems(painText).map(({ title, text, icon }) => (
+        {getProofItems(painText, formationText).map(({ title, text, icon }) => (
           <div key={title} className="flex items-start gap-3">
             <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-white">
               <Icon name={icon} className="h-4 w-4" />
@@ -855,7 +924,7 @@ function ProceduresSection() {
 function SpecialistSection({ page }) {
   const specialistHighlights = [
     'Pós-graduação em Medicina do Exercício e do Esporte.',
-    page?.slug === 'infiltracao-joelho' ? 'R4 em Cirurgia do Joelho.' : null,
+    ['infiltracao-joelho', 'medico-especialista-joelho'].includes(page?.slug) ? 'R4 em Cirurgia do Joelho.' : null,
     'Especialização em Medicina Intervencionista da Dor.',
     'Atuação em procedimentos intervencionistas para dor.',
     'Experiência em ambiente hospitalar e consultório.',
@@ -1136,7 +1205,11 @@ function FAQSection() {
   )
 }
 
-function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiofrequência' }) {
+function LandingHero({
+  page,
+  proofPainText = 'Infiltrações, bloqueios e radiofrequência',
+  proofFormationText = 'Residência, SBOT e formação complementar',
+}) {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
       <div className="absolute inset-0 hero-medical-bg" aria-hidden="true" />
@@ -1165,7 +1238,7 @@ function LandingHero({ page, proofPainText = 'Infiltrações, bloqueios e radiof
           </div>
 
           <div className="mt-7 grid gap-4 rounded-[1.75rem] bg-white p-5 shadow-soft lg:hidden">
-            {getProofItems(proofPainText).map(({ title, text, icon }) => (
+            {getProofItems(proofPainText, proofFormationText).map(({ title, text, icon }) => (
               <div key={title} className="flex items-start gap-3">
                 <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                   <Icon name={icon} className="h-4 w-4" />
@@ -1342,7 +1415,7 @@ function LandingStepsSection({ page }) {
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Como funciona</p>
             <h2 className="font-display mt-3 text-3xl font-black leading-tight sm:text-5xl">{page.stepsTitle}</h2>
             <p className="mt-5 text-lg leading-relaxed text-white/85">
-              A decisão é construída por etapas: primeiro entender a causa da dor, depois definir se o procedimento realmente faz sentido.
+              {page.stepsIntro || 'A decisão é construída por etapas: primeiro entender a causa da dor, depois definir se o procedimento realmente faz sentido.'}
             </p>
           </div>
 
@@ -1413,10 +1486,10 @@ function LandingFinalCTA({ page }) {
         <div className="rounded-[2rem] bg-white p-6 text-center shadow-soft lg:p-10">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Próximo passo</p>
           <h2 className="font-display mx-auto mt-3 max-w-3xl text-3xl font-black leading-tight text-brand-graphite sm:text-5xl">
-            Agende uma avaliação e entenda se a infiltração faz sentido para o seu caso.
+            {page.finalCtaTitle || 'Agende uma avaliação e entenda se a infiltração faz sentido para o seu caso.'}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-brand-gray">
-            Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.
+            {page.finalCtaDescription || 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.'}
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <Button source={`${page.slug}_final`}>
@@ -1434,6 +1507,9 @@ function LandingFinalCTA({ page }) {
 }
 
 function ProcedureLandingPage({ page }) {
+  const proofPainText = page.proofPainText || 'Infiltrações guiadas por ultrassom'
+  const proofFormationText = page.proofFormationText || 'Especialização em intervenção da dor'
+
   useEffect(() => {
     document.title = page.metaTitle
     const description = document.querySelector('meta[name="description"]')
@@ -1452,8 +1528,8 @@ function ProcedureLandingPage({ page }) {
     <div className="mobile-readable">
       <Header />
       <main>
-        <LandingHero page={page} proofPainText="Infiltrações guiadas por ultrassom" />
-        <ProofBar painText="Infiltrações guiadas por ultrassom" className="hidden lg:block" />
+        <LandingHero page={page} proofPainText={proofPainText} proofFormationText={proofFormationText} />
+        <ProofBar painText={proofPainText} formationText={proofFormationText} className="hidden lg:block" />
         <LandingVideoSection page={page} />
         <LandingSymptomsSection page={page} />
         <LandingIndicationSection page={page} />
