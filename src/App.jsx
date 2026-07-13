@@ -903,7 +903,7 @@ function ProceduresSection() {
 function SpecialistSection({ page }) {
   const specialistHighlights = [
     'Pós-graduação em Medicina do Exercício e do Esporte.',
-    ['infiltracao-joelho', 'medico-especialista-joelho'].includes(page?.slug) ? 'R4 em Cirurgia do Joelho.' : null,
+    ['infiltracao-joelho', 'medico-especialista-joelho'].includes(page?.slug) ? 'Especialização em cirurgia do joelho.' : null,
     'Especialização em Medicina Intervencionista da Dor.',
     'Atuação em procedimentos intervencionistas para dor.',
     'Experiência em ambiente hospitalar e consultório.',
