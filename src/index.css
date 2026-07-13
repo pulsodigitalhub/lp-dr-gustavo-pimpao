@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Roboto', system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: 'Roboto Slab', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: 'IBM Plex Sans', system-ui, -apple-system, "Segoe UI", sans-serif;
   --color-brand-red: #a01a2a;
   --color-brand-red-dark: #7b1220;
   --color-brand-graphite: #343331;
@@ -53,7 +53,8 @@
 
 @layer utilities {
   .font-display {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
   }
 
   .bg-medical-grid {
