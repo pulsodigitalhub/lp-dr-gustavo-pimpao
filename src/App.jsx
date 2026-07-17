@@ -555,6 +555,8 @@ function scrollToConvenios() {
 }
 
 function ConveniosMetaPage() {
+  const contactUrl = whatsappUrl({ source: 'convenios_meta' })
+
   useEffect(() => {
     document.title = 'Convênios atendidos — Dr. Gustavo Pimpão'
 
@@ -568,7 +570,7 @@ function ConveniosMetaPage() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-brand-cream px-4 py-8 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-brand-cream px-4 pb-28 pt-8 sm:px-6 sm:pb-8 lg:px-8">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" />
         <div className="absolute -left-24 bottom-10 h-72 w-72 rounded-full bg-brand-wine/10 blur-3xl" />
@@ -595,6 +597,10 @@ function ConveniosMetaPage() {
                 Ortopedista e traumatologista com especialização em procedimentos para intervenção em dor.
               </h1>
 
+              <Button href={contactUrl} source="convenios_meta_top" className="mt-6 w-full text-center sm:w-auto">
+                Entrar em contato
+              </Button>
+
               <div className="mt-8 rounded-[1.5rem] bg-brand-cream p-5">
                 <h2 className="text-xl font-black text-brand-graphite">Convênios atendidos</h2>
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -610,13 +616,21 @@ function ConveniosMetaPage() {
                 </ul>
               </div>
 
-              <Button href={whatsappUrl({ source: 'convenios_meta' })} source="convenios_meta" className="mt-7 w-full">
-                Confirmar convênio pelo WhatsApp
+              <Button href={contactUrl} source="convenios_meta_bottom" className="mt-7 w-full text-center">
+                Entrar em contato
               </Button>
             </div>
           </div>
         </div>
       </section>
+
+      <a
+        href={contactUrl}
+        onClick={() => track('whatsapp_click', { location: 'convenios_meta_fixed' })}
+        className="fixed inset-x-4 bottom-4 z-50 inline-flex min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8"
+      >
+        Entrar em contato
+      </a>
     </main>
   )
 }
@@ -689,7 +703,7 @@ function Icon({ name, className = 'h-6 w-6' }) {
 }
 
 function Button({ children, variant = 'primary', className = '', onClick, href, source = 'cta' }) {
-  const base = 'inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-black uppercase tracking-wide transition focus-visible:outline-brand-orange sm:min-h-12 sm:px-6 sm:py-3 sm:text-sm'
+  const base = 'inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-7 py-4 text-center text-base font-black uppercase leading-tight tracking-wide transition focus-visible:outline-brand-orange sm:min-h-12 sm:px-6 sm:py-3 sm:text-sm'
   const styles = variant === 'dark'
     ? 'bg-brand-wine text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red'
     : variant === 'outline'
@@ -698,7 +712,7 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
 
   if (href) {
     return (
-      <a href={href} onClick={() => track('whatsapp_click', { location: 'button' })} className={`${base} ${styles} ${className}`}>
+      <a href={href} onClick={() => track('whatsapp_click', { location: source })} className={`${base} ${styles} ${className}`}>
         {children}
       </a>
     )
