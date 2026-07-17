@@ -577,48 +577,50 @@ function ConveniosMetaPage() {
       </div>
 
       <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl items-center">
-        <div className="w-full overflow-hidden rounded-[2rem] border border-brand-red/10 bg-white shadow-soft">
-          <div className="grid md:grid-cols-[0.82fr_1.18fr]">
-            <div className="bg-brand-wine p-3 sm:p-5 md:self-start md:p-6">
-              <div className="relative overflow-hidden rounded-[1.5rem]">
+        <div className="w-full rounded-[2rem] border border-brand-red/10 bg-white p-5 shadow-soft sm:p-7 lg:p-8">
+          <div className="grid gap-6 border-b border-brand-graphite/10 pb-7 md:grid-cols-[180px_1fr_auto] md:items-center lg:grid-cols-[220px_1fr_auto]">
+            <div className="mx-auto w-full max-w-[240px] md:max-w-none">
+              <div className="overflow-hidden rounded-[1.5rem] bg-brand-wine p-2 shadow-lg shadow-brand-red/10">
                 <img
                   src="./img/dr-gustavo-portrait.webp"
                   alt="Dr. Gustavo Pimpão"
-                  className="aspect-[4/5] w-full object-cover object-top"
+                  className="aspect-[4/5] w-full rounded-[1.15rem] object-cover object-top"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-wine/85 to-transparent p-5 text-white">
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Dr. Gustavo Pimpão</p>
-                  <p className="mt-1 text-lg font-black">Ortopedista</p>
-                </div>
               </div>
             </div>
 
-            <div className="p-6 sm:p-8 lg:p-10">
+            <div className="text-center md:text-left">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Dr. Gustavo Pimpão</p>
               <h1 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-4xl">
                 Ortopedista e Traumatologista
               </h1>
-              <p className="mt-2 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
+              <p className="mt-3 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
+            </div>
 
-              <Button href={contactUrl} source="convenios_meta_top" className="mt-6 w-full text-center sm:w-auto">
+            <div className="md:min-w-[190px]">
+              <Button href={contactUrl} source="convenios_meta_top" className="w-full text-center">
                 Entrar em contato
               </Button>
-
-              <div className="mt-8 rounded-[1.5rem] bg-brand-cream p-5">
-                <h2 className="text-xl font-black text-brand-graphite">Convênios atendidos</h2>
-                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                  {convenioHighlights.map((name) => (
-                    <li
-                      key={name}
-                      className="flex items-center gap-2 rounded-full border border-brand-red/15 bg-white px-3 py-2 text-sm font-black uppercase tracking-[0.03em] text-brand-wine"
-                    >
-                      <Icon name="check" className="h-4 w-4 flex-shrink-0 text-brand-red" />
-                      <span>{name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
+          </div>
+
+          <div className="pt-7">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <h2 className="text-2xl font-black text-brand-graphite">Convênios atendidos</h2>
+              <p className="text-sm font-bold text-brand-gray">Consulte cobertura e unidade pelo WhatsApp.</p>
+            </div>
+
+            <ul className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {convenioHighlights.map((name) => (
+                <li
+                  key={name}
+                  className="flex min-h-11 items-center gap-2 rounded-full border border-brand-red/15 bg-brand-cream px-3 py-2 text-sm font-black uppercase tracking-[0.03em] text-brand-wine"
+                >
+                  <Icon name="check" className="h-4 w-4 flex-shrink-0 text-brand-red" />
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
