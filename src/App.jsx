@@ -578,24 +578,27 @@ function ConveniosMetaPage() {
 
       <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl items-center">
         <div className="w-full overflow-hidden rounded-[2rem] border border-brand-red/10 bg-white shadow-soft">
-          <div className="grid md:grid-cols-[0.9fr_1.1fr]">
-            <div className="relative min-h-[360px] bg-brand-wine sm:min-h-[440px] md:min-h-full">
-              <img
-                src="./img/dr-gustavo-portrait.webp"
-                alt="Dr. Gustavo Pimpão"
-                className="h-full w-full object-cover object-top"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-wine/85 to-transparent p-6 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Dr. Gustavo Pimpão</p>
-                <p className="mt-1 text-lg font-black">Ortopedista</p>
+          <div className="grid md:grid-cols-[0.82fr_1.18fr]">
+            <div className="bg-brand-wine p-3 sm:p-5 md:self-start md:p-6">
+              <div className="relative overflow-hidden rounded-[1.5rem]">
+                <img
+                  src="./img/dr-gustavo-portrait.webp"
+                  alt="Dr. Gustavo Pimpão"
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-wine/85 to-transparent p-5 text-white">
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Dr. Gustavo Pimpão</p>
+                  <p className="mt-1 text-lg font-black">Ortopedista</p>
+                </div>
               </div>
             </div>
 
             <div className="p-6 sm:p-8 lg:p-10">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Dr. Gustavo Pimpão - Ortopedista</p>
-              <h1 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-4xl lg:text-5xl">
-                Ortopedista e traumatologista com especialização em procedimentos para intervenção em dor.
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Dr. Gustavo Pimpão</p>
+              <h1 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-4xl">
+                Ortopedista e Traumatologista
               </h1>
+              <p className="mt-2 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
 
               <Button href={contactUrl} source="convenios_meta_top" className="mt-6 w-full text-center sm:w-auto">
                 Entrar em contato
@@ -615,10 +618,6 @@ function ConveniosMetaPage() {
                   ))}
                 </ul>
               </div>
-
-              <Button href={contactUrl} source="convenios_meta_bottom" className="mt-7 w-full text-center">
-                Entrar em contato
-              </Button>
             </div>
           </div>
         </div>
