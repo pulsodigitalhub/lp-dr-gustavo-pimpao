@@ -556,7 +556,7 @@ function scrollToConvenios() {
 
 function ConveniosMetaPage() {
   const contactUrl = whatsappUrl({ source: 'convenios_meta' })
-  const topContactRef = useRef(null)
+  const conveniosRef = useRef(null)
   const [showFixedContact, setShowFixedContact] = useState(false)
 
   useEffect(() => {
@@ -572,20 +572,28 @@ function ConveniosMetaPage() {
   }, [])
 
   useEffect(() => {
-    const topContact = topContactRef.current
-    if (!topContact || typeof IntersectionObserver === 'undefined') {
-      setShowFixedContact(true)
-      return undefined
+    const handleScroll = () => {
+      const convenios = conveniosRef.current
+      if (!convenios || typeof window === 'undefined') return
+      const triggerPoint = convenios.offsetTop - window.innerHeight + 120
+      setShowFixedContact(window.scrollY >= triggerPoint)
     }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setShowFixedContact(!entry.isIntersecting)
-    }, { threshold: 0.2 })
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
 
-    observer.observe(topContact)
-
-    return () => observer.disconnect()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   }, [])
+
+  function scrollToConveniosMeta() {
+    conveniosRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    track('convenios_click', { location: 'convenios_meta_top' })
+    window.setTimeout(() => setShowFixedContact(true), 500)
+  }
 
   return (
     <main className="min-h-screen bg-brand-cream px-4 pb-28 pt-8 sm:px-6 sm:pb-8 lg:px-8">
@@ -615,14 +623,14 @@ function ConveniosMetaPage() {
               <p className="mt-3 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
             </div>
 
-            <div ref={topContactRef} className="md:min-w-[190px]">
-              <Button href={contactUrl} source="convenios_meta_top" className="w-full text-center">
-                Entrar em contato
+            <div className="md:min-w-[220px]">
+              <Button onClick={scrollToConveniosMeta} source="convenios_meta_top" className="w-full text-center">
+                Ver convênios atendidos
               </Button>
             </div>
           </div>
 
-          <div className="pt-7">
+          <div id="convenios-atendidos" ref={conveniosRef} className="scroll-mt-6 pt-7">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <h2 className="text-2xl font-black text-brand-graphite">Convênios atendidos</h2>
               <p className="text-sm font-bold text-brand-gray">Consulte cobertura e unidade pelo WhatsApp.</p>
@@ -646,7 +654,7 @@ function ConveniosMetaPage() {
       <a
         href={contactUrl}
         onClick={() => track('whatsapp_click', { location: 'convenios_meta_fixed' })}
-        className={`${showFixedContact ? 'inline-flex' : 'hidden sm:inline-flex'} fixed inset-x-4 bottom-4 z-50 min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8`}
+        className={`${showFixedContact ? 'inline-flex' : 'hidden'} fixed inset-x-4 bottom-4 z-50 min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8`}
       >
         Entrar em contato
       </a>
