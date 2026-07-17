@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowUp,
   Bandaids,
@@ -556,6 +556,8 @@ function scrollToConvenios() {
 
 function ConveniosMetaPage() {
   const contactUrl = whatsappUrl({ source: 'convenios_meta' })
+  const topContactRef = useRef(null)
+  const [showFixedContact, setShowFixedContact] = useState(false)
 
   useEffect(() => {
     document.title = 'Convênios atendidos — Dr. Gustavo Pimpão'
@@ -567,6 +569,22 @@ function ConveniosMetaPage() {
         'Convênios atendidos pelo Dr. Gustavo Pimpão, ortopedista e traumatologista em Brasília.'
       )
     }
+  }, [])
+
+  useEffect(() => {
+    const topContact = topContactRef.current
+    if (!topContact || typeof IntersectionObserver === 'undefined') {
+      setShowFixedContact(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setShowFixedContact(!entry.isIntersecting)
+    }, { threshold: 0.2 })
+
+    observer.observe(topContact)
+
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -597,7 +615,7 @@ function ConveniosMetaPage() {
               <p className="mt-3 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
             </div>
 
-            <div className="md:min-w-[190px]">
+            <div ref={topContactRef} className="md:min-w-[190px]">
               <Button href={contactUrl} source="convenios_meta_top" className="w-full text-center">
                 Entrar em contato
               </Button>
@@ -628,7 +646,7 @@ function ConveniosMetaPage() {
       <a
         href={contactUrl}
         onClick={() => track('whatsapp_click', { location: 'convenios_meta_fixed' })}
-        className="fixed inset-x-4 bottom-4 z-50 inline-flex min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8"
+        className={`${showFixedContact ? 'inline-flex' : 'hidden sm:inline-flex'} fixed inset-x-4 bottom-4 z-50 min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8`}
       >
         Entrar em contato
       </a>
