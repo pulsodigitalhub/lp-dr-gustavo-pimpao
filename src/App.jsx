@@ -623,9 +623,12 @@ function ConveniosMetaPage() {
               <p className="mt-3 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
             </div>
 
-            <div className="md:min-w-[220px]">
-              <Button onClick={scrollToConveniosMeta} source="convenios_meta_top" className="w-full text-center">
-                Ver convênios atendidos
+            <div className="flex flex-col gap-3 md:min-w-[230px]">
+              <Button href={contactUrl} source="convenios_meta_hero_contact" className="w-full text-center">
+                Entrar em contato
+              </Button>
+              <Button variant="outline" onClick={scrollToConveniosMeta} source="convenios_meta_top" className="w-full text-center">
+                Ver lista de convênios
               </Button>
             </div>
           </div>
