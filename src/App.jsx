@@ -516,12 +516,21 @@ const injectionLandingPages = {
   },
 }
 
-function getCurrentLandingPage() {
+function getNormalizedPathname() {
   if (typeof window === 'undefined') return null
   let pathname = window.location.pathname
   pathname = pathname.replace('/lp-dr-gustavo-pimpao', '')
   if (!pathname.endsWith('/')) pathname = `${pathname}/`
+  return pathname
+}
+
+function getCurrentLandingPage() {
+  const pathname = getNormalizedPathname()
   return injectionLandingPages[pathname] || null
+}
+
+function isConveniosMetaPage() {
+  return getNormalizedPathname() === '/convenios-meta/'
 }
 
 function track(event, payload = {}) {
@@ -543,6 +552,73 @@ function whatsappUrl({ name = '', phone = '', source = 'lp' } = {}) {
 
 function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+function ConveniosMetaPage() {
+  useEffect(() => {
+    document.title = 'Convênios atendidos — Dr. Gustavo Pimpão'
+
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        'content',
+        'Convênios atendidos pelo Dr. Gustavo Pimpão, ortopedista e traumatologista em Brasília.'
+      )
+    }
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-brand-cream px-4 py-8 sm:px-6 lg:px-8">
+      <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-brand-red/10 blur-3xl" />
+        <div className="absolute -left-24 bottom-10 h-72 w-72 rounded-full bg-brand-wine/10 blur-3xl" />
+      </div>
+
+      <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl items-center">
+        <div className="w-full overflow-hidden rounded-[2rem] border border-brand-red/10 bg-white shadow-soft">
+          <div className="grid md:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative min-h-[360px] bg-brand-wine sm:min-h-[440px] md:min-h-full">
+              <img
+                src="./img/dr-gustavo-portrait.webp"
+                alt="Dr. Gustavo Pimpão"
+                className="h-full w-full object-cover object-top"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-wine/85 to-transparent p-6 text-white">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-orange">Dr. Gustavo Pimpão</p>
+                <p className="mt-1 text-lg font-black">Ortopedista</p>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 lg:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Dr. Gustavo Pimpão - Ortopedista</p>
+              <h1 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-4xl lg:text-5xl">
+                Ortopedista e traumatologista com especialização em procedimentos para intervenção em dor.
+              </h1>
+
+              <div className="mt-8 rounded-[1.5rem] bg-brand-cream p-5">
+                <h2 className="text-xl font-black text-brand-graphite">Convênios atendidos</h2>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {convenioHighlights.map((name) => (
+                    <li
+                      key={name}
+                      className="flex items-center gap-2 rounded-full border border-brand-red/15 bg-white px-3 py-2 text-sm font-black uppercase tracking-[0.03em] text-brand-wine"
+                    >
+                      <Icon name="check" className="h-4 w-4 flex-shrink-0 text-brand-red" />
+                      <span>{name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Button href={whatsappUrl({ source: 'convenios_meta' })} source="convenios_meta" className="mt-7 w-full">
+                Confirmar convênio pelo WhatsApp
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
 }
 
 function HealthSpineIcon({ className = 'h-6 w-6' }) {
@@ -1683,6 +1759,10 @@ function SchemaJsonLd({ page = null }) {
 
 export default function App() {
   const landingPage = getCurrentLandingPage()
+
+  if (isConveniosMetaPage()) {
+    return <ConveniosMetaPage />
+  }
 
   if (landingPage) {
     return (
