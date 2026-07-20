@@ -628,11 +628,8 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
 
         <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Atendimento pelo WhatsApp</p>
         <h2 id="contact-modal-title" className="font-display mt-3 pr-10 text-3xl font-black leading-tight text-brand-graphite">
-          Informe seus dados para iniciar o contato.
+          Preencha e continue no WhatsApp
         </h2>
-        <p className="mt-3 text-sm font-bold leading-relaxed text-brand-gray">
-          A equipe continua o atendimento pelo WhatsApp do Dr. Gustavo Pimpão.
-        </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
