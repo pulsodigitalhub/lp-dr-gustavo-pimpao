@@ -597,6 +597,8 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
     track('lead_submit', {
       location: source,
       lead_source: source,
+      lead_name: name.trim(),
+      lead_phone: formattedPhone,
     })
 
     // Captura o lead nas planilhas de CRM antes de redirecionar pro WhatsApp.
