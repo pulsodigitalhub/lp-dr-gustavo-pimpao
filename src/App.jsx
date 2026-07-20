@@ -554,6 +554,12 @@ function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+function openLeadModal(event, source = 'lp') {
+  event?.preventDefault()
+  if (typeof window === 'undefined') return
+  window.dispatchEvent(new CustomEvent('openLeadModal', { detail: { source } }))
+}
+
 function formatPhoneInput(value) {
   const digits = value.replace(/\D/g, '').slice(0, 11)
   if (digits.length <= 2) return digits
@@ -668,11 +674,34 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
   )
 }
 
+function LeadModalHost() {
+  const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [contactSource, setContactSource] = useState('lp')
+
+  useEffect(() => {
+    function handleOpenLeadModal(event) {
+      const source = event.detail?.source || 'lp'
+      setContactSource(source)
+      setContactModalOpen(true)
+      track('lead_modal_open', { location: source })
+    }
+
+    window.addEventListener('openLeadModal', handleOpenLeadModal)
+    return () => window.removeEventListener('openLeadModal', handleOpenLeadModal)
+  }, [])
+
+  return (
+    <ContactLeadModal
+      open={contactModalOpen}
+      onClose={() => setContactModalOpen(false)}
+      source={contactSource}
+    />
+  )
+}
+
 function ConveniosMetaPage() {
   const conveniosRef = useRef(null)
   const [showFixedContact, setShowFixedContact] = useState(false)
-  const [contactModalOpen, setContactModalOpen] = useState(false)
-  const [contactSource, setContactSource] = useState('convenios_meta')
 
   useEffect(() => {
     document.title = 'Convênios atendidos — Dr. Gustavo Pimpão'
@@ -710,12 +739,6 @@ function ConveniosMetaPage() {
     window.setTimeout(() => setShowFixedContact(true), 500)
   }
 
-  function openContactModal(source) {
-    setContactSource(source)
-    setContactModalOpen(true)
-    track('lead_modal_open', { location: source })
-  }
-
   return (
     <main className="min-h-screen bg-brand-cream px-4 pb-28 pt-8 sm:px-6 sm:pb-8 lg:px-8">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
@@ -745,7 +768,7 @@ function ConveniosMetaPage() {
             </div>
 
             <div className="flex flex-col gap-3 md:min-w-[230px]">
-              <Button onClick={() => openContactModal('convenios_meta_hero_contact')} source="convenios_meta_hero_contact" className="w-full text-center">
+              <Button onClick={(event) => openLeadModal(event, 'convenios_meta_hero_contact')} source="convenios_meta_hero_contact" className="w-full text-center">
                 Entrar em contato
               </Button>
               <Button variant="outline" onClick={scrollToConveniosMeta} source="convenios_meta_top" className="w-full text-center">
@@ -777,17 +800,13 @@ function ConveniosMetaPage() {
 
       <button
         type="button"
-        onClick={() => openContactModal('convenios_meta_fixed')}
+        onClick={(event) => openLeadModal(event, 'convenios_meta_fixed')}
         className={`${showFixedContact ? 'inline-flex' : 'hidden'} fixed inset-x-4 bottom-4 z-50 min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8`}
       >
         Entrar em contato
       </button>
 
-      <ContactLeadModal
-        open={contactModalOpen}
-        onClose={() => setContactModalOpen(false)}
-        source={contactSource}
-      />
+      <LeadModalHost />
     </main>
   )
 }
@@ -868,6 +887,14 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
       : 'bg-brand-red text-white shadow-lg shadow-brand-red/20 hover:bg-brand-red-dark'
 
   if (href) {
+    if (href.includes('wa.me')) {
+      return (
+        <button type="button" onClick={(event) => openLeadModal(event, source)} className={`${base} ${styles} ${className}`}>
+          {children}
+        </button>
+      )
+    }
+
     return (
       <a href={href} onClick={() => track('whatsapp_click', { location: source })} className={`${base} ${styles} ${className}`}>
         {children}
@@ -877,9 +904,9 @@ function Button({ children, variant = 'primary', className = '', onClick, href, 
 
   if (!onClick) {
     return (
-      <a href={whatsappUrl({ source })} onClick={() => track('whatsapp_click', { location: source })} className={`${base} ${styles} ${className}`}>
+      <button type="button" onClick={(event) => openLeadModal(event, source)} className={`${base} ${styles} ${className}`}>
         {children}
-      </a>
+      </button>
     )
   }
 
@@ -1814,7 +1841,6 @@ function Footer({ page }) {
 
 function FloatingActions() {
   const [showTop, setShowTop] = useState(false)
-  const wa = whatsappUrl({ source: 'floating_whatsapp' })
 
   useEffect(() => {
     function onScroll() {
@@ -1828,14 +1854,14 @@ function FloatingActions() {
 
   return (
     <>
-      <a
-        href={wa}
+      <button
+        type="button"
         aria-label="Falar com a equipe pelo WhatsApp"
-        onClick={() => track('whatsapp_click', { location: 'floating' })}
+        onClick={(event) => openLeadModal(event, 'floating_whatsapp')}
         className="fixed bottom-28 right-4 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition hover:scale-105 sm:bottom-6 sm:h-14 sm:w-14"
       >
         <Icon name="whatsapp" />
-      </a>
+      </button>
 
       {showTop && (
         <button
@@ -1940,6 +1966,7 @@ export default function App() {
       <>
         <SchemaJsonLd page={landingPage} />
         <ProcedureLandingPage page={landingPage} />
+        <LeadModalHost />
       </>
     )
   }
@@ -1964,6 +1991,7 @@ export default function App() {
         <Footer />
         <FloatingActions />
       </div>
+      <LeadModalHost />
     </>
   )
 }
