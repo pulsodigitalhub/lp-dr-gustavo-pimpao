@@ -599,6 +599,18 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
       lead_source: source,
     })
 
+    // Captura o lead nas planilhas de CRM antes de redirecionar pro WhatsApp.
+    // phone = dígitos puros (estado interno do input); pagina = origem do botão.
+    fetch('https://leads.pulso.marketing/lead/drgustavo-pimpao', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: name.trim(),
+        phone,
+        pagina: source,
+      }),
+    }).catch(() => {})
+
     window.location.href = whatsappUrl({
       name: name.trim(),
       phone: formattedPhone,
