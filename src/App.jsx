@@ -554,10 +554,125 @@ function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+function formatPhoneInput(value) {
+  const digits = value.replace(/\D/g, '').slice(0, 11)
+  if (digits.length <= 2) return digits
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
+}
+
+function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open, onClose])
+
+  if (!open) return null
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const formattedPhone = formatPhoneInput(phone)
+
+    track('lead_submit', {
+      location: source,
+      lead_source: source,
+    })
+
+    window.location.href = whatsappUrl({
+      name: name.trim(),
+      phone: formattedPhone,
+      source,
+    })
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-graphite/75 px-4 py-6 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-modal-title"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <div className="relative w-full max-w-lg overflow-hidden rounded-[2rem] bg-white p-6 shadow-2xl sm:p-8">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-cream text-brand-red transition hover:bg-brand-red hover:text-white"
+          aria-label="Fechar formulário"
+        >
+          <Icon name="close" className="h-5 w-5" />
+        </button>
+
+        <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Atendimento pelo WhatsApp</p>
+        <h2 id="contact-modal-title" className="font-display mt-3 pr-10 text-3xl font-black leading-tight text-brand-graphite">
+          Informe seus dados para iniciar o contato.
+        </h2>
+        <p className="mt-3 text-sm font-bold leading-relaxed text-brand-gray">
+          A equipe continua o atendimento pelo WhatsApp do Dr. Gustavo Pimpão.
+        </p>
+
+        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+          <div>
+            <label htmlFor="lead-name" className="text-sm font-black text-brand-graphite">Nome</label>
+            <input
+              id="lead-name"
+              required
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              placeholder="Seu nome"
+              className="mt-2 min-h-14 w-full rounded-2xl border border-brand-graphite/15 bg-brand-cream px-4 text-base font-bold text-brand-graphite outline-none transition focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="lead-phone" className="text-sm font-black text-brand-graphite">Telefone</label>
+            <input
+              id="lead-phone"
+              required
+              value={formatPhoneInput(phone)}
+              onChange={(event) => setPhone(event.target.value.replace(/\D/g, '').slice(0, 11))}
+              placeholder="(61) 99123-6212"
+              inputMode="tel"
+              maxLength={15}
+              className="mt-2 min-h-14 w-full rounded-2xl border border-brand-graphite/15 bg-brand-cream px-4 text-base font-bold text-brand-graphite outline-none transition focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-lg shadow-brand-red/20 transition hover:bg-brand-red-dark"
+          >
+            <Icon name="whatsapp" />
+            Continuar pelo WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
 function ConveniosMetaPage() {
-  const contactUrl = whatsappUrl({ source: 'convenios_meta' })
   const conveniosRef = useRef(null)
   const [showFixedContact, setShowFixedContact] = useState(false)
+  const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [contactSource, setContactSource] = useState('convenios_meta')
 
   useEffect(() => {
     document.title = 'Convênios atendidos — Dr. Gustavo Pimpão'
@@ -595,6 +710,12 @@ function ConveniosMetaPage() {
     window.setTimeout(() => setShowFixedContact(true), 500)
   }
 
+  function openContactModal(source) {
+    setContactSource(source)
+    setContactModalOpen(true)
+    track('lead_modal_open', { location: source })
+  }
+
   return (
     <main className="min-h-screen bg-brand-cream px-4 pb-28 pt-8 sm:px-6 sm:pb-8 lg:px-8">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
@@ -624,7 +745,7 @@ function ConveniosMetaPage() {
             </div>
 
             <div className="flex flex-col gap-3 md:min-w-[230px]">
-              <Button href={contactUrl} source="convenios_meta_hero_contact" className="w-full text-center">
+              <Button onClick={() => openContactModal('convenios_meta_hero_contact')} source="convenios_meta_hero_contact" className="w-full text-center">
                 Entrar em contato
               </Button>
               <Button variant="outline" onClick={scrollToConveniosMeta} source="convenios_meta_top" className="w-full text-center">
@@ -654,13 +775,19 @@ function ConveniosMetaPage() {
         </div>
       </section>
 
-      <a
-        href={contactUrl}
-        onClick={() => track('whatsapp_click', { location: 'convenios_meta_fixed' })}
+      <button
+        type="button"
+        onClick={() => openContactModal('convenios_meta_fixed')}
         className={`${showFixedContact ? 'inline-flex' : 'hidden'} fixed inset-x-4 bottom-4 z-50 min-h-14 items-center justify-center rounded-full bg-brand-red px-6 py-4 text-center text-base font-black uppercase tracking-wide text-white shadow-2xl shadow-brand-red/25 transition hover:bg-brand-red-dark focus-visible:outline-brand-orange sm:left-auto sm:right-6 sm:w-auto sm:px-8`}
       >
         Entrar em contato
-      </a>
+      </button>
+
+      <ContactLeadModal
+        open={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
+        source={contactSource}
+      />
     </main>
   )
 }
