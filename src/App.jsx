@@ -530,7 +530,7 @@ function getCurrentLandingPage() {
 }
 
 function isConveniosMetaPage() {
-  return getNormalizedPathname() === '/convenios-meta/'
+  return ['/convenios-meta/', '/meta-convenios/'].includes(getNormalizedPathname())
 }
 
 function track(event, payload = {}) {
@@ -773,7 +773,7 @@ function ConveniosMetaPage() {
             <div className="text-center md:text-left">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-red">Dr. Gustavo Pimpão</p>
               <h1 className="font-display mt-3 text-3xl font-black leading-tight text-brand-graphite sm:text-4xl">
-                Ortopedista e Traumatologista
+                Ortopedista para Infiltração com Ácido Hialurônico
               </h1>
               <p className="mt-3 text-base font-black text-brand-red">{doctor.crm} • {doctor.rqe}</p>
             </div>
