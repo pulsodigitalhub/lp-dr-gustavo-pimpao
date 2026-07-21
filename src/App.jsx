@@ -530,7 +530,7 @@ function getCurrentLandingPage() {
 }
 
 function isConveniosMetaPage() {
-  return ['/convenios-meta/', '/meta-convenios/'].includes(getNormalizedPathname())
+  return ['/convenios-meta/', '/convenio-meta/', '/meta-convenios/'].includes(getNormalizedPathname())
 }
 
 function track(event, payload = {}) {
