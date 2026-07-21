@@ -1852,10 +1852,12 @@ function Footer({ page }) {
 
 function FloatingActions() {
   const [showTop, setShowTop] = useState(false)
+  const [showBottomCta, setShowBottomCta] = useState(false)
 
   useEffect(() => {
     function onScroll() {
       setShowTop(window.scrollY > 800)
+      setShowBottomCta(window.scrollY > 260)
     }
 
     onScroll()
@@ -1885,12 +1887,14 @@ function FloatingActions() {
         </button>
       )}
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-graphite/10 bg-white p-4 shadow-2xl sm:hidden">
-        <Button className="w-full" source="mobile_sticky">
-          <Icon name="whatsapp" />
-          Agendar pelo WhatsApp
-        </Button>
-      </div>
+      {showBottomCta && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-graphite/10 bg-white p-4 shadow-2xl sm:hidden">
+          <Button className="w-full" source="mobile_sticky">
+            <Icon name="whatsapp" />
+            Agendar pelo WhatsApp
+          </Button>
+        </div>
+      )}
     </>
   )
 }
