@@ -730,7 +730,7 @@ function ConveniosMetaPage() {
     const handleScroll = () => {
       const convenios = conveniosRef.current
       if (!convenios || typeof window === 'undefined') return
-      const triggerPoint = convenios.offsetTop - window.innerHeight + 120
+      const triggerPoint = Math.max(320, convenios.offsetTop - window.innerHeight + 120)
       setShowFixedContact(window.scrollY >= triggerPoint)
     }
 
