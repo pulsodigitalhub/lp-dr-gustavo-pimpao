@@ -602,14 +602,39 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
     })
 
     // Captura o lead nas planilhas de CRM antes de redirecionar pro WhatsApp.
-    // phone = dígitos puros (estado interno do input); pagina = origem do botão.
+    // Contrato do webhook (INSTRUCOES-FRONT.md): pagina = URL completa da LP com a
+    // query string, mais os parâmetros de tracking — sem eles a atribuição se perde.
+    // phone = dígitos puros (estado interno do input); botao = origem do clique.
+    const lpUrl = new URL(window.location.href)
+    const q = lpUrl.searchParams
+    const pick = (...keys) => keys.map((k) => q.get(k)).find(Boolean) || ''
+    const cookie = (key) => document.cookie.match(new RegExp(`(?:^|; )${key}=([^;]*)`))?.[1] || ''
+
     fetch('https://leads.pulso.marketing/lead/drgustavo-pimpao', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         nome: name.trim(),
         phone,
-        pagina: source,
+        pagina: lpUrl.toString(),
+        botao: source,
+        utm_source: pick('utm_source'),
+        utm_medium: pick('utm_medium'),
+        utm_campaign: pick('utm_campaign'),
+        utm_content: pick('utm_content'),
+        utm_term: pick('utm_term'),
+        campaign_id: pick('campaign_id', 'campaignid'),
+        adset_id: pick('adset_id', 'adgroupid'),
+        ad_id: pick('ad_id', 'adid'),
+        adset_name: pick('adset_name'),
+        placement: pick('placement'),
+        platform: pick('platform'),
+        gclid: pick('gclid'),
+        gbraid: pick('gbraid'),
+        fbclid: pick('fbclid'),
+        fbp: cookie('_fbp'),
+        fbc: cookie('_fbc'),
+        device: pick('device'),
       }),
     }).catch(() => {})
 
