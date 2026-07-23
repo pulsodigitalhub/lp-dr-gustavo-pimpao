@@ -250,6 +250,7 @@ const convenioHighlights = [
   'PF SAÚDE',
   'PLAN ASSISTE',
   'PLAS/JMU',
+  'PMDF',
   'PRÓ-SAÚDE – CÂM. DOS DEPUTADOS',
   'PRÓ-SAÚDE – TJDFT',
   'PRÓ-SER',
