@@ -23,7 +23,7 @@ function copyStaticAssets() {
         });
       }
 
-      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro", "medico-especialista-joelho", "convenios-meta", "convenio-meta", "meta-convenios"];
+      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro", "medico-especialista-joelho", "medico-especialista-coluna", "medico-especialista-ombro", "medico-especialista-quadril", "medico-especialista-mao-punho", "medico-especialista-pe-tornozelo", "convenios-meta", "convenio-meta", "meta-convenios"];
       const indexFile = path.join(distDir, "index.html");
 
       if (fs.existsSync(indexFile)) {
