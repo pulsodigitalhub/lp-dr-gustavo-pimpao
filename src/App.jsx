@@ -514,8 +514,8 @@ const injectionLandingPages = {
     finalCtaTitle: 'Agende uma avaliação para entender a causa da dor no joelho.',
     finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
-  '/medico-coluna/': {
-    slug: 'medico-coluna',
+  '/medico-especialista-coluna/': {
+    slug: 'medico-especialista-coluna',
     title: 'Ortopedista para Coluna em Brasília',
     metaTitle: 'Especialista em Coluna em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor na coluna, hérnia de disco, ciática, formigamento e limitação de movimento em Brasília.',
@@ -568,8 +568,8 @@ const injectionLandingPages = {
     finalCtaTitle: 'Agende uma avaliação para entender a causa da dor na coluna.',
     finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
-  '/medico-ombro/': {
-    slug: 'medico-ombro',
+  '/medico-especialista-ombro/': {
+    slug: 'medico-especialista-ombro',
     title: 'Ortopedista para Ombro em Brasília',
     metaTitle: 'Especialista em Ombro em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no ombro, bursite, tendinopatias, rigidez e perda de mobilidade em Brasília.',
@@ -622,8 +622,8 @@ const injectionLandingPages = {
     finalCtaTitle: 'Agende uma avaliação para entender a causa da dor no ombro.',
     finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
-  '/medico-quadril/': {
-    slug: 'medico-quadril',
+  '/medico-especialista-quadril/': {
+    slug: 'medico-especialista-quadril',
     title: 'Ortopedista para Quadril em Brasília',
     metaTitle: 'Especialista em Quadril em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no quadril, desgaste articular, bursite trocantérica e dificuldade para caminhar em Brasília.',
@@ -676,8 +676,8 @@ const injectionLandingPages = {
     finalCtaTitle: 'Agende uma avaliação para entender a causa da dor no quadril.',
     finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
-  '/medico-mao-punho/': {
-    slug: 'medico-mao-punho',
+  '/medico-especialista-mao-punho/': {
+    slug: 'medico-especialista-mao-punho',
     title: 'Ortopedista para Mão e Punho em Brasília',
     metaTitle: 'Especialista em Mão e Punho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor na mão e no punho, túnel do carpo, dedo em gatilho e perda de força em Brasília.',
@@ -730,8 +730,8 @@ const injectionLandingPages = {
     finalCtaTitle: 'Agende uma avaliação para entender a causa da dor na mão ou no punho.',
     finalCtaDescription: 'Pelo WhatsApp, a equipe confirma agenda, unidade disponível e cobertura do plano.',
   },
-  '/medico-pe-tornozelo/': {
-    slug: 'medico-pe-tornozelo',
+  '/medico-especialista-pe-tornozelo/': {
+    slug: 'medico-especialista-pe-tornozelo',
     title: 'Ortopedista para Pé e Tornozelo em Brasília',
     metaTitle: 'Especialista em Pé e Tornozelo em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no pé e no tornozelo, entorses, fascite plantar e tendinite de Aquiles em Brasília.',
