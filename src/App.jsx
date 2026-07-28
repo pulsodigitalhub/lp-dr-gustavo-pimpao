@@ -799,6 +799,17 @@ function getCurrentLandingPage() {
   return injectionLandingPages[pathname] || null
 }
 
+const heroLocationVariants = {
+  '/ortopedista-aguas-claras/': 'Ortopedista em Águas Claras',
+  '/ortopedista-asa-sul/': 'Ortopedista na Asa Sul',
+  '/ortopedista-taguatinga/': 'Ortopedista em Taguatinga',
+}
+
+function getHeroTitle() {
+  const pathname = getNormalizedPathname()
+  return heroLocationVariants[pathname] || undefined
+}
+
 function isConveniosMetaPage() {
   return ['/convenios-meta/', '/convenio-meta/', '/meta-convenios/'].includes(getNormalizedPathname())
 }
@@ -1560,7 +1571,7 @@ function Header({ page }) {
   )
 }
 
-function Hero() {
+function Hero({ title = 'Ortopedista em Brasília' }) {
   return (
     <section id="topo" className="relative overflow-hidden bg-brand-cream">
       <div className="absolute inset-0 hero-medical-bg" aria-hidden="true" />
@@ -1570,7 +1581,7 @@ function Hero() {
       <div className="relative mx-auto grid min-h-0 max-w-7xl items-start gap-10 px-4 pb-10 pt-5 sm:px-6 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-12">
         <div>
           <h1 className="font-display max-w-4xl text-4xl font-black leading-[0.98] text-brand-graphite sm:text-5xl lg:text-7xl">
-            Ortopedista em Brasília
+            {title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray">
             Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.
@@ -2545,6 +2556,7 @@ function SchemaJsonLd({ page = null }) {
 
 export default function App() {
   const landingPage = getCurrentLandingPage()
+  const heroTitle = getHeroTitle()
 
   if (isConveniosMetaPage()) {
     return <ConveniosMetaPage />
@@ -2566,7 +2578,7 @@ export default function App() {
       <div className="mobile-readable">
         <Header />
         <main>
-          <Hero />
+          <Hero title={heroTitle} />
           <ProofBar />
           <PainSection />
           <ApproachSection />
