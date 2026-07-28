@@ -803,6 +803,7 @@ const heroLocationVariants = {
   '/ortopedista-aguas-claras/': 'Ortopedista em Águas Claras',
   '/ortopedista-asa-sul/': 'Ortopedista na Asa Sul',
   '/ortopedista-taguatinga/': 'Ortopedista em Taguatinga',
+  '/convenio/': 'Ortopedia pelo Convênio em Brasília',
 }
 
 function getHeroTitle() {
