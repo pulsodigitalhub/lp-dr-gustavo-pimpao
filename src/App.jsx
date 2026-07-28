@@ -516,7 +516,7 @@ const injectionLandingPages = {
   },
   '/medico-especialista-coluna/': {
     slug: 'medico-especialista-coluna',
-    title: 'Especialista em Coluna em Brasília',
+    title: 'Ortopedista para Coluna em Brasília',
     metaTitle: 'Especialista em Coluna em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor na coluna, hérnia de disco, ciática, formigamento e limitação de movimento em Brasília.',
     eyebrow: 'Especialista em coluna',
@@ -570,7 +570,7 @@ const injectionLandingPages = {
   },
   '/medico-especialista-ombro/': {
     slug: 'medico-especialista-ombro',
-    title: 'Especialista em Ombro em Brasília',
+    title: 'Ortopedista para Ombro em Brasília',
     metaTitle: 'Especialista em Ombro em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no ombro, bursite, tendinopatias, rigidez e perda de mobilidade em Brasília.',
     eyebrow: 'Especialista em ombro',
@@ -624,7 +624,7 @@ const injectionLandingPages = {
   },
   '/medico-especialista-quadril/': {
     slug: 'medico-especialista-quadril',
-    title: 'Especialista em Quadril em Brasília',
+    title: 'Ortopedista para Quadril em Brasília',
     metaTitle: 'Especialista em Quadril em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no quadril, desgaste articular, bursite trocantérica e dificuldade para caminhar em Brasília.',
     eyebrow: 'Especialista em quadril',
@@ -678,7 +678,7 @@ const injectionLandingPages = {
   },
   '/medico-especialista-mao-punho/': {
     slug: 'medico-especialista-mao-punho',
-    title: 'Especialista em Mão e Punho em Brasília',
+    title: 'Ortopedista para Mão e Punho em Brasília',
     metaTitle: 'Especialista em Mão e Punho em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor na mão e no punho, túnel do carpo, dedo em gatilho e perda de força em Brasília.',
     eyebrow: 'Especialista em mão e punho',
@@ -732,7 +732,7 @@ const injectionLandingPages = {
   },
   '/medico-especialista-pe-tornozelo/': {
     slug: 'medico-especialista-pe-tornozelo',
-    title: 'Especialista em Pé e Tornozelo em Brasília',
+    title: 'Ortopedista para Pé e Tornozelo em Brasília',
     metaTitle: 'Especialista em Pé e Tornozelo em Brasília — Dr. Gustavo Pimpão',
     metaDescription: 'Avaliação ortopédica com foco em dor no pé e no tornozelo, entorses, fascite plantar e tendinite de Aquiles em Brasília.',
     eyebrow: 'Especialista em pé e tornozelo',
