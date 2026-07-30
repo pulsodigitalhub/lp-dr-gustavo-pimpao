@@ -47,6 +47,7 @@ import {
   X,
 } from '@phosphor-icons/react'
 import './App.css'
+import { posts } from './data/posts'
 
 const doctor = {
   name: 'Dr. Gustavo Lima Almeida Pimpão',
@@ -1525,13 +1526,12 @@ function Header({ page }) {
   const [open, setOpen] = useState(false)
   const headerLogoSpecialty = getFooterLogoSpecialty(page)
   const links = [
-    ['#dores', 'Dores'],
-    ['#abordagem', 'Como funciona'],
-    ['#procedimentos', 'Procedimentos'],
-    ['#especialista', 'Especialista'],
-    ['#convenios', 'Convênios'],
-    ['#localizacao', 'Locais'],
-    ['#faq', 'FAQ'],
+    ['#/', 'Início'],
+    ['#/tratamentos', 'Tratamentos'],
+    ['#/dr-gustavo', 'O Doutor'],
+    ['#/convenios', 'Convênios'],
+    ['#/blog', 'Blog'],
+    ['#/contato', 'Contato'],
   ]
 
   return (
@@ -2694,7 +2694,171 @@ function AgendarPage() {
   )
 }
 
+function GlobalLayout({ children }) {
+  return (
+    <div className="mobile-readable">
+      <Header />
+      <main>
+        {children}
+      </main>
+      <Footer />
+      <FloatingActions />
+    </div>
+  )
+}
+
+function HomePage({ heroTitle }) {
+  return (
+    <>
+      <Hero title={heroTitle} />
+      <ProofBar />
+      <PainSection />
+      <ApproachSection />
+      <ProceduresSection />
+      <SpecialistSection />
+      <DifferentialsSection />
+      <ConveniosSection />
+      <LocationSection />
+      <FAQSection />
+    </>
+  )
+}
+
+function TratamentosPage() {
+  return (
+    <>
+      <section className="bg-brand-cream pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-graphite mb-6">Nossos Tratamentos</h1>
+          <p className="text-xl text-brand-gray max-w-3xl mx-auto">Conheça as especialidades e os procedimentos realizados.</p>
+        </div>
+      </section>
+      <ProceduresSection />
+    </>
+  )
+}
+
+function BioPage() {
+  return (
+    <>
+      <section className="bg-brand-cream pt-24 pb-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-graphite mb-6">Dr. Gustavo Pimpão</h1>
+        </div>
+      </section>
+      <SpecialistSection />
+      <DifferentialsSection />
+    </>
+  )
+}
+
+function ConveniosPage() {
+  return (
+    <>
+      <section className="bg-brand-cream pt-24 pb-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-graphite mb-6">Convênios Aceitos</h1>
+          <p className="text-xl text-brand-gray max-w-3xl mx-auto">Consulte os planos de saúde que atendemos.</p>
+        </div>
+      </section>
+      <ConveniosSection />
+    </>
+  )
+}
+
+function BlogPage() {
+  return (
+    <section className="bg-brand-cream pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-black text-brand-graphite mb-6">Blog e Artigos</h1>
+        <p className="text-xl text-brand-gray mb-12">Informações e dicas sobre ortopedia, esportes e saúde.</p>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map(post => (
+            <a key={post.slug} href={`#/blog/${post.slug}`} className="bg-white rounded-3xl shadow-soft overflow-hidden hover:scale-[1.02] transition-transform duration-300 border border-brand-graphite/5 flex flex-col">
+              <img src={post.image} alt={post.title} className="w-full h-56 object-cover" />
+              <div className="p-8 flex-1 flex flex-col">
+                <span className="text-brand-red text-xs font-black uppercase tracking-widest mb-3">{post.category}</span>
+                <h2 className="text-2xl font-black text-brand-graphite mb-4 leading-tight">{post.title}</h2>
+                <p className="text-brand-gray text-base leading-relaxed line-clamp-3 mb-6 flex-1">{post.excerpt}</p>
+                <span className="text-sm font-bold text-brand-red flex items-center gap-2 mt-auto">
+                  Ler artigo completo <Icon name="arrow-right" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function BlogPostPage({ slug }) {
+  const post = posts.find(p => p.slug === slug)
+  if (!post) {
+    return (
+      <div className="py-32 text-center bg-brand-cream min-h-screen">
+        <h1 className="text-3xl font-black text-brand-graphite mb-4">Artigo não encontrado</h1>
+        <a href="#/blog" className="text-brand-red font-bold underline">Voltar para o Blog</a>
+      </div>
+    )
+  }
+  
+  return (
+    <article className="bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+       <div className="max-w-3xl mx-auto">
+          <a href="#/blog" className="text-brand-red font-bold text-sm uppercase tracking-wider mb-8 inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
+             <Icon name="arrow-left" /> Voltar para o Blog
+          </a>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-brand-graphite mb-8 leading-[1.1]">{post.title}</h1>
+          <div className="flex flex-wrap gap-4 items-center text-sm font-semibold text-brand-gray mb-10 pb-6 border-b border-brand-graphite/10">
+             <div className="flex items-center gap-2"><Icon name="calendar" /> {post.date}</div>
+             <span className="hidden sm:inline">•</span>
+             <div className="flex items-center gap-2"><Icon name="user" /> {post.author}</div>
+             <span className="hidden sm:inline">•</span>
+             <span className="bg-brand-red/10 text-brand-red px-3 py-1 rounded-full">{post.category}</span>
+          </div>
+          <img src={post.image} alt={post.title} className="w-full h-[300px] md:h-[500px] object-cover rounded-[2rem] mb-12 shadow-soft" />
+          <div className="prose-custom max-w-none">
+             {post.content.map((p, i) => (
+                <p key={i} className="mb-6 text-lg text-brand-gray leading-relaxed">{p}</p>
+             ))}
+          </div>
+          
+          <div className="mt-16 pt-10 border-t border-brand-graphite/10">
+            <div className="bg-brand-cream rounded-3xl p-8 sm:p-12 text-center">
+               <h3 className="text-2xl font-black text-brand-graphite mb-4">Sente alguma dor semelhante?</h3>
+               <p className="text-brand-gray mb-8">Agende uma avaliação com o Dr. Gustavo Pimpão para um diagnóstico preciso.</p>
+               <Button source="blog_post">Agendar Avaliação</Button>
+            </div>
+          </div>
+       </div>
+    </article>
+  )
+}
+
+function ContatoPage() {
+  return (
+    <>
+      <section className="bg-brand-cream pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-graphite mb-6">Contato e Localização</h1>
+          <p className="text-xl text-brand-gray max-w-3xl mx-auto mb-10">Agende sua consulta ou visite uma de nossas unidades.</p>
+        </div>
+      </section>
+      <LocationSection />
+    </>
+  )
+}
+
 export default function App() {
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '#/')
+
+  useEffect(() => {
+    const handleHashChange = () => setCurrentHash(window.location.hash || '#/')
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
   const landingPage = getCurrentLandingPage()
   const heroTitle = getHeroTitle()
 
@@ -2716,26 +2880,27 @@ export default function App() {
     )
   }
 
+  const renderPage = () => {
+    if (currentHash === '#/tratamentos') return <TratamentosPage />
+    if (currentHash === '#/dr-gustavo') return <BioPage />
+    if (currentHash === '#/convenios') return <ConveniosPage />
+    if (currentHash === '#/blog') return <BlogPage />
+    if (currentHash === '#/contato') return <ContatoPage />
+    
+    if (currentHash.startsWith('#/blog/')) {
+      const slug = currentHash.replace('#/blog/', '')
+      return <BlogPostPage slug={slug} />
+    }
+
+    return <HomePage heroTitle={heroTitle} />
+  }
+
   return (
     <>
       <SchemaJsonLd />
-      <div className="mobile-readable">
-        <Header />
-        <main>
-          <Hero title={heroTitle} />
-          <ProofBar />
-          <PainSection />
-          <ApproachSection />
-          <ProceduresSection />
-          <SpecialistSection />
-          <DifferentialsSection />
-          <ConveniosSection />
-          <LocationSection />
-          <FAQSection />
-        </main>
-        <Footer />
-        <FloatingActions />
-      </div>
+      <GlobalLayout>
+        {renderPage()}
+      </GlobalLayout>
       <LeadModalHost />
     </>
   )
