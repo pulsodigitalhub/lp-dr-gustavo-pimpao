@@ -2563,7 +2563,7 @@ function SchemaJsonLd({ page = null }) {
 }
 
 function AgendarPage() {
-  const [countdown, setCountdown] = useState(3)
+  const [countdown, setCountdown] = useState(2)
   const [redirected, setRedirected] = useState(false)
 
   const redirectUrl = useMemo(() => {
@@ -2609,7 +2609,7 @@ function AgendarPage() {
         setRedirected(true)
         window.location.href = redirectUrl
       }
-    }, 3500)
+    }, 2500)
 
     return () => {
       clearInterval(timer)
@@ -2625,14 +2625,14 @@ function AgendarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-cream flex flex-col items-center justify-center px-4 py-12 font-sans select-none relative overflow-hidden">
+    <div className="min-h-screen bg-brand-cream flex flex-col items-center justify-center px-4 py-8 font-sans select-none relative overflow-hidden mobile-readable">
       {/* Radial overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(160,26,42,0.06)_0%,transparent_70%)] pointer-events-none z-0" />
       
-      <div className="relative z-10 w-full max-w-md bg-white rounded-[2.5rem] p-8 md:p-10 shadow-soft border border-brand-graphite/5 text-center flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-md bg-white rounded-[2.5rem] p-6 sm:p-10 shadow-soft border border-brand-graphite/5 text-center flex flex-col items-center">
         {/* Pulsing WhatsApp Ring */}
-        <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-emerald-500/10 text-[#25D366] mb-8">
-          <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+        <div className="relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-emerald-500/10 text-[#25D366] mb-6 sm:mb-8">
+          <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="currentColor" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.025 14.069.99 11.5.99c-5.438 0-9.863 4.37-9.868 9.8-.001 1.77.463 3.5 1.34 5.024L2.002 21.1l5.441-1.426-.8 1.48z" />
           </svg>
           <span className="absolute inset-0 rounded-full border border-emerald-500/30 animate-ping" />
@@ -2642,10 +2642,10 @@ function AgendarPage() {
         <span className="text-xs font-black uppercase tracking-[0.25em] text-brand-red mb-3">
           Redirecionamento
         </span>
-        <h1 className="font-display text-2xl md:text-3xl font-black text-brand-graphite leading-tight mb-4">
+        <h1 className="font-display text-2xl sm:text-3xl font-black text-brand-graphite leading-tight mb-4">
           Direcionando para o WhatsApp...
         </h1>
-        <p className="text-sm font-medium text-brand-gray/80 mb-6">
+        <p className="text-base font-medium text-brand-gray/80 mb-6">
           Você será redirecionado automaticamente em{' '}
           <span className="font-bold text-brand-red">{countdown}s</span>
         </p>
@@ -2658,18 +2658,18 @@ function AgendarPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M12 5v9" />
               </svg>
             </div>
-            <p className="text-xs md:text-sm font-bold text-brand-graphite leading-relaxed">
+            <p className="text-sm sm:text-base font-bold text-brand-graphite leading-relaxed">
               Ao abrir o WhatsApp, envie a mensagem automática sem alterações. Isso ajuda nossa equipe a identificar sua solicitação e agilizar o atendimento.
             </p>
           </div>
         </div>
 
         {/* Message Preview Mock */}
-        <div className="w-full bg-brand-cream/20 border border-dashed border-brand-graphite/15 rounded-2xl p-4 text-left mb-8">
-          <span className="text-[10px] font-black uppercase tracking-wider text-brand-gray/60 block mb-2">
+        <div className="w-full bg-brand-cream/20 border border-dashed border-brand-graphite/15 rounded-2xl p-4 text-left mb-6 sm:mb-8">
+          <span className="text-xs font-black uppercase tracking-wider text-brand-gray/60 block mb-2">
             Mensagem automática no WhatsApp:
           </span>
-          <p className="text-sm italic font-semibold text-brand-graphite bg-white rounded-xl p-3 border border-brand-graphite/5 shadow-sm leading-relaxed">
+          <p className="text-base italic font-semibold text-brand-graphite bg-white rounded-xl p-3 border border-brand-graphite/5 shadow-sm leading-relaxed">
             &ldquo;Olá! Vim pelo site e gostaria de agendar uma avaliação. Poderiam me passar mais informações?&rdquo;
           </p>
         </div>
@@ -2677,7 +2677,7 @@ function AgendarPage() {
         {/* Manual Button */}
         <button
           onClick={handleManualClick}
-          className="w-full inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand-red text-white text-base font-black uppercase tracking-wider shadow-lg shadow-brand-red/20 transition duration-300 hover:bg-brand-red-dark hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          className="w-full inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand-red text-white text-base sm:text-lg font-black uppercase tracking-wider shadow-lg shadow-brand-red/20 transition duration-300 hover:bg-brand-red-dark hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
         >
           Ir para o WhatsApp agora
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -2687,7 +2687,7 @@ function AgendarPage() {
       </div>
 
       {/* Footer Branding */}
-      <span className="mt-8 text-[11px] font-bold text-brand-gray/40 uppercase tracking-widest z-10">
+      <span className="mt-8 text-xs font-bold text-brand-gray/40 uppercase tracking-widest z-10">
         Dr. Gustavo Pimpão • Ortopedia e Traumatologia
       </span>
     </div>
