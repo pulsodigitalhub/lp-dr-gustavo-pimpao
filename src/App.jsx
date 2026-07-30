@@ -2582,7 +2582,7 @@ function AgendarPage() {
     }
 
     const messageText = 'Olá! Vim pelo site e gostaria de agendar uma avaliação. Poderiam me passar mais informações?'
-    crmUrl.searchParams.set('text', messageText)
+    crmUrl.searchParams.set('mensagem', messageText)
 
     return crmUrl.toString()
   }, [])
