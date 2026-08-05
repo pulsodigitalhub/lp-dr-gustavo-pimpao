@@ -23,7 +23,7 @@ function copyStaticAssets() {
         });
       }
 
-      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro", "medico-especialista-joelho", "medico-coluna", "medico-ombro", "medico-quadril", "medico-mao-punho", "medico-pe-tornozelo", "ortopedista-aguas-claras", "ortopedista-asa-sul", "ortopedista-taguatinga", "convenio", "convenios-meta", "convenio-meta", "meta-convenios", "agendar", "direcionamento"];
+      const routeEntries = ["infiltracao", "infiltracao-joelho", "infiltracao-ombro", "infiltracao-coluna", "medico-especialista-joelho", "medico-coluna", "medico-ombro", "medico-quadril", "medico-mao-punho", "medico-pe-tornozelo", "ortopedista-aguas-claras", "ortopedista-asa-sul", "ortopedista-taguatinga", "convenio", "convenios-meta", "convenio-meta", "meta-convenios", "agendar", "direcionamento"];
       const indexFile = path.join(distDir, "index.html");
 
       if (fs.existsSync(indexFile)) {

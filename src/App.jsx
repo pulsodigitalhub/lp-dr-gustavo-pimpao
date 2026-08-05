@@ -461,6 +461,56 @@ const injectionLandingPages = {
       { q: 'Posso voltar a treinar depois?', a: 'A retomada depende do diagnóstico, do procedimento e da resposta individual. O médico orienta o retorno gradual.' },
     ],
   },
+  '/infiltracao-coluna/': {
+    slug: 'infiltracao-coluna',
+    title: 'Infiltração na Coluna em Brasília',
+    metaTitle: 'Infiltração na Coluna em Brasília — Dr. Gustavo Pimpão',
+    metaDescription: 'Avaliação ortopédica para dor lombar, cervical, ciática ou hérnia de disco, com indicação de infiltração quando houver critério clínico, em Brasília.',
+    eyebrow: 'Dor na coluna',
+    description: 'Dr. Gustavo Pimpão, ortopedista e traumatologista com foco em procedimentos para alívio da dor. Atendimento em 3 locais de Brasília e +40 convênios aceitos.',
+    proofFormationText: 'Especialização em intervenção da dor',
+    symptomsTitle: 'Quando a dor na coluna começa a limitar sua rotina',
+    symptomsIntro: 'Dor lombar, cervical ou irradiada para a perna pode ter causas diferentes. A avaliação ajuda a entender se a infiltração faz sentido no plano de cuidado.',
+    symptoms: [
+      { text: 'Dor lombar que não melhora com repouso', icon: 'colunaLombarIcon' },
+      { text: 'Dor irradiando para a perna ou formigamento', icon: 'colunaCiaticoIcon' },
+      { text: 'Dor no pescoço com formigamento no braço', icon: 'colunaCervicalIcon' },
+      { text: 'Rigidez ao acordar ou ficar muito tempo na mesma posição', icon: 'bedIcon' },
+      { text: 'Dor persistente após esforço ou má postura', icon: 'colunaSobrecargaIcon' },
+    ],
+    indicationTitle: 'A indicação depende da causa da dor na coluna',
+    indicationText: 'A infiltração na coluna pode ser considerada em casos selecionados, como hérnia de disco com compressão nervosa, processos inflamatórios ou dor persistente que não respondeu ao tratamento conservador. Antes de indicar, o médico avalia exame físico, exames de imagem, histórico e tratamentos já realizados.',
+    contextsTitle: 'Pode ser uma alternativa quando a dor impede o avanço do tratamento',
+    contexts: [
+      { title: 'Hérnia de disco e compressão nervosa', text: 'Dor irradiada, formigamento e alterações identificadas em exame.', icon: 'colunaHerniaDiscoIcon' },
+      { title: 'Lombalgia crônica', text: 'Dor lombar persistente, com ou sem limitação de movimento.', icon: 'colunaLombarIcon' },
+      { title: 'Ciática', text: 'Dor irradiada para a perna, ligada à raiz nervosa.', icon: 'legOutlineIcon' },
+      { title: 'Cervicalgia', text: 'Dor e rigidez no pescoço, por vezes com formigamento no braço.', icon: 'colunaCervicalIcon' },
+      { title: 'Dificuldade na reabilitação', text: 'A dor pode limitar evolução em fisioterapia e retomada de função.', icon: 'personalInjuryIcon' },
+    ],
+    typesTitle: 'Nem toda infiltração na coluna é igual',
+    types: [
+      { title: 'Corticosteroide', text: 'Pode ser considerado quando há componente inflamatório e indicação clínica.', icon: 'syringe' },
+      { title: 'Bloqueio de raiz nervosa', text: 'Pode ser avaliado em casos de dor irradiada com compressão identificada em exame.', icon: 'nerveIcon' },
+      { title: 'Radiofrequência', text: 'Pode ser discutida em situações específicas de dor crônica facetária, com indicação individual.', icon: 'pulse' },
+    ],
+    stepsTitle: 'Da dor na coluna ao plano de cuidado',
+    steps: [
+      'Entender início da dor, evolução, rotina e limitações',
+      'Exame físico e revisão de exames disponíveis',
+      'Correlacionar sintomas com raio-x ou ressonância quando houver',
+      'Definir se há indicação de infiltração',
+      'Orientações de acompanhamento e próximos passos',
+    ],
+    faqTitle: 'Perguntas frequentes sobre infiltração na coluna',
+    faqs: [
+      { q: 'Infiltração na coluna é indicada para hérnia de disco?', a: 'Pode ser considerada em alguns casos, mas depende do grau de compressão, dos sintomas, dos exames e dos tratamentos já realizados.' },
+      { q: 'A infiltração na coluna substitui cirurgia?', a: 'Em alguns casos pode fazer parte do tratamento conservador, mas não substitui cirurgia quando há indicação cirúrgica clara.' },
+      { q: 'Dói para fazer infiltração na coluna?', a: 'O desconforto varia conforme a região e o tipo de procedimento. A equipe orienta o paciente sobre o que esperar antes e depois.' },
+      { q: 'Quantas infiltrações na coluna posso fazer?', a: 'Depende do diagnóstico, do tipo de medicação e da resposta ao tratamento. Essa decisão é individual.' },
+      { q: 'Preciso levar exames?', a: 'Se tiver exames anteriores (raio-x, ressonância), leve para a consulta. Eles ajudam na avaliação e na decisão da conduta.' },
+    ],
+  },
   '/medico-especialista-joelho/': {
     slug: 'medico-especialista-joelho',
     title: 'Especialista em Joelho em Brasília',
@@ -1187,6 +1237,38 @@ function ColunaSobrecargaIcon({ className = 'h-6 w-6' }) {
   )
 }
 
+function NerveIcon({ className = 'h-6 w-6' }) {
+  return (
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M25.45 8.123a1 1 0 0 1-.5 1.323A5 5 0 0 0 22 13.99v.035a5 5 0 0 0 9.971.521a1 1 0 1 1 1.989.213a6.97 6.97 0 0 1-1.71 3.878a7 7 0 0 1 3.784 2.286a1 1 0 1 1-1.52 1.3a5 5 0 0 0-8.247 5.542a2.41 2.41 0 0 1 2.143.811q.38.441.69.897a2.4 2.4 0 0 1 .409 1.62c.455.283.82.718 1.007 1.265c.223.652.392 1.283.533 1.833a2.4 2.4 0 0 1-.015 1.252c.262.23.478.52.624.863c.102.237.172.322.19.34q.101.073.193.153q.281-.11.594-.15q.267-.03.626-.108a2.41 2.41 0 0 1 2.218.65c.429-.258.744-.642.9-1.115c.2-.602.182-1.471-.392-2.584a1 1 0 0 1 1.778-.917c.407.79.64 1.566.709 2.302c.61-.724 1.252-1.702 1.778-2.992a1 1 0 1 1 1.852.755c-.626 1.535-1.403 2.71-2.152 3.587c.487.057 1 .177 1.554.37a1 1 0 0 1-.656 1.89c-.994-.346-1.702-.36-2.39-.216c-.642.133-1.274.396-2.155.765l-.126.053a2.41 2.41 0 0 1-1.892 2.166q-.554.121-1.077.185a2.4 2.4 0 0 1-1.879-.582a2.41 2.41 0 0 1-2.273-.276c-.954-.673-1.495-1.584-1.836-2.38a2.4 2.4 0 0 1-.104-1.602a2.4 2.4 0 0 1-.743-1.214a19 19 0 0 0-.422-1.462a2.4 2.4 0 0 1-.118-1.04a2.4 2.4 0 0 1-.715-.686a5 5 0 0 0-.357-.463a2.41 2.41 0 0 1-.262-2.793A4.98 4.98 0 0 0 21 27.512c-1.6 0-3.024.75-3.939 1.92a7 7 0 0 1-.212.29a5 5 0 0 0-.849 2.79c0 .953.266 1.84.727 2.597a1 1 0 0 1-1.708 1.04a6.97 6.97 0 0 1-.994-4.236a7.03 7.03 0 0 1-4.154.41a1 1 0 0 1 .404-1.959q.492.102 1.016.103c1.6 0 3.024-.75 3.939-1.92q.102-.149.212-.29a5 5 0 0 0-7.854-6.148a1 1 0 0 1-1.481-1.345a7 7 0 0 1 3.643-2.126a7 7 0 0 1-1.694-3.744a1 1 0 0 1 1.984-.251a5.001 5.001 0 0 0 9.96-.618v-.035a5 5 0 0 0-2.864-4.505a1 1 0 1 1 .855-1.808A7.03 7.03 0 0 1 21 10.4a7.03 7.03 0 0 1 3.128-2.778a1 1 0 0 1 1.322.501m-7.184 17.943A7 7 0 0 1 21 25.512c.97 0 1.894.197 2.734.554a6.97 6.97 0 0 1 1.724-5.229A7 7 0 0 1 21 17.615a7 7 0 0 1-4.459 3.222a6.97 6.97 0 0 1 1.725 5.229M21 22.012a.5.5 0 1 0 0 .998a.5.5 0 0 0 0-.998m-2.5.499a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0m9.416 10.369l.12-.147l.19-.004a.41.41 0 0 1 .398.279c.197.574.35 1.142.487 1.678a.41.41 0 0 1-.13.415l-.14.123l-.187-.027a.41.41 0 0 1-.341-.306a21 21 0 0 0-.469-1.616a.41.41 0 0 1 .072-.395m1.58 3.965l-.184-.026l-.143.123a.41.41 0 0 0-.108.474c.26.607.61 1.15 1.15 1.533a.41.41 0 0 0 .567-.087l.128-.17l-.063-.203a.4.4 0 0 0-.155-.214c-.37-.261-.643-.654-.869-1.183a.41.41 0 0 0-.322-.247m3.098 1.95l-.128.17l.063.204a.414.414 0 0 0 .443.285a10 10 0 0 0 .89-.153a.412.412 0 0 0-.176-.805q-.439.095-.812.14a.4.4 0 0 0-.28.16m-5.474-7.547l.19-.004l.12-.148a.41.41 0 0 0 .02-.493a8 8 0 0 0-.552-.717a.412.412 0 1 0-.623.54q.27.314.495.642a.41.41 0 0 0 .35.18m4.732 5.402l-.003-.002z" />
+    </svg>
+  )
+}
+
+function LegOutlineIcon({ className = 'h-6 w-6' }) {
+  return (
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M22.748 4H21.5a1 1 0 0 0-.975.78l-3.353 14.847A7 7 0 0 0 17 21.17v2.322a7 7 0 0 0 .385 2.29l3.854 11.133L15.814 39H13a1 1 0 0 0-1 1v1a3 3 0 0 0 3 3h3.32a3 3 0 0 0 .536-.048l4.011-.73a3 3 0 0 1 1.878.269l.061.03a3.934 3.934 0 0 0 4.747-6.08l-1.536-1.791l.369-8.115a9 9 0 0 0-1.359-5.178l-.779-1.247a54 54 0 0 0 3.699-4.727c2.143-3.09 4.511-7.254 5.044-11.25A1 1 0 0 0 34 4h-.667l-.529 2c-.717 3.181-2.62 6.531-4.5 9.242a52 52 0 0 1-3.704 4.712l-.31.34l-.014.017l-.004.003c-.311.331-.36.83-.12 1.216l1.18 1.886a7 7 0 0 1 1.056 4.028L26 35.954a1 1 0 0 0 .24.697l1.793 2.092a1.934 1.934 0 0 1-2.333 2.99l-.061-.031a5 5 0 0 0-3.13-.447l-4.012.729q-.088.015-.178.016H15a1 1 0 0 1-1-1h2a1 1 0 0 0 .359-.067l6.5-2.5a1 1 0 0 0 .586-1.26l-4.17-12.047A5 5 0 0 1 19 23.491v-2.322a5 5 0 0 1 .123-1.101z" />
+    </svg>
+  )
+}
+
+function PersonalInjuryIcon({ className = 'h-6 w-6' }) {
+  return (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M12 10q-1.65 0-2.825-1.175T8 6t1.175-2.825T12 2t2.825 1.175T16 6t-1.175 2.825T12 10m0-2q.825 0 1.413-.587T14 6t-.587-1.412T12 4t-1.412.588T10 6t.588 1.413T12 8M4 22v-6.775q0-.85.425-1.562T5.6 12.55q1.275-.65 2.888-1.1T12 11t3.513.45t2.887 1.1q.75.4 1.175 1.113T20 15.225V20q0 .825-.587 1.413T18 22H9.75q-1.15 0-1.95-.8T7 19.25t.8-1.95t1.95-.8h2.825l1.55-3.3q-.5-.1-1.025-.15T12 13q-1.8 0-3.2.437t-2.275.913q-.25.125-.387.363T6 15.225V22zm5.75-2h1.2l.7-1.5h-1.9q-.3 0-.525.225T9 19.25t.225.525t.525.225m3.4 0H18v-4.775q0-.275-.137-.512t-.363-.363q-.3-.15-.65-.312t-.75-.313zM12 16.65" />
+    </svg>
+  )
+}
+
+function BedIcon({ className = 'h-6 w-6' }) {
+  return (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8zm-1 5h16v-2q0-.425-.288-.712T19 12H5q-.425 0-.712.288T4 13zm16 0H4z" />
+    </svg>
+  )
+}
+
 function OmbroLevantarBracoIcon({ className = 'h-6 w-6' }) {
   return (
     <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
@@ -1402,6 +1484,10 @@ const iconComponents = {
   colunaCervicalIcon: ColunaCervicalIcon,
   colunaHerniaDiscoIcon: ColunaHerniaDiscoIcon,
   colunaSobrecargaIcon: ColunaSobrecargaIcon,
+  nerveIcon: NerveIcon,
+  legOutlineIcon: LegOutlineIcon,
+  personalInjuryIcon: PersonalInjuryIcon,
+  bedIcon: BedIcon,
   ombroLevantarBracoIcon: OmbroLevantarBracoIcon,
   ombroDorNoturnaIcon: OmbroDorNoturnaIcon,
   ombroManguitoIcon: OmbroManguitoIcon,
