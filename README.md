@@ -5,7 +5,7 @@ Landing page em React + Vite criada para o Dr. Gustavo Pimpão, seguindo o padr�
 ## Links
 
 - Repositório: https://github.com/calilmf/lp-dr-gustavo-pimpao
-- Prévia GitHub Pages: https://calilmf.github.io/lp-dr-gustavo-pimpao/
+- Site em produção: https://drgustavopimpaoortopedia.com.br/ (Vercel, time Pulso)
 
 ## Stack
 
