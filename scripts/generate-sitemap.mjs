@@ -17,6 +17,13 @@ if (!BASE_URL) {
   console.error('SITEMAP_BASE_URL não definida.');
   process.exit(1);
 }
+try {
+  const parsed = new URL(BASE_URL);
+  if (parsed.protocol !== 'https:') throw new Error('não é https');
+} catch (err) {
+  console.error(`SITEMAP_BASE_URL inválida (${BASE_URL}): ${err.message}`);
+  process.exit(1);
+}
 
 const ROOT = process.cwd();
 const EXCLUDE = new Set(['node_modules', 'dist', '.git', 'src', '.github', '.vercel', '.next']);
@@ -54,10 +61,14 @@ if (fs.existsSync(distDir)) {
   }
 }
 
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
 const sorted = [...routes].sort();
 const base = BASE_URL.replace(/\/$/, '');
 const urls = sorted
-  .map((r) => `  <url>\n    <loc>${base}${r === '/' ? '/' : r + '/'}</loc>\n  </url>`)
+  .map((r) => `  <url>\n    <loc>${esc(base + (r === '/' ? '/' : r + '/'))}</loc>\n  </url>`)
   .join('\n');
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 
