@@ -969,7 +969,7 @@ function ContactLeadModal({ open, onClose, source = 'convenios_meta' }) {
     const pick = (...keys) => keys.map((k) => q.get(k)).find(Boolean) || ''
     const cookie = (key) => document.cookie.match(new RegExp(`(?:^|; )${key}=([^;]*)`))?.[1] || ''
 
-    fetch('https://leads.pulso.marketing/lead/drgustavo-pimpao', {
+    fetch('https://leads-clientes.sergioshouse.com.br/gustavo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
