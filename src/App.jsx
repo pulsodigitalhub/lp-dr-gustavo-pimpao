@@ -915,7 +915,11 @@ function openLeadModal(event, source = 'lp') {
   event?.preventDefault()
   if (typeof window === 'undefined') return
   track('whatsapp_click', { location: source })
-  window.location.href = getDirecionamentoUrl(source)
+  // Vai direto para o WhatsApp. Antes passava por /agendar/, que redirecionava
+  // para um servico de terceiro (sistema.pulso.marketing) — cross-domain
+  // redirect a partir do anuncio, classificado pelo Google como destination
+  // mismatch / sneaky redirect, com penalidade de suspensao sem aviso.
+  window.location.href = whatsappUrl({ source })
 }
 
 
@@ -2652,29 +2656,14 @@ function AgendarPage() {
 
   const redirectUrl = useMemo(() => {
     if (typeof window === 'undefined') return ''
-
     const params = new URLSearchParams(window.location.search)
-    const crmUrl = new URL('https://sistema.pulso.marketing/go/dr-gustavo-pimpao')
-
-    params.forEach((value, key) => {
-      crmUrl.searchParams.set(key, value)
-    })
-
-    if (!crmUrl.searchParams.has('landing_page_url')) {
-      const fallbackUrl = params.get('landing_page_url') || window.location.origin
-      crmUrl.searchParams.set('landing_page_url', fallbackUrl)
-    }
-
-    const messageText = 'Olá! Quero saber mais informações.'
-    crmUrl.searchParams.set('mensagem', messageText)
-
-    return crmUrl.toString()
+    return whatsappUrl({ source: params.get('ponto_conversao') || 'agendar' })
   }, [])
 
   useEffect(() => {
     document.title = 'Direcionando para o WhatsApp — Dr. Gustavo Pimpão'
 
-    const duration = 2500
+    const duration = 800
     const intervalTime = 30
     const startTime = Date.now()
 
