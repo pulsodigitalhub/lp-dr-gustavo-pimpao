@@ -2524,6 +2524,7 @@ function Footer({ page }) {
         </div>
         <div className="flex flex-col gap-2 pt-5 text-xs text-brand-gray sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {doctor.shortName} — {doctor.crm} — {doctor.rqe}</p>
+          <a href="/politica-de-privacidade/" className="underline hover:text-brand-graphite">Política de privacidade</a>
           <p>Desenvolvido por Pulso Marketing Médico</p>
         </div>
       </div>
@@ -2647,6 +2648,66 @@ function SchemaJsonLd({ page = null }) {
         />
       ))}
     </>
+  )
+}
+
+function isPoliticaPrivacidadePage() {
+  return ['/politica-de-privacidade/', '/politicas-de-privacidade/'].includes(getNormalizedPathname())
+}
+
+function PoliticaPrivacidadePage() {
+  useEffect(() => {
+    document.title = 'Política de Privacidade — Dr. Gustavo Pimpão'
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-brand-cream">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+        <a href="/" className="text-sm text-brand-gray underline">← Voltar ao site</a>
+        <h1 className="mt-6 text-3xl font-black text-brand-graphite">Política de Privacidade</h1>
+        <p className="mt-2 text-sm text-brand-gray">Última atualização: setembro de 2026</p>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Coleta de dados pessoais</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Coletamos nome e telefone/WhatsApp fornecidos voluntariamente ao clicar nos botões de agendamento, que direcionam ao WhatsApp do consultório. Também coletamos automaticamente dados de navegação, como IP, navegador, páginas visitadas e origem da visita, para medir o desempenho das campanhas. Dados de saúde não são coletados por este site; eles são tratados apenas no atendimento presencial, sob sigilo médico.</p>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Finalidade do uso</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-brand-gray">
+          <li>Agendar e confirmar consultas.</li>
+          <li>Responder dúvidas.</li>
+          <li>Medir e melhorar campanhas e o site.</li>
+          <li>Cumprir obrigações legais e do Conselho Federal de Medicina.</li>
+        </ul>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Compartilhamento</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Os dados nunca são vendidos. Eles podem ser compartilhados apenas com plataformas de gestão da clínica, serviços de infraestrutura, hospedagem e mensuração, além de autoridades quando houver exigência legal.</p>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Cookies e medição</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Utilizamos cookies para medir audiência e desempenho de campanhas. Você pode recusá-los no navegador, ciente de que algumas funcionalidades podem ser afetadas. Não realizamos rastreamento abusivo.</p>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Segurança da informação</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Adotamos HTTPS/TLS e restrição de acesso aos dados para proteger as informações tratadas.</p>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Seus direitos (LGPD, Lei 13.709/2018)</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-brand-gray">
+          <li>Confirmação de tratamento.</li>
+          <li>Acesso aos dados.</li>
+          <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+          <li>Exclusão de dados desnecessários, exceto aqueles exigidos por lei para guarda de prontuário.</li>
+          <li>Revogação de consentimento.</li>
+        </ul>
+
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Como nos contatar</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Para questões sobre privacidade, entre em contato com {doctor.shortName}, {doctor.crm}, {doctor.rqe}, pelo WhatsApp {doctor.visiblePhone}.</p>
+        <div className="mt-3 space-y-3 text-brand-gray">
+          {locations.map((location) => (
+            <div key={location.name}>
+              <p className="font-bold text-brand-graphite">{location.name} — {location.region}</p>
+              <p className="leading-relaxed">{location.address}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -2924,6 +2985,10 @@ export default function App() {
 
   const landingPage = getCurrentLandingPage()
   const heroTitle = getHeroTitle()
+
+  if (isPoliticaPrivacidadePage()) {
+    return <PoliticaPrivacidadePage />
+  }
 
   if (isDirecionamentoPage()) {
     return <AgendarPage />
