@@ -34,6 +34,7 @@ jobs:
       - name: Gerar sitemap.xml
         env:
           SITEMAP_BASE_URL: "https://drgustavopimpaoortopedia.com.br"
+          SITEMAP_EXCLUDE: "agendar,direcionamento"
         run: node scripts/generate-sitemap.mjs
 
       - name: Commitar sitemap.xml se mudou
