@@ -870,12 +870,66 @@ function track(event, payload = {}) {
   window.dataLayer.push({ event, ...payload })
 }
 
-function whatsappUrl({ name = '', phone = '', source = 'lp' } = {}) {
+const WHATSAPP_CLICK_TRACK_URL = 'https://intelligence.calil.ia.br/v1/track/whatsapp-click/dr-gustavo-pimpao'
+
+// Codigo curto da visita: vai no beacon e dentro da mensagem do WhatsApp, e e
+// o que permite ligar a conversa recebida ao clique e a campanha de origem.
+let refEmMemoria = null
+
+function refDaVisita() {
+  const gerar = () => `GP-${Math.floor(1000 + Math.random() * 9000)}`
+  try {
+    const armazenado = window.sessionStorage.getItem('gp_ref')
+    if (armazenado) return armazenado
+    const novo = gerar()
+    window.sessionStorage.setItem('gp_ref', novo)
+    return novo
+  } catch {
+    if (!refEmMemoria) refEmMemoria = gerar()
+    return refEmMemoria
+  }
+}
+
+// Registra o clique em segundo plano, sem redirecionar por dominio nosso e sem
+// nenhum dado pessoal (o endpoint recusa nome/telefone/e-mail com 400).
+function enviarCliqueWhatsapp(source) {
+  if (typeof window === 'undefined') return
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const pegar = (chave) => params.get(chave) || undefined
+    const corpo = {
+      ref: refDaVisita(),
+      pagina: source,
+      gclid: pegar('gclid'),
+      gbraid: pegar('gbraid'),
+      wbraid: pegar('wbraid'),
+      fbclid: pegar('fbclid'),
+      utm_source: pegar('utm_source'),
+      utm_medium: pegar('utm_medium'),
+      utm_campaign: pegar('utm_campaign'),
+      utm_term: pegar('utm_term'),
+      utm_content: pegar('utm_content'),
+      // O endpoint recusa o corpo inteiro se um campo passar do limite
+      // (landing_page_url 2048, user_agent 500). Cortar aqui evita perder o clique.
+      landing_page_url: window.location.href.slice(0, 2000),
+      user_agent: (navigator.userAgent || '').slice(0, 480),
+    }
+    Object.keys(corpo).forEach((chave) => { if (!corpo[chave]) delete corpo[chave] })
+    const json = JSON.stringify(corpo)
+    if (navigator.sendBeacon) navigator.sendBeacon(WHATSAPP_CLICK_TRACK_URL, json)
+    else fetch(WHATSAPP_CLICK_TRACK_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: json, keepalive: true }).catch(() => {})
+  } catch {
+    // Rastreamento nunca pode atrasar ou impedir a ida para o WhatsApp.
+  }
+}
+
+function whatsappUrl({ name = '', phone = '', source = 'lp', ref = '' } = {}) {
   const message = [
     `Olá, vim pelo site do ${doctor.shortName}.`,
     name ? `Meu nome é ${name}.` : '',
     phone ? `Meu telefone é ${phone}.` : '',
     'Quero agendar uma avaliação ortopédica.',
+    ref ? `[${ref}]` : '',
   ].filter(Boolean).join(' ')
 
   return `https://wa.me/${doctor.phone}?text=${encodeURIComponent(message)}&utm_source=${source}&utm_medium=lp&utm_campaign=dr_gustavo_pimpao`
@@ -889,28 +943,6 @@ function isDirecionamentoPage() {
   return ['/agendar/', '/direcionamento/'].includes(getNormalizedPathname())
 }
 
-function getDirecionamentoUrl(source = 'lp') {
-  if (typeof window === 'undefined') return '/agendar/'
-  
-  const currentParams = new URLSearchParams(window.location.search)
-  const lpUrl = new URL(window.location.href)
-  currentParams.set('landing_page_url', lpUrl.origin + lpUrl.pathname)
-  currentParams.set('ponto_conversao', source)
-  if (document.referrer) {
-    currentParams.set('referrer_url', document.referrer)
-  }
-  
-  let basePath = '/'
-  const path = window.location.pathname
-  if (path.includes('/lp-dr-gustavo-pimpao')) {
-    basePath = '/lp-dr-gustavo-pimpao/'
-  } else if (path.startsWith('/lp')) {
-    basePath = '/lp/'
-  }
-  
-  return `${basePath}agendar/?${currentParams.toString()}`
-}
-
 function openLeadModal(event, source = 'lp') {
   event?.preventDefault()
   if (typeof window === 'undefined') return
@@ -919,7 +951,8 @@ function openLeadModal(event, source = 'lp') {
   // para um servico de terceiro (sistema.pulso.marketing) — cross-domain
   // redirect a partir do anuncio, classificado pelo Google como destination
   // mismatch / sneaky redirect, com penalidade de suspensao sem aviso.
-  window.location.href = whatsappUrl({ source })
+  enviarCliqueWhatsapp(source)
+  window.location.href = whatsappUrl({ source, ref: refDaVisita() })
 }
 
 
@@ -2712,44 +2745,30 @@ function PoliticaPrivacidadePage() {
 }
 
 function AgendarPage() {
-  const [progress, setProgress] = useState(0)
-  const [redirected, setRedirected] = useState(false)
+  const beaconEnviadoRef = useRef(false)
 
-  const redirectUrl = useMemo(() => {
+  const source = useMemo(() => {
     if (typeof window === 'undefined') return ''
     const params = new URLSearchParams(window.location.search)
-    return whatsappUrl({ source: params.get('ponto_conversao') || 'agendar' })
+    return params.get('ponto_conversao') || 'agendar'
   }, [])
+
+  const redirectUrl = useMemo(() => whatsappUrl({ source, ref: refDaVisita() }), [source])
 
   useEffect(() => {
     document.title = 'Direcionando para o WhatsApp — Dr. Gustavo Pimpão'
 
-    const duration = 800
-    const intervalTime = 30
-    const startTime = Date.now()
+    if (!beaconEnviadoRef.current) {
+      beaconEnviadoRef.current = true
+      track('whatsapp_click', { location: source })
+      enviarCliqueWhatsapp(source)
+    }
 
-    const timer = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const currentProgress = Math.min(elapsed / duration, 1)
-      setProgress(currentProgress)
-
-      if (currentProgress >= 1) {
-        clearInterval(timer)
-        if (!redirected && redirectUrl) {
-          setRedirected(true)
-          window.location.href = redirectUrl
-        }
-      }
-    }, intervalTime)
-
-    return () => clearInterval(timer)
-  }, [redirectUrl, redirected])
+    window.location.href = redirectUrl
+  }, [redirectUrl, source])
 
   const handleManualClick = () => {
-    if (redirectUrl) {
-      setRedirected(true)
-      window.location.href = redirectUrl
-    }
+    window.location.href = redirectUrl
   }
 
   return (
@@ -2758,36 +2777,10 @@ function AgendarPage() {
       
       <div className="relative z-10 w-full max-w-md bg-white rounded-[2.5rem] p-8 sm:p-10 shadow-soft border border-brand-graphite/5 text-center flex flex-col items-center">
         
-        {/* SVG Circular Progress Loader */}
-        <div className="relative w-32 h-32 mb-8 flex items-center justify-center">
-          <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-            <circle 
-              className="text-emerald-500/10" 
-              strokeWidth="6" 
-              stroke="currentColor" 
-              fill="transparent" 
-              r="44" 
-              cx="50" 
-              cy="50" 
-            />
-            <circle 
-              className="text-emerald-500 transition-all duration-75 ease-linear" 
-              strokeWidth="6" 
-              strokeDasharray={276.46}
-              strokeDashoffset={276.46 * (1 - progress)} 
-              strokeLinecap="round" 
-              stroke="currentColor" 
-              fill="transparent" 
-              r="44" 
-              cx="50" 
-              cy="50" 
-            />
+        <div className="w-20 h-20 mb-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg shadow-emerald-500/30">
+          <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.025 14.069.99 11.5.99c-5.438 0-9.863 4.37-9.868 9.8-.001 1.77.463 3.5 1.34 5.024L2.002 21.1l5.441-1.426-.8 1.48z" />
           </svg>
-          <div className="w-20 h-20 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg shadow-emerald-500/30">
-            <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.025 14.069.99 11.5.99c-5.438 0-9.863 4.37-9.868 9.8-.001 1.77.463 3.5 1.34 5.024L2.002 21.1l5.441-1.426-.8 1.48z" />
-            </svg>
-          </div>
         </div>
 
         {/* Título e Texto Amistoso */}
