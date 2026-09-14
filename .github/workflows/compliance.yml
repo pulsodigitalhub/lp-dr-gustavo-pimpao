@@ -21,12 +21,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # Descomente se o repo tiver package.json/build.
-      # - name: Instalar dependências
-      #   run: npm ci
-      # Descomente se o repo tiver package.json/build.
-      # - name: Build (pra checar o output real que vai pro ar)
-      #   run: npm run build
+      - name: Instalar dependências
+        run: npm ci
+      # O checker roda sobre dist/ quando existe; sem build ele varre a raiz, onde
+      # as rotas geradas pelo vite.config.js nao existem, e acusa B4 no sitemap.
+      - name: Build (pra checar o output real que vai pro ar)
+        run: npm run build
       - name: Checar compliance Google Ads
         env:
           COMPLIANCE_BASE_URL: "https://drgustavopimpaoortopedia.com.br"
