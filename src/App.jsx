@@ -947,6 +947,10 @@ function openLeadModal(event, source = 'lp') {
   event?.preventDefault()
   if (typeof window === 'undefined') return
   track('whatsapp_click', { location: source })
+  // A conversao 'Conv Botao WhatsApp [PUL]' do Google Ads e disparada no GTM pelo
+  // evento lead_submit. Ele vinha do formulario antigo; sem formulario, o clique
+  // no botao do WhatsApp e a conversao. So a origem do clique: nada de nome/telefone.
+  track('lead_submit', { lead_source: source })
   // Vai direto para o WhatsApp. Antes passava por /agendar/, que redirecionava
   // para um servico de terceiro (sistema.pulso.marketing) — cross-domain
   // redirect a partir do anuncio, classificado pelo Google como destination
