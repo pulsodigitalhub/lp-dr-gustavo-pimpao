@@ -927,6 +927,9 @@ function enviarCliqueWhatsapp(source) {
       landing_page_url: window.location.href.slice(0, 2000),
       referrer_url: referrerSemQuery(),
       user_agent: (navigator.userAgent || '').slice(0, 480),
+      // O endpoint guarda só origem+caminho do referrer (descarta query/fragmento);
+      // manda o valor cru aqui, sem sanitizar no cliente.
+      referrer_url: (document.referrer || '').slice(0, 2000),
     }
     Object.keys(corpo).forEach((chave) => { if (!corpo[chave]) delete corpo[chave] })
     const json = JSON.stringify(corpo)
