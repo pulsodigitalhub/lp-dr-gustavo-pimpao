@@ -2738,8 +2738,7 @@ function PoliticaPrivacidadePage() {
         <p className="mt-3 leading-relaxed text-brand-gray">Os dados nunca são vendidos. Eles podem ser compartilhados apenas com plataformas de gestão da clínica, serviços de infraestrutura, hospedagem e mensuração, além de autoridades quando houver exigência legal.</p>
 
         <h2 className="mt-10 text-xl font-black text-brand-graphite">Cookies e medição</h2>
-        <p className="mt-3 leading-relaxed text-brand-gray">Usamos cookies essenciais para o funcionamento da página. Cookies de medição e publicidade, como os de ferramentas do Google, só são ativados com a sua autorização, dada no aviso de privacidade exibido no site. O registro de dados de campanha descrito acima não usa cookies e não identifica você.</p>
-        <p className="mt-3 leading-relaxed text-brand-gray">Você pode mudar sua escolha a qualquer momento: <a href="#consentimento" className="font-bold text-brand-red underline">gerenciar preferências de cookies</a>.</p>
+        <p className="mt-3 leading-relaxed text-brand-gray">Usamos cookies e tecnologias semelhantes, inclusive de ferramentas do Google, para o funcionamento da página, para medir visitas e para avaliar o desempenho de anúncios. Você pode bloquear ou apagar cookies a qualquer momento nas configurações do seu navegador.</p>
 
         <h2 className="mt-10 text-xl font-black text-brand-graphite">Segurança da informação</h2>
         <p className="mt-3 leading-relaxed text-brand-gray">Adotamos HTTPS/TLS e restrição de acesso aos dados para proteger as informações tratadas.</p>
