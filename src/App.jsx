@@ -892,6 +892,19 @@ function refDaVisita() {
 
 // Registra o clique em segundo plano, sem redirecionar por dominio nosso e sem
 // nenhum dado pessoal (o endpoint recusa nome/telefone/e-mail com 400).
+// Referrer da visita reduzido a origem + caminho. Query e fragmento ficam de fora
+// porque o site de onde a pessoa veio pode carregar dado pessoal na URL.
+function referrerSemQuery() {
+  try {
+    if (!document.referrer) return undefined
+    const url = new URL(document.referrer)
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return undefined
+    return `${url.origin}${url.pathname}`.slice(0, 500)
+  } catch {
+    return undefined
+  }
+}
+
 function enviarCliqueWhatsapp(source) {
   if (typeof window === 'undefined') return
   try {
@@ -912,6 +925,7 @@ function enviarCliqueWhatsapp(source) {
       // O endpoint recusa o corpo inteiro se um campo passar do limite
       // (landing_page_url 2048, user_agent 500). Cortar aqui evita perder o clique.
       landing_page_url: window.location.href.slice(0, 2000),
+      referrer_url: referrerSemQuery(),
       user_agent: (navigator.userAgent || '').slice(0, 480),
     }
     Object.keys(corpo).forEach((chave) => { if (!corpo[chave]) delete corpo[chave] })
@@ -2698,10 +2712,16 @@ function PoliticaPrivacidadePage() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-16">
         <a href="/" className="text-sm text-brand-gray underline">← Voltar ao site</a>
         <h1 className="mt-6 text-3xl font-black text-brand-graphite">Política de Privacidade</h1>
-        <p className="mt-2 text-sm text-brand-gray">Última atualização: setembro de 2026</p>
+        <p className="mt-2 text-sm text-brand-gray">Última atualização: 15 de setembro de 2026</p>
 
-        <h2 className="mt-10 text-xl font-black text-brand-graphite">Coleta de dados pessoais</h2>
-        <p className="mt-3 leading-relaxed text-brand-gray">Coletamos nome e telefone/WhatsApp fornecidos voluntariamente ao clicar nos botões de agendamento, que direcionam ao WhatsApp do consultório. Também coletamos automaticamente dados de navegação, como IP, navegador, páginas visitadas e origem da visita, para medir o desempenho das campanhas. Dados de saúde não são coletados por este site; eles são tratados apenas no atendimento presencial, sob sigilo médico.</p>
+        <h2 className="mt-10 text-xl font-black text-brand-graphite">Quais dados podem ser coletados</h2>
+        <p className="mt-3 leading-relaxed text-brand-gray">Os dados tratados dependem de como você usa o site e dos recursos disponíveis em cada momento. Podemos coletar:</p>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-brand-gray">
+          <li><strong>Dados que você fornece voluntariamente</strong>, como nome e telefone/WhatsApp, quando algum formulário ou canal de contato do site os solicitar, ou na conversa pelo WhatsApp do consultório.</li>
+          <li><strong>Dados de navegação</strong>, como endereço IP, navegador, páginas visitadas, data e horário e o site de origem da visita.</li>
+          <li><strong>Dados de campanha</strong>, como identificadores de anúncio (por exemplo gclid e parâmetros UTM) e um código de atendimento gerado na visita, usados para medir o desempenho das campanhas e relacionar o contato ao anúncio de origem. Esses dados de campanha não incluem nome, telefone ou e-mail e são anonimizados em até 90 dias.</li>
+        </ul>
+        <p className="mt-3 leading-relaxed text-brand-gray">Dados de saúde não são coletados por este site; eles são tratados apenas no atendimento, sob sigilo médico.</p>
 
         <h2 className="mt-10 text-xl font-black text-brand-graphite">Finalidade do uso</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-brand-gray">
@@ -2715,7 +2735,8 @@ function PoliticaPrivacidadePage() {
         <p className="mt-3 leading-relaxed text-brand-gray">Os dados nunca são vendidos. Eles podem ser compartilhados apenas com plataformas de gestão da clínica, serviços de infraestrutura, hospedagem e mensuração, além de autoridades quando houver exigência legal.</p>
 
         <h2 className="mt-10 text-xl font-black text-brand-graphite">Cookies e medição</h2>
-        <p className="mt-3 leading-relaxed text-brand-gray">Utilizamos cookies para medir audiência e desempenho de campanhas. Você pode recusá-los no navegador, ciente de que algumas funcionalidades podem ser afetadas. Não realizamos rastreamento abusivo.</p>
+        <p className="mt-3 leading-relaxed text-brand-gray">Usamos cookies essenciais para o funcionamento da página. Cookies de medição e publicidade, como os de ferramentas do Google, só são ativados com a sua autorização, dada no aviso de privacidade exibido no site. O registro de dados de campanha descrito acima não usa cookies e não identifica você.</p>
+        <p className="mt-3 leading-relaxed text-brand-gray">Você pode mudar sua escolha a qualquer momento: <a href="#consentimento" className="font-bold text-brand-red underline">gerenciar preferências de cookies</a>.</p>
 
         <h2 className="mt-10 text-xl font-black text-brand-graphite">Segurança da informação</h2>
         <p className="mt-3 leading-relaxed text-brand-gray">Adotamos HTTPS/TLS e restrição de acesso aos dados para proteger as informações tratadas.</p>
