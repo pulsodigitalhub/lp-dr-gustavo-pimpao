@@ -939,10 +939,6 @@ function scrollToConvenios() {
   document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-function isDirecionamentoPage() {
-  return ['/agendar/', '/direcionamento/'].includes(getNormalizedPathname())
-}
-
 function openLeadModal(event, source = 'lp') {
   event?.preventDefault()
   if (typeof window === 'undefined') return
@@ -2748,73 +2744,6 @@ function PoliticaPrivacidadePage() {
   )
 }
 
-function AgendarPage() {
-  const beaconEnviadoRef = useRef(false)
-
-  const source = useMemo(() => {
-    if (typeof window === 'undefined') return ''
-    const params = new URLSearchParams(window.location.search)
-    return params.get('ponto_conversao') || 'agendar'
-  }, [])
-
-  const redirectUrl = useMemo(() => whatsappUrl({ source, ref: refDaVisita() }), [source])
-
-  useEffect(() => {
-    document.title = 'Direcionando para o WhatsApp — Dr. Gustavo Pimpão'
-
-    if (!beaconEnviadoRef.current) {
-      beaconEnviadoRef.current = true
-      track('whatsapp_click', { location: source })
-      enviarCliqueWhatsapp(source)
-    }
-
-    window.location.href = redirectUrl
-  }, [redirectUrl, source])
-
-  const handleManualClick = () => {
-    window.location.href = redirectUrl
-  }
-
-  return (
-    <div className="min-h-screen bg-brand-cream flex flex-col items-center justify-center px-4 py-8 font-sans select-none relative overflow-hidden mobile-readable">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(160,26,42,0.06)_0%,transparent_70%)] pointer-events-none z-0" />
-      
-      <div className="relative z-10 w-full max-w-md bg-white rounded-[2.5rem] p-8 sm:p-10 shadow-soft border border-brand-graphite/5 text-center flex flex-col items-center">
-        
-        <div className="w-20 h-20 mb-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg shadow-emerald-500/30">
-          <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.025 14.069.99 11.5.99c-5.438 0-9.863 4.37-9.868 9.8-.001 1.77.463 3.5 1.34 5.024L2.002 21.1l5.441-1.426-.8 1.48z" />
-          </svg>
-        </div>
-
-        {/* Título e Texto Amistoso */}
-        <h1 className="font-display text-2xl sm:text-3xl font-black text-brand-graphite leading-tight mb-3">
-          direcionando para o WhatsApp
-        </h1>
-        <p className="text-base font-medium text-brand-gray/80 mb-8 max-w-xs mx-auto">
-          Conectando você ao atendimento do Dr. Gustavo Pimpão...
-        </p>
-
-        {/* Botão de Redirecionamento Manual */}
-        <button 
-          onClick={handleManualClick}
-          className="w-full inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand-red text-white text-base sm:text-lg font-black uppercase tracking-wider shadow-lg shadow-brand-red/20 transition duration-300 hover:bg-brand-red-dark hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-        >
-          Conectar agora
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Footer Branding */}
-      <span className="mt-8 text-xs font-bold text-brand-gray/40 uppercase tracking-widest z-10">
-        Dr. Gustavo Pimpão • Ortopedia e Traumatologia
-      </span>
-    </div>
-  )
-}
-
 function GlobalLayout({ children }) {
   return (
     <div className="mobile-readable">
@@ -2985,10 +2914,6 @@ export default function App() {
 
   if (isPoliticaPrivacidadePage()) {
     return <PoliticaPrivacidadePage />
-  }
-
-  if (isDirecionamentoPage()) {
-    return <AgendarPage />
   }
 
   if (isConveniosMetaPage()) {
