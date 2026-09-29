@@ -885,7 +885,7 @@ function iniciarWhatsappTracking() {
       client: 'dr-gustavo-pimpao',
       prefix: 'GP',
       doctor: `o ${doctor.shortName}`,
-      booking: 'uma avaliação ortopédica',
+      booking: 'uma consulta',
     })
   } catch {
     // Rastreamento nunca pode atrasar ou impedir a ida para o WhatsApp.
