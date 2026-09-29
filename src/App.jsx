@@ -48,6 +48,7 @@ import {
 } from '@phosphor-icons/react'
 import './App.css'
 import { posts } from './data/posts'
+import { initWhatsappTracking } from './wa-tracking.js'
 
 const doctor = {
   name: 'Dr. Gustavo Lima Almeida Pimpão',
@@ -870,73 +871,25 @@ function track(event, payload = {}) {
   window.dataLayer.push({ event, ...payload })
 }
 
-const WHATSAPP_CLICK_TRACK_URL = 'https://intelligence.calil.ia.br/v1/track/whatsapp-click/dr-gustavo-pimpao'
+// Codigo curto da visita e identificadores de campanha ficam guardados no
+// navegador desde a chegada (src/wa-tracking.js), para o clique continuar
+// atribuido mesmo que a pessoa troque de pagina ou volte outro dia. O codigo vai
+// no beacon e dentro da mensagem do WhatsApp, e e o que permite ligar a conversa
+// recebida ao clique e a campanha de origem.
+const whatsappTracking = iniciarWhatsappTracking()
 
-// Codigo curto da visita: vai no beacon e dentro da mensagem do WhatsApp, e e
-// o que permite ligar a conversa recebida ao clique e a campanha de origem.
-let refEmMemoria = null
-
-function refDaVisita() {
-  const gerar = () => `GP-${Math.floor(1000 + Math.random() * 9000)}`
+function iniciarWhatsappTracking() {
+  if (typeof window === 'undefined') return null
   try {
-    const armazenado = window.sessionStorage.getItem('gp_ref')
-    if (armazenado) return armazenado
-    const novo = gerar()
-    window.sessionStorage.setItem('gp_ref', novo)
-    return novo
-  } catch {
-    if (!refEmMemoria) refEmMemoria = gerar()
-    return refEmMemoria
-  }
-}
-
-// Registra o clique em segundo plano, sem redirecionar por dominio nosso e sem
-// nenhum dado pessoal (o endpoint recusa nome/telefone/e-mail com 400).
-// Referrer da visita reduzido a origem + caminho. Query e fragmento ficam de fora
-// porque o site de onde a pessoa veio pode carregar dado pessoal na URL.
-function referrerSemQuery() {
-  try {
-    if (!document.referrer) return undefined
-    const url = new URL(document.referrer)
-    if (url.protocol !== 'http:' && url.protocol !== 'https:') return undefined
-    return `${url.origin}${url.pathname}`.slice(0, 500)
-  } catch {
-    return undefined
-  }
-}
-
-function enviarCliqueWhatsapp(source) {
-  if (typeof window === 'undefined') return
-  try {
-    const params = new URLSearchParams(window.location.search)
-    const pegar = (chave) => params.get(chave) || undefined
-    const corpo = {
-      ref: refDaVisita(),
-      pagina: source,
-      gclid: pegar('gclid'),
-      gbraid: pegar('gbraid'),
-      wbraid: pegar('wbraid'),
-      fbclid: pegar('fbclid'),
-      utm_source: pegar('utm_source'),
-      utm_medium: pegar('utm_medium'),
-      utm_campaign: pegar('utm_campaign'),
-      utm_term: pegar('utm_term'),
-      utm_content: pegar('utm_content'),
-      // O endpoint recusa o corpo inteiro se um campo passar do limite
-      // (landing_page_url 2048, user_agent 500). Cortar aqui evita perder o clique.
-      landing_page_url: window.location.href.slice(0, 2000),
-      referrer_url: referrerSemQuery(),
-      user_agent: (navigator.userAgent || '').slice(0, 480),
-      // O endpoint guarda só origem+caminho do referrer (descarta query/fragmento);
-      // manda o valor cru aqui, sem sanitizar no cliente.
-      referrer_url: (document.referrer || '').slice(0, 2000),
-    }
-    Object.keys(corpo).forEach((chave) => { if (!corpo[chave]) delete corpo[chave] })
-    const json = JSON.stringify(corpo)
-    if (navigator.sendBeacon) navigator.sendBeacon(WHATSAPP_CLICK_TRACK_URL, json)
-    else fetch(WHATSAPP_CLICK_TRACK_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: json, keepalive: true }).catch(() => {})
+    return initWhatsappTracking({
+      client: 'dr-gustavo-pimpao',
+      prefix: 'GP',
+      doctor: `o ${doctor.shortName}`,
+      booking: 'uma avaliação ortopédica',
+    })
   } catch {
     // Rastreamento nunca pode atrasar ou impedir a ida para o WhatsApp.
+    return null
   }
 }
 
@@ -968,8 +921,10 @@ function openLeadModal(event, source = 'lp') {
   // para um servico de terceiro (sistema.pulso.marketing) — cross-domain
   // redirect a partir do anuncio, classificado pelo Google como destination
   // mismatch / sneaky redirect, com penalidade de suspensao sem aviso.
-  enviarCliqueWhatsapp(source)
-  window.location.href = whatsappUrl({ source, ref: refDaVisita() })
+  whatsappTracking?.sendClick(source)
+  // Sem o tracking (erro na inicializacao), vai com a mensagem antiga, sem codigo.
+  const destino = whatsappUrl({ source })
+  window.location.href = whatsappTracking ? whatsappTracking.whatsappUrl(destino) : destino
 }
 
 
