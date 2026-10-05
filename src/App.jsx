@@ -886,6 +886,9 @@ function iniciarWhatsappTracking() {
       prefix: 'GP',
       doctor: `o ${doctor.shortName}`,
       booking: 'uma consulta',
+      // Links <a> de WhatsApp: o event_id do clique vai ao GTM para o pixel da
+      // Meta usar o mesmo id e deduplicar com a API de conversoes.
+      onClick: (source, anchor, eventId) => track('whatsapp_event_id', { location: source, event_id: eventId }),
     })
   } catch {
     // Rastreamento nunca pode atrasar ou impedir a ida para o WhatsApp.
@@ -912,16 +915,18 @@ function scrollToConvenios() {
 function openLeadModal(event, source = 'lp') {
   event?.preventDefault()
   if (typeof window === 'undefined') return
-  track('whatsapp_click', { location: source })
+  // O event_id e o mesmo enviado ao Intelligence: o pixel da Meta usa esse id
+  // para deduplicar o evento com a API de conversoes.
+  const eventId = whatsappTracking?.sendClick(source) || undefined
+  track('whatsapp_click', { location: source, event_id: eventId })
   // A conversao 'Conv Botao WhatsApp [PUL]' do Google Ads e disparada no GTM pelo
   // evento lead_submit. Ele vinha do formulario antigo; sem formulario, o clique
   // no botao do WhatsApp e a conversao. So a origem do clique: nada de nome/telefone.
-  track('lead_submit', { lead_source: source })
+  track('lead_submit', { lead_source: source, event_id: eventId })
   // Vai direto para o WhatsApp. Antes passava por /agendar/, que redirecionava
   // para um servico de terceiro (sistema.pulso.marketing) — cross-domain
   // redirect a partir do anuncio, classificado pelo Google como destination
   // mismatch / sneaky redirect, com penalidade de suspensao sem aviso.
-  whatsappTracking?.sendClick(source)
   // Sem o tracking (erro na inicializacao), vai com a mensagem antiga, sem codigo.
   const destino = whatsappUrl({ source })
   window.location.href = whatsappTracking ? whatsappTracking.whatsappUrl(destino) : destino
